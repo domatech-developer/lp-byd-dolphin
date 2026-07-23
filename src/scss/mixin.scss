@@ -364,3 +364,15 @@ $valid-units: (
   border-radius: 4px;
   transition: outline-offset 0.15s ease, outline-color 0.2s ease;
 }
+
+@mixin text($size, $height, $weight: 400, $align: left, $style: normal) {
+  font-family: $font-default;
+
+  @include content {
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+    text-align: $align;
+    font-style: $style;
+  }
+}
