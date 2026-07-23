@@ -19,8 +19,11 @@ $h2-ls: -0.64px; // -0.64px
 
 /* Headline/H3 */
 $h3-fs: 1.5rem; // 24px
-$h3-lh: 1.95rem; // 31.2px
+$h3-lh: 2rem; // 32px
 $h3-ls: -48px; //-0.48px
+
+$h3-fs-sm: 1.125rem; // 18px
+$h3-lh-sm: 1.5rem; // 24px
 
 /* Subtítulo/S1 */
 $s1-fs: 1.125rem; // 18px
@@ -38,6 +41,9 @@ $b2-lh: 1.5rem; // 24px
 /* Body/Body 3 */
 $b3-fs: 0.75rem; // 12px
 $b3-lh: 1.25rem; // 20px
+
+$b3-fs-sm: 0.625rem; // 10px
+$b3-lh-sm: 1rem; // 16px
 
 $maxResDesktop: 2560;
 $minReDesktop: 1366;
