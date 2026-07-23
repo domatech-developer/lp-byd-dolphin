@@ -2,6 +2,7 @@ import "./Home.scss";
 import { FC } from "react";
 import MainDefault from "@/components/Main/Main";
 import StructureData from "@/components/SEO/StructureData/StructureData";
+import VideoServopa from "@/Modules/VideoServopa/VideoServopa";
 import AboutServopa from "@/Modules/AboutServopa/AboutServopa";
 interface HomeProps {
   data: any;
@@ -10,6 +11,7 @@ interface HomeProps {
 const Home: FC<HomeProps> = async ({ data, locale }) => {
   return (
     <MainDefault id="home" {...{ data, locale }}>
+      <VideoServopa />
       <AboutServopa />
     </MainDefault>
   );
