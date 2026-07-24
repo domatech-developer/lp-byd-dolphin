@@ -5,8 +5,12 @@
   margin: auto;
   display: flex;
   align-items: center;
-  --slide-size: 100%;
-  @include resize(--slide-spacing, 10);
+  @include resize(--slide-size, 340);
+  @include resize(--slide-spacing, 16);
+
+  @include res-md {
+    --slide-size: 100%;
+  }
 
   &__viewport {
     overflow: hidden;
@@ -43,7 +47,7 @@
     align-items: center;
     background-color: transparent;
     border-radius: 1000px;
-    border: 1px solid $color-gray-100;
+    border: 1px solid $color-black;
 
     transition: background-color 0.15s ease-out;
 
@@ -58,9 +62,7 @@
       position: absolute;
       display: flex;
       object-fit: contain;
-      filter: brightness(0) saturate(100%) invert(8%) sepia(9%) saturate(1268%) hue-rotate(8deg) brightness(92%)
-        contrast(94%);
-      background-image: url("/icons/arrow-right-white.svg");
+      background-image: url("/icons/arrow-right-black.svg");
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -70,11 +72,9 @@
 
     &:hover {
       transition: background-color 0.15s ease-in;
-      background-color: $color-primary-200;
-      border-color: $color-primary-200;
+      background-color: $color-black;
+      border-color: $color-black;
       &:before {
-        filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(201deg) brightness(106%)
-          contrast(106%);
         background-image: url("/icons/arrow-right-white.svg");
       }
     }
@@ -88,8 +88,8 @@
       @include resize(right, 16);
     }
 
-    &:focus {
-      outline: 2px solid $color-primary-200;
+    &:focus-visible {
+      outline: 2px solid $color-focus;
       outline-offset: 2px;
     }
   }
@@ -97,9 +97,6 @@
   &__button:disabled {
     pointer-events: none;
     opacity: 0.3;
-    &:before {
-      background-image: url("/icons/arrow-right.svg");
-    }
   }
 
   &__button__svg {
@@ -124,28 +121,19 @@
 
   &__dot {
     position: relative;
-    border: 1px solid $color-gray-100;
+    border: 1px solid $color-black;
     background-color: transparent;
     border-radius: 1000px;
     @include resize(width, 12);
     @include resize(height, 12);
 
     &--selected {
-      background-color: $color-gray-100;
+      background-color: $color-black;
     }
   }
 
-  &__dot:after {
-    box-shadow: inset 0 0 0 3px var(--detail-medium-contrast);
-    @include resize(height, 23);
-    @include resize(width, 23);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    content: "";
-  }
-
-  &__dot--selected:after {
-    box-shadow: inset 0 0 0 3px var(--text-body);
+  &__dot:focus-visible {
+    outline: 2px solid $color-focus;
+    outline-offset: 2px;
   }
 }
