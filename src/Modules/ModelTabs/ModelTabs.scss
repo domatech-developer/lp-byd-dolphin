@@ -1,0 +1,152 @@
+.modelTabs {
+  &__container {
+    @include container(full);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include resize(gap, 24);
+    @include resize(padding-top, 96);
+  }
+
+  &__title {
+    color: $color-black;
+    @include text(40px, 48px, 400, center);
+
+    @include res-md {
+      @include text(28px, 36px, 400, center);
+    }
+  }
+
+  &__tabs {
+    position: sticky;
+    z-index: 3;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    background: $color-white;
+    @include resize(gap, 8);
+  }
+
+  &__tab {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: $color-black-40;
+    white-space: nowrap;
+    @include resize(padding-block, 12);
+    @include resize(padding-inline, 16);
+    @include text($b2-fs, $b3-lh, 500);
+
+    &--active {
+      color: $color-black;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-focus;
+      outline-offset: -2px;
+      border-radius: 4px;
+    }
+  }
+
+  &__hero {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    background: linear-gradient(180deg, #f6f6f6 0%, #ebebeb 100%);
+    @include resize(height, 500, 0);
+
+    @include res-md {
+      flex-direction: column;
+    }
+  }
+
+  &__heroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 0 1 auto;
+    z-index: 2;
+    @include resize(gap, 32, 20);
+    @include resize(padding-left, 80, 0);
+    @include resize(padding-block, 96, 32);
+    @include resize(max-width, 500, 100%);
+
+    @include res-md {
+      @include resize(padding-inline, 16);
+    }
+  }
+
+  &__eyebrow {
+    margin: 0;
+    color: $color-black;
+    @include text(20px, $h3-lh, 400);
+  }
+
+  &__heroTitle {
+    margin: 0;
+    color: $color-black;
+    @include text($h2-fs, 40px, 400);
+
+    @include res-md {
+      @include text($h3-fs, $h3-lh, 400);
+    }
+  }
+
+  &__description {
+    margin: 0;
+    color: $color-black-80;
+    @include text($b1-fs, $b1-lh, 400);
+  }
+
+  &__ctas {
+    display: flex;
+    align-items: center;
+    @include resize(gap, 8);
+
+    .buttonDefault {
+      @include resize(width, 180);
+    }
+  }
+
+  &__heroImage {
+    flex: 1 1 0;
+    position: relative;
+
+    &__imgContainer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include res-md {
+      @include resize(min-height, 320);
+      flex-basis: auto;
+    }
+  }
+
+  &__watermark {
+    position: absolute;
+    z-index: 2;
+    top: 12.8%;
+    right: 4.7%;
+    opacity: 0.5;
+    pointer-events: none;
+    @include resize(width, 104);
+    @include resize(height, 20);
+
+    @include res-md {
+      display: none;
+    }
+  }
+}
