@@ -120,7 +120,7 @@ const NewsLetter: FC<NewsLetterProps> = ({ data, debug }) => {
                 onClick={handleSubmit}
                 variantLink={{ type: "button" }}
                 data={button}
-                styling="primary"
+                styling="filled"
                 icon="arrow-right-white"
                 disabled={loading}
               />

@@ -18,6 +18,8 @@ export type Icons =
   | "magnifying"
   | "arrow-right-white"
   | "arrow-right-black"
+  | "arrow-right-white-thin"
+  | "arrow-right-black-thin"
   | "caret-right-white"
   | "caret-right-black"
   // novos adicionados

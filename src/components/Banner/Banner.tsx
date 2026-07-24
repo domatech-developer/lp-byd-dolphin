@@ -60,14 +60,14 @@ const Banner: FC<BannerProps> = ({ data, debug }) => {
 
             {data.link && (
               <div className="banner__buttonContainer">
-                <ButtonDefault variantLink={{ type: "link" }} data={data.link} styling="primary" icon="arrow-right-white" />
+                <ButtonDefault variantLink={{ type: "link" }} data={data.link} styling="filled" icon="arrow-right-white" />
               </div>
             )}
           </div>
         )}
         {data.anchorLink && (
           <div className="banner__btnAnchorContainer">
-            <ButtonDefault variantLink={{ type: "link" }} data={data.anchorLink} styling="tertiary" icon="chevron-down" />
+            <ButtonDefault variantLink={{ type: "link" }} data={data.anchorLink} styling="ghost" icon="chevron-down" />
           </div>
         )}
         {data.video_check === "true" && (
