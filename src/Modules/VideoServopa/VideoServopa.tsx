@@ -4,7 +4,7 @@ import "./VideoServopa.scss";
 import React, { FC, useState, useEffect, useRef } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
-import BotaoPlay from "@/components/BotaoPlay/BotaoPlay";
+import PlayButton from "@/components/PlayButton/PlayButton";
 import VideoModal from "@/components/VideoModal/VideoModal";
 import useInView from "@/hooks/useInView";
 
@@ -46,7 +46,7 @@ const VideoServopa: FC<VideoServopaProps> = ({ debug = false }) => {
               <span className="videoServopa__titleBold">{content.title_bold}</span>
               {content.title_thin}
             </h2>
-            <BotaoPlay
+            <PlayButton
               ref={playButtonRef}
               ariaLabel={content.video.aria_label}
               ariaExpanded={isVideoOpen}

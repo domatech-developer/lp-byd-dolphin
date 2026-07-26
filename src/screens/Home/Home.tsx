@@ -4,6 +4,7 @@ import MainDefault from "@/components/Main/Main";
 import StructureData from "@/components/SEO/StructureData/StructureData";
 import ModelsLineup from "@/Modules/ModelsLineup/ModelsLineup";
 import ModelTabs from "@/Modules/ModelTabs/ModelTabs";
+import ModelBanner from "@/Modules/ModelBanner/ModelBanner";
 import ModelCarousel from "@/Modules/ModelCarousel/ModelCarousel";
 import VideoServopa from "@/Modules/VideoServopa/VideoServopa";
 import AboutServopa from "@/Modules/AboutServopa/AboutServopa";
@@ -17,6 +18,7 @@ const Home: FC<HomeProps> = async ({ data, locale }) => {
     <MainDefault id="home" {...{ data, locale }}>
       <ModelsLineup />
       <ModelTabs />
+      <ModelBanner />
       <ModelCarousel />
       <VideoServopa />
       <AboutServopa />

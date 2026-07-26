@@ -1,7 +1,7 @@
-import "./BotaoPlay.scss";
+import "./PlayButton.scss";
 import React, { forwardRef } from "react";
 
-type BotaoPlayProps = {
+type PlayButtonProps = {
   onClick?: () => void;
   ariaLabel?: string;
   ariaExpanded?: boolean;
@@ -10,13 +10,13 @@ type BotaoPlayProps = {
   background?: string;
 };
 
-const BotaoPlay = forwardRef<HTMLButtonElement, BotaoPlayProps>(
+const PlayButton = forwardRef<HTMLButtonElement, PlayButtonProps>(
   ({ onClick, ariaLabel = "Reproduzir vídeo", ariaExpanded, className, pulse = true, background }, ref) => {
     return (
       <button
         ref={ref}
         type="button"
-        className={`botaoPlay ${pulse ? "" : "botaoPlay--noPulse"} ${className ?? ""}`.trim()}
+        className={`playButton ${pulse ? "" : "playButton--noPulse"} ${className ?? ""}`.trim()}
         style={background ? { background } : undefined}
         aria-label={ariaLabel}
         aria-haspopup="dialog"
@@ -29,6 +29,6 @@ const BotaoPlay = forwardRef<HTMLButtonElement, BotaoPlayProps>(
   }
 );
 
-BotaoPlay.displayName = "BotaoPlay";
+PlayButton.displayName = "PlayButton";
 
-export default BotaoPlay;
+export default PlayButton;

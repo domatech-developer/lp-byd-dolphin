@@ -1,4 +1,4 @@
-.botaoPlay {
+.playButton {
   position: relative;
   flex-shrink: 0;
   display: inline-flex;
@@ -19,7 +19,7 @@
     border-radius: inherit;
     border: 1px solid rgba(255, 255, 255, 0.95);
     pointer-events: none;
-    animation: botaoPlayPulse 1.8s ease-out infinite;
+    animation: playButtonPulse 1.8s ease-out infinite;
   }
 
   &--noPulse::after {
@@ -49,7 +49,7 @@
   }
 }
 
-@keyframes botaoPlayPulse {
+@keyframes playButtonPulse {
   0% {
     opacity: 1;
     transform: scale(1);
