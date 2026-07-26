@@ -29,6 +29,7 @@ const ButtonDefault: FC<ButtonDefaultProps> = ({
   data,
   icon,
   positionIcon = "",
+  className: extraClassName,
   ...rest
 }) => {
   const { title, url, target = "" } = data;
@@ -38,16 +39,24 @@ const ButtonDefault: FC<ButtonDefaultProps> = ({
     `buttonDefault--${styling}`,
     `buttonDefault--${theme}`,
     circular && "buttonDefault--circular",
-    disabled && "buttonDefault--disabled"
+    disabled && "buttonDefault--disabled",
+    extraClassName
   ]
     .filter(Boolean)
     .join(" ");
 
+  const renderIcon = () =>
+    icon && (
+      <div className="buttonDefault__iconContainer">
+        <img className="buttonDefault__icon" src={`/icons/${icon}.svg`} alt="" aria-hidden="true" />
+      </div>
+    );
+
   const content = (
     <>
-      {positionIcon === "leftRight" && icon && <img className="buttonDefault__icon" src={`/icons/${icon}.svg`} alt="" aria-hidden="true" />}
+      {positionIcon === "leftRight" && renderIcon()}
       <span className="buttonDefault__text">{title}</span>
-      {icon && <img className="buttonDefault__icon" src={`/icons/${icon}.svg`} alt="" aria-hidden="true" />}
+      {icon && renderIcon()}
     </>
   );
 
