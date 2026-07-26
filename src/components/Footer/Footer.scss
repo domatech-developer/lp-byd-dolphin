@@ -1,5 +1,5 @@
 .footer {
-  background: $color-menu-bg;
+  background: $color-primary;
   @include resize(padding-top, 56);
 
   &__container {
@@ -47,7 +47,7 @@
   &__modelCard {
     display: flex;
     width: 100%;
-    background: $color-dark-bg;
+    background: $color-secondary;
     border-radius: 4px;
     text-decoration: none;
     transition: background 0.2s ease;
@@ -120,7 +120,7 @@
 
   &__bottomBar {
     width: 100%;
-    background: $color-dark-bg;
+    background: $color-secondary;
     @include resize(min-height, 80);
 
     @include res-md {
