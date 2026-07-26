@@ -1,0 +1,197 @@
+.modelsLineup {
+  background: $color-primary;
+  overflow: hidden;
+
+  &__container {
+    @include container(full);
+    display: flex;
+    justify-content: center;
+    @include resize(padding-block, 96, 56);
+  }
+
+  &__stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1366 / 762;
+
+    @include res-md {
+      aspect-ratio: 393 / 620;
+    }
+  }
+
+  &__imageFrame {
+    position: absolute;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    transition:
+      top 1s ease-out,
+      right 1s ease-out,
+      bottom 1s ease-out,
+      left 1s ease-out,
+      border-radius 1s ease-out;
+    @include resize(top, 53);
+    @include resize(right, 56);
+    @include resize(bottom, 56);
+    @include resize(left, 56);
+
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(1, 1, 1, 0) 71.522%, $color-primary 100%);
+    }
+  }
+
+  &__stage.is-visible &__imageFrame {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 0;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    &__imgContainer {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__head {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    text-align: center;
+    color: $color-black;
+    width: 100%;
+    @include resize(max-width, 700);
+    @include resize(top, 88);
+    @include resize(gap, 12);
+    @include resize(--reveal-offset, 264);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    opacity: 0;
+    transform: translate(-50%, calc(var(--reveal-offset) * -1));
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out;
+  }
+
+  &__title {
+    margin: 0;
+    @include text(40px, 48px, 400, center);
+
+    @include res-md {
+      @include text(24px, 32px, 400, center);
+    }
+  }
+
+  &__paragraph {
+    margin: 0;
+    color: $color-black-80;
+    @include text($b1-fs, $b1-lh, 400, center);
+
+    @include res-md {
+      @include text($b2-fs, $b2-lh, 400, center);
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include resize(top, 605);
+    @include resize(gap, 16);
+    @include resize(--reveal-offset, 192);
+
+    opacity: 0;
+    transform: translate(-50%, var(--reveal-offset));
+    transition:
+      opacity 1s ease-out 0.15s,
+      transform 1s ease-out 0.15s;
+  }
+
+  &__iconContainer {
+    display: block;
+    @include resize(width, 104);
+    @include resize(height, 20);
+  }
+
+  &__icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__divider {
+    display: block;
+    background: $color-white;
+    height: 1px;
+    @include resize(width, 64);
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include resize(gap, 4);
+  }
+
+  &__badge {
+    color: $color-white;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    white-space: nowrap;
+    @include text($b1-fs, $b1-lh, 400, center);
+    @include resize(padding, 8);
+
+    @include res-md {
+      @include text($b2-fs, $b2-lh, 400, center);
+    }
+  }
+
+  &__stage.is-visible &__head,
+  &__stage.is-visible &__footer {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__imageFrame {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 0;
+      transition: none;
+    }
+
+    &__head,
+    &__footer {
+      opacity: 1;
+      transform: translate(-50%, 0);
+      transition: none;
+    }
+  }
+}

@@ -6,8 +6,10 @@ $color-white: #fff;
 $color-focus: #0171e3;
 
 // Dark
-$color-menu-bg: #010101;
-$color-dark-bg: #171717;
+$color-primary: #010101;
+$color-secondary: #171717;
+$color-menu-bg: $color-primary;
+$color-dark-bg: $color-secondary;
 $color-dark-divider: #2a303d;
 $color-dark-card-hover: #3d4859;
 
