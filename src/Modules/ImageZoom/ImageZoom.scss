@@ -1,0 +1,141 @@
+.imageZoom {
+  background: $color-primary;
+
+  &__container {
+    @include container(full);
+  }
+
+  &__stage {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 1366 / 768;
+
+    @include res-md {
+      aspect-ratio: 393 / 480;
+    }
+  }
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    &__imgContainer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1, 1);
+      transition: transform 1s ease-out;
+    }
+  }
+
+  &__stage.is-visible &__background__img {
+    transform: scale(1.0677, 1.0599);
+  }
+
+  &__watermark {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    @include resize(top, 120);
+    @include resize(right, -300);
+    @include resize(gap, 4);
+    transition: right 0.6s ease-out;
+
+    @include res-md {
+      display: none;
+    }
+  }
+
+  &__stage.is-visible &__watermark {
+    @include resize(right, 64);
+  }
+
+  &__watermarkPart {
+    display: block;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+    @include resize(width, 30);
+    @include resize(height, 20);
+  }
+
+  &__stage.is-visible &__watermarkPart {
+    opacity: 1;
+  }
+
+  &__watermarkIcon {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    color: $color-white;
+    opacity: 0;
+    @include resize(left, -436, 24);
+    @include resize(width, 370, 280);
+    @include text(40px, 48px, 400);
+    transition: opacity 0.6s ease-out, left 0.6s ease-out;
+
+    @include res-md {
+      @include text(24px, 32px, 400);
+    }
+  }
+
+  &__paragraph {
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    color: $color-white;
+    opacity: 0;
+    @include resize(top, 608, 320);
+    @include resize(left, -436, 24);
+    @include resize(width, 357, 280);
+    @include text(16px, 24px, 400);
+    transition: opacity 0.6s ease-out 0.1s, left 0.6s ease-out 0.1s;
+  }
+
+  &__stage.is-visible &__title,
+  &__stage.is-visible &__paragraph {
+    opacity: 1;
+    @include resize(left, 64, 24);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__watermark,
+    &__watermarkPart,
+    &__title,
+    &__paragraph,
+    &__background__img {
+      opacity: 1;
+      transition: none;
+    }
+
+    &__background__img {
+      transform: none;
+    }
+
+    &__watermark {
+      @include resize(right, 64);
+    }
+
+    &__title,
+    &__paragraph {
+      @include resize(left, 64, 24);
+    }
+  }
+}

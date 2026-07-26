@@ -2,6 +2,7 @@ import "./Home.scss";
 import { FC } from "react";
 import MainDefault from "@/components/Main/Main";
 import StructureData from "@/components/SEO/StructureData/StructureData";
+import ImageZoom from "@/Modules/ImageZoom/ImageZoom";
 import ModelsLineup from "@/Modules/ModelsLineup/ModelsLineup";
 import ModelPicker from "@/Modules/ModelPicker/ModelPicker";
 import ModelTabs from "@/Modules/ModelTabs/ModelTabs";
@@ -18,6 +19,7 @@ interface HomeProps {
 const Home: FC<HomeProps> = async ({ data, locale }) => {
   return (
     <MainDefault id="home" {...{ data, locale }}>
+      <ImageZoom />
       <ModelsLineup />
       <ModelPicker />
       <ModelTabs />
