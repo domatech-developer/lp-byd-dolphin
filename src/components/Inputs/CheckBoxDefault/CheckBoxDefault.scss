@@ -7,8 +7,8 @@
     .checkBoxDefault {
       &__element,
       &__label {
-        border-color: $color-gray-500;
-        color: $color-gray-500;
+        border-color: $color-gray-100;
+        color: $color-gray-100;
       }
     }
   }
@@ -38,7 +38,7 @@
     align-items: center;
     justify-content: center;
 
-    border: 2px solid $color-gray-300;
+    border: 2px solid $color-black-30;
     border-radius: 2px;
 
     @include resize(width, 18);
@@ -46,15 +46,15 @@
 
     &:focus,
     &:hover {
-      border-color: $color-gray-300;
+      border-color: $color-black-30;
     }
     &:disabled {
       opacity: 0.5;
     }
 
     &:checked {
-      border-color: $color-gray-300;
-      background-color: $color-gray-300;
+      border-color: $color-focus;
+      background-color: $color-focus;
 
       &::before {
         content: "";

@@ -31,6 +31,7 @@ export type Icons =
   | "instagram-white"
   | "linkedin-white"
   | "location"
+  | "phone"
   | "magnifying-black"
   | "magnifying-blue"
   | "minus-white"

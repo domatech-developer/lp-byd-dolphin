@@ -64,23 +64,11 @@
     border: none;
 
     &.buttonDefault--dark {
-      background: $color-black-30;
       color: $color-primary;
-
-      &:hover {
-        background: $color-black-60;
-      }
     }
 
     &.buttonDefault--light {
-      background: $color-white-30;
       color: $color-white;
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-
-      &:hover {
-        background: $color-white-56;
-      }
     }
   }
 

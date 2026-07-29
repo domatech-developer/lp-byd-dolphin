@@ -52,11 +52,14 @@ const ButtonDefault: FC<ButtonDefaultProps> = ({
       </div>
     );
 
+  const showIconLeft = positionIcon === "left" || positionIcon === "leftRight";
+  const showIconRight = positionIcon === "right" || positionIcon === "leftRight" || positionIcon === "";
+
   const content = (
     <>
-      {positionIcon === "leftRight" && renderIcon()}
+      {showIconLeft && renderIcon()}
       <span className="buttonDefault__text">{title}</span>
-      {icon && renderIcon()}
+      {showIconRight && renderIcon()}
     </>
   );
 

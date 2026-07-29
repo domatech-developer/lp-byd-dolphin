@@ -1,0 +1,82 @@
+"use client";
+
+import { FC, useRef, useState } from "react";
+import HeaderDesktop from "./HeaderDesktop";
+import HeaderMobile from "./HeaderMobile";
+import InfoModal from "@/components/InfoModal/InfoModal";
+import { phonesModalContent } from "@/components/InfoModal/phonesModalContent";
+import { locationsModalContent } from "@/components/InfoModal/locationsModalContent";
+import ContactDrawer from "@/components/ContactDrawer/ContactDrawer";
+
+const CLOSE_DELAY = 150;
+
+const Header: FC = () => {
+  const [phonesOpen, setPhonesOpen] = useState(false);
+  const [locationOpen, setLocationOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
+  const [phonesAnchor, setPhonesAnchor] = useState<HTMLElement | null>(null);
+  const [locationAnchor, setLocationAnchor] = useState<HTMLElement | null>(null);
+  const phonesCloseTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const locationCloseTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  const openPhones = (event: React.SyntheticEvent<HTMLElement>) => {
+    clearTimeout(phonesCloseTimer.current);
+    setPhonesAnchor(event.currentTarget);
+    setPhonesOpen(true);
+  };
+
+  const scheduleClosePhones = () => {
+    phonesCloseTimer.current = setTimeout(() => setPhonesOpen(false), CLOSE_DELAY);
+  };
+
+  const cancelClosePhones = () => clearTimeout(phonesCloseTimer.current);
+
+  const openLocation = (event: React.SyntheticEvent<HTMLElement>) => {
+    clearTimeout(locationCloseTimer.current);
+    setLocationAnchor(event.currentTarget);
+    setLocationOpen(true);
+  };
+
+  const scheduleCloseLocation = () => {
+    locationCloseTimer.current = setTimeout(() => setLocationOpen(false), CLOSE_DELAY);
+  };
+
+  const cancelCloseLocation = () => clearTimeout(locationCloseTimer.current);
+
+  const openContact = () => {
+    setContactOpen(true);
+  };
+
+  return (
+    <>
+      <HeaderDesktop
+        onOpenPhones={openPhones}
+        onClosePhones={scheduleClosePhones}
+        onOpenLocation={openLocation}
+        onCloseLocation={scheduleCloseLocation}
+        onOpenContact={openContact}
+      />
+      <HeaderMobile onOpenPhones={openPhones} onOpenLocation={openLocation} onOpenContact={openContact} />
+
+      <InfoModal
+        open={phonesOpen}
+        data={phonesModalContent}
+        onClose={() => setPhonesOpen(false)}
+        anchorEl={phonesAnchor}
+        onMouseEnter={cancelClosePhones}
+        onMouseLeave={scheduleClosePhones}
+      />
+      <InfoModal
+        open={locationOpen}
+        data={locationsModalContent}
+        onClose={() => setLocationOpen(false)}
+        anchorEl={locationAnchor}
+        onMouseEnter={cancelCloseLocation}
+        onMouseLeave={scheduleCloseLocation}
+      />
+      <ContactDrawer open={contactOpen} onClose={() => setContactOpen(false)} />
+    </>
+  );
+};
+
+export default Header;

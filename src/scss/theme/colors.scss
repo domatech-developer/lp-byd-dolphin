@@ -5,21 +5,32 @@ $color-white: #fff;
 // Focus
 $color-focus: #0171e3;
 
+// Error
+$color-error: #d22e34;
+
 // Dark
 $color-primary: #010101;
 $color-secondary: #171717;
 $color-dark-divider: #2a303d;
 $color-dark-card-hover: #2E2E2E;
+$color-dark-border: #0e0e0e;
+$color-dark-surface: #0e0d12;
 
 // Gray
 $color-gray-100: #ECECEC;
+$color-gray-200: #cacaca;
+$color-gray-300: #b0b0b0;
+$color-gray-400: #757575;
+$color-gray-divider: #ebebeb;
 
 // Opacity
 $color-white-30: #ffffff4d;
 $color-white-56: #ffffff8f;
 $color-white-60: #ffffff99;
 $color-white-72: #ffffffb8;
+$color-white-80: #ffffffcc;
 $color-black-30: #0000004d;
 $color-black-40: #00000066;
 $color-black-60: #00000099;
 $color-black-80: #000000cc;
+$color-black-90: #01010199;

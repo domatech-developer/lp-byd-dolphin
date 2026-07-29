@@ -3,7 +3,7 @@ import "./InputSelect.scss";
 import { FC, ComponentProps, useState } from "react";
 import { useFloating, flip, autoUpdate, offset } from "@floating-ui/react";
 import useClickOutside from "@/hooks/useClickOutside";
-import ImgDefault from "@/components/ImgDefault/ImgDefault";
+import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 type InputProp = ComponentProps<"input"> & {
   label: string;
@@ -125,7 +125,7 @@ const InputSelect: FC<InputProp> = ({
       )}
       {invalid && (
         <div className="inputSelect__helpContainer">
-          <ImgDefault src="/icons/alert.svg" alt="Alerta" className="inputSelect__helpIcon" />
+          <ImgContainer className="inputSelect__helpIcon" image={{ url: "/icons/alert.svg", alt: "Alerta" }} />
           <span className="inputSelect__helpText">{erroMsg}</span>
         </div>
       )}

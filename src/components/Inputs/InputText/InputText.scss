@@ -9,53 +9,42 @@
     pointer-events: none;
     .inputText {
       &__element {
-        @include Body1;
-        font-weight: 400;
-        color: $color-gray-300;
-        background: $color-gray-800;
-        border: 1px solid $color-gray-800;
+        @include text(16px, 24px, 400);
+        color: $color-black-30;
+        background: $color-gray-100;
+        border: 1px solid $color-gray-100;
         &::placeholder {
-          @include Body1;
-          font-weight: 400;
-          color: $color-gray-300;
+          @include text(16px, 24px, 400);
+          color: $color-black-30;
         }
       }
     }
   }
 
   &__label {
-    @include Body1;
-    font-weight: 400;
-    color: $color-gray-100;
+    @include text(16px, 24px, 400);
+    color: $color-primary;
   }
 
   &__element {
     @include resize(width, 100%);
     @include resize(height, 40);
-    @include Body1;
-    color: $color-gray-100;
-    font-weight: 400;
-    background: #F8FCFF;
-    border: 1px solid $color-gray-700;
+    @include text(16px, 24px, 400);
+    color: $color-primary;
+    background: $color-white;
+    border: 1px solid $color-black-30;
     @include resize(padding-block, 8);
     @include resize(padding-inline, 16);
 
     &:hover {
-      border-color: $color-gray-300;
+      border-color: $color-black-30;
     }
 
-    /* Keyboard focus */
     &:focus-visible {
-      outline: 2px solid $color-primary-200;
+      outline: 2px solid $color-focus;
       outline-offset: 2px;
-      border-color: $color-gray-700; // evita conflito com o focus-within
+      border-color: $color-black-30;
     }
-
-    /* Mouse focus */
-    // &:focus-within {
-    //   border-color: $color-primary-200;
-    //   outline: none;
-    // }
   }
 
   &__helpContainer {
@@ -66,16 +55,28 @@
 
   &__helpIcon {
     display: block;
-    object-fit: cover;
-    object-position: center;
+    flex-shrink: 0;
     @include resize(width, 16);
     @include resize(height, 16);
+
+    &__imgContainer {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
   &__helpText {
-    @include Body1;
-    font-weight: 400;
-    color: $color-secondary-200;
+    @include text(16px, 24px, 400);
+    color: $color-error;
     @include resize(font-size, $b2-fs);
     @include resize(line-height, $b2-lh);
   }
@@ -83,12 +84,11 @@
   &--invalid {
     .inputText {
       &__element {
-        @include Body1;
-        font-weight: 400;
-        border-color: $color-secondary-200;
+        @include text(16px, 24px, 400);
+        border-color: $color-error;
 
         &::placeholder {
-          color: $color-secondary-200;
+          color: $color-error;
         }
       }
     }
