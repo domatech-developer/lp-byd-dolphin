@@ -6,7 +6,6 @@
     @include container(full);
     display: flex;
     justify-content: center;
-    @include resize(padding-block, 96, 56);
   }
 
   &__stage {
@@ -15,7 +14,7 @@
     aspect-ratio: 1366 / 762;
 
     @include res-md {
-      aspect-ratio: 393 / 620;
+      aspect-ratio: 393 / 646;
     }
   }
 
@@ -30,10 +29,10 @@
       bottom 1s ease-out,
       left 1s ease-out,
       border-radius 1s ease-out;
-    @include resize(top, 53);
-    @include resize(right, 56);
-    @include resize(bottom, 56);
-    @include resize(left, 56);
+    @include resize(top, 53, 24);
+    @include resize(right, 56, 24);
+    @include resize(bottom, 56, 24);
+    @include resize(left, 56, 24);
 
 
     &::after {
@@ -78,9 +77,9 @@
     color: $color-black;
     width: 100%;
     @include resize(max-width, 700);
-    @include resize(top, 88);
-    @include resize(gap, 12);
-    @include resize(--reveal-offset, 264);
+    @include resize(top, 88, 75);
+    @include resize(gap, 12, 8);
+    @include resize(--reveal-offset, 264, 411);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,6 +89,10 @@
     transition:
       opacity 1s ease-out,
       transform 1s ease-out;
+
+    @include res-md {
+      width: 361px;
+    }
   }
 
   &__title {
@@ -107,7 +110,8 @@
     @include text($b1-fs, $b1-lh, 400, center);
 
     @include res-md {
-      @include text($b2-fs, $b2-lh, 400, center);
+      @include text(16px, 24px, 400, center);
+      color: $color-black;
     }
   }
 
@@ -118,15 +122,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include resize(top, 605);
+    @include resize(top, 605, 513);
     @include resize(gap, 16);
-    @include resize(--reveal-offset, 192);
+    @include resize(--reveal-offset, 192, 140);
 
     opacity: 0;
     transform: translate(-50%, var(--reveal-offset));
     transition:
       opacity 1s ease-out 0.15s,
       transform 1s ease-out 0.15s;
+
+    @include res-md {
+      width: 361px;
+    }
   }
 
   &__iconContainer {
@@ -167,7 +175,7 @@
     @include resize(padding, 8);
 
     @include res-md {
-      @include text($b2-fs, $b2-lh, 400, center);
+      @include text(14px, 20px, 400, center);
     }
   }
 

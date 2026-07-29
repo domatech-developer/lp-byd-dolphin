@@ -21,6 +21,7 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
   const total = content.models.length;
 
   const goNext = () => setActiveIndex((prev) => (prev + 1) % total);
+  const goPrev = () => setActiveIndex((prev) => (prev - 1 + total) % total);
 
   const railModels = content.models
     .map((model, index) => ({ model, index }))
@@ -80,11 +81,13 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
           <div key={model.id} className={`hero__panel ${isActive ? "hero__panel--active" : ""}`} aria-hidden={!isActive}>
             <div className="hero__panelContent">
               <div className="hero__info">
-                <span className="hero__eyebrow">{content.eyebrow}</span>
+                <div className="hero__textGroup">
+                  <span className="hero__eyebrow">{content.eyebrow}</span>
 
-                <div className="hero__heading">
-                  <h1 className="hero__title">{model.name}</h1>
-                  <p className="hero__description">{model.description}</p>
+                  <div className="hero__heading">
+                    <h1 className="hero__title">{model.name}</h1>
+                    <p className="hero__description">{model.description}</p>
+                  </div>
                 </div>
 
                 <ButtonDefault
@@ -102,6 +105,25 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                 </span>
                 <div className="hero__paginationTrack">
                   <div className="hero__paginationBar" style={{ width: `${((index + 1) / total) * 100}%` }} />
+                </div>
+
+                <div className="hero__paginationNav">
+                  <button
+                    type="button"
+                    className="hero__paginationNav__btn hero__paginationNav__btn--prev"
+                    aria-label={content.prevArrowAriaLabel}
+                    onClick={goPrev}
+                  >
+                    <img className="hero__paginationNav__icon" src="/icons/arrow-left-white-nav.svg" alt="" />
+                  </button>
+                  <button
+                    type="button"
+                    className="hero__paginationNav__btn hero__paginationNav__btn--next"
+                    aria-label={content.arrowAriaLabel}
+                    onClick={goNext}
+                  >
+                    <img className="hero__paginationNav__icon" src="/icons/arrow-right-black-nav.svg" alt="" />
+                  </button>
                 </div>
               </div>
             </div>

@@ -10,7 +10,7 @@
     aspect-ratio: 1366 / 762;
 
     @include res-md {
-      aspect-ratio: 393 / 480;
+      aspect-ratio: 393 / 400;
     }
   }
 
@@ -25,10 +25,10 @@
       bottom 1s ease-out 0.5s,
       left 1s ease-out 0.5s,
       border-radius 1s ease-out 0.5s;
-    @include resize(top, 53);
-    @include resize(right, 56);
-    @include resize(bottom, 56);
-    @include resize(left, 56);
+    @include resize(top, 53, 16);
+    @include resize(right, 56, 16);
+    @include resize(bottom, 56, 16);
+    @include resize(left, 56, 16);
 
     &::after {
       content: "";
@@ -74,7 +74,7 @@
     justify-content: space-between;
     @include resize(padding-top, 88, 16);
     @include resize(padding-inline, 64, 16);
-    @include resize(--reveal-offset, 264);
+    @include resize(--reveal-offset, 264, 184);
 
     opacity: 0;
     transform: translateY(calc(var(--reveal-offset) * -1));
@@ -85,7 +85,7 @@
     @include res-md {
       flex-direction: column;
       justify-content: flex-start;
-      @include resize(gap, 16);
+      gap: 12px;
     }
   }
 
@@ -94,6 +94,12 @@
     flex-direction: column;
     align-items: flex-start;
     @include resize(gap, 16);
+
+    @include res-md {
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+    }
   }
 
   &__badge {
@@ -113,6 +119,8 @@
 
     @include res-md {
       @include text(24px, 32px, 400);
+      flex: 1 1 0;
+      min-width: 0;
     }
   }
 
@@ -130,11 +138,12 @@
     backdrop-filter: blur(4px);
     @include resize(gap, 16);
     @include resize(padding-inline, 16);
-    @include resize(padding-block, 20, 12);
+    @include resize(padding-block, 20, 16);
     @include resize(margin-top, 12);
 
     @include res-md {
-      max-width: 280px;
+      width: 100%;
+      max-width: none;
     }
   }
 
@@ -156,6 +165,10 @@
   &__videoTitle {
     margin: 0;
     @include text(16px, 24px, 600);
+
+    @include res-md {
+      @include text(14px, 20px, 600);
+    }
   }
 
   &__videoSubtitle {
@@ -174,6 +187,11 @@
     border-radius: 100px;
     filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
     color: $color-black;
+
+    @include res-md {
+      right: auto;
+      left: 4.36%;
+    }
     @include resize(gap, 8);
     @include resize(padding-inline, 8);
     @include resize(padding-block, 2);

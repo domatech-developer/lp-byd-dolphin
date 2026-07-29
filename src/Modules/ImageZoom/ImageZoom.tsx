@@ -25,8 +25,15 @@ const ImageZoom: FC<ImageZoomProps> = ({ debug = false }) => {
 
       <div ref={ref} className={`imageZoom__stage ${inView ? "is-visible" : ""}`}>
         <div className="imageZoom__background">
-          <ImgContainer className="imageZoom__background" image={content.background} alt={content.background.alt} />
+          <ImgContainer
+            className="imageZoom__background"
+            image_desktop={content.background}
+            image_mobile={content.backgroundMobile}
+            alt={content.background.alt}
+          />
         </div>
+
+        <div className="imageZoom__topShadow" aria-hidden="true" />
 
         <div className="imageZoom__watermark" aria-hidden="true">
           <div className="imageZoom__watermarkPart imageZoom__watermarkPart--1">

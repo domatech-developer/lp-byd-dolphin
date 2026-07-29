@@ -2,12 +2,13 @@
   background: $color-primary;
 
   &__container {
-    @include container;
+    @include container(full);
     display: flex;
     flex-direction: column;
     align-items: center;
     @include resize(gap, 40, 24);
-    @include resize(padding-block, 96, 56);
+    @include resize(padding-block, 80, 56);
+    @include resize(padding-inline, 16);
   }
 
   &__head {
@@ -26,7 +27,7 @@
     @include text(40px, 48px, 400, center);
 
     @include res-md {
-      @include text(28px, 36px, 400, center);
+      @include text(24px, 32px, 400, center);
     }
   }
 
@@ -34,17 +35,28 @@
     margin: 0;
     color: $color-white-72;
     @include text($b1-fs, $b1-lh, 400, center);
+
+    @include res-md {
+      color: $color-white-80;
+    }
   }
 
   &__cards {
     display: flex;
     width: 100%;
     @include resize(gap, 8);
-    @include resize(height, 400);
+    @include resize(height, 400, 320);
 
     @include res-md {
-      flex-direction: column;
-      height: auto;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      padding-inline: 16px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 
@@ -63,8 +75,8 @@
     flex-grow: 0;
     flex-shrink: 0;
     @include resize(flex-basis, 205);
-    transition: flex-grow 0.6s ease, flex-basis 0.6s ease;
-    @include resize(padding, 24, 16);
+    transition: flex-grow 0.6s ease-in-out, flex-basis 0.6s ease-in-out;
+    @include resize(padding, 24, 20);
 
     &--active {
       flex-grow: 1;
@@ -73,11 +85,11 @@
     }
 
     @include res-md {
-      flex: 0 0 96px;
-      width: 100%;
+      flex: 0 0 205px;
+      scroll-snap-align: start;
 
       &--active {
-        flex: 0 0 400px;
+        flex: 0 0 320px;
       }
     }
 
@@ -164,6 +176,29 @@
     height: 99.99%;
   }
 
+  @include res-md {
+    &__card:nth-child(2):not(.modelPicker__card--active) &__cardImage__img {
+      top: 0;
+      left: -7.61%;
+      width: 177.66%;
+      height: 100%;
+    }
+
+    &__card:nth-child(3):not(.modelPicker__card--active) &__cardImage__img {
+      top: 0;
+      left: -33.78%;
+      width: 214.39%;
+      height: 100%;
+    }
+
+    &__card:nth-child(4):not(.modelPicker__card--active) &__cardImage__img {
+      top: 0;
+      left: -6.01%;
+      width: 166.66%;
+      height: 100%;
+    }
+  }
+
   &__cardGlass {
     position: absolute;
     inset: 0;
@@ -174,7 +209,7 @@
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.6s ease-in-out;
 
     .modelPicker__card--active & {
       opacity: 1;
@@ -193,13 +228,17 @@
 
   &__cardName {
     @include text(24px, 32px, 500);
+
+    @include res-md {
+      @include text(20px, 32px, 500);
+    }
   }
 
   &__cardDetails {
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
-    transition: opacity 0.4s ease, grid-template-rows 0.5s ease;
+    transition: opacity 0.6s ease-in-out, grid-template-rows 0.6s ease-in-out;
 
     .modelPicker__card--active & {
       grid-template-rows: 1fr;
@@ -219,5 +258,50 @@
   &__cardBestFor {
     margin: 0;
     @include text($b1-fs, $b1-lh, 400);
+  }
+
+  &__nav {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    @include res-md {
+      display: flex;
+    }
+  }
+
+  &__nav__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    padding: 12px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    &--prev {
+      background: $color-dark-surface;
+    }
+
+    &--next {
+      background: $color-white;
+      padding: 6px;
+    }
+  }
+
+  &__nav__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
   }
 }

@@ -29,31 +29,34 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
 
       <div className="modelTabs__tabs" role="tablist">
         {content.tabs.map((tab, index) => (
-          <button
+          <ButtonDefault
             key={tab.id}
-            type="button"
+            styling="filled"
+            theme="light"
             role="tab"
             aria-selected={index === active}
             className={`modelTabs__tab ${index === active ? "modelTabs__tab--active" : ""}`}
+            variantLink={{ type: "button" }}
+            data={{ type: "", value: "", url: "", name: tab.tabLabel, title: tab.tabLabel, target: "" }}
             onClick={() => setActive(index)}
-          >
-            {tab.tabLabel}
-          </button>
+          />
         ))}
       </div>
 
       <div className="modelTabs__hero">
         <div className="modelTabs__heroContent">
           <p className="modelTabs__eyebrow">{activeTab.eyebrow}</p>
-          <h3 className="modelTabs__heroTitle">
-            {activeTab.title.split("\n").map((line, index) => (
-              <React.Fragment key={line}>
-                {index > 0 && <br />}
-                {line}
-              </React.Fragment>
-            ))}
-          </h3>
-          <p className="modelTabs__description">{activeTab.description}</p>
+          <div className="modelTabs__heroTextGroup">
+            <h3 className="modelTabs__heroTitle">
+              {activeTab.title.split("\n").map((line, index) => (
+                <React.Fragment key={line}>
+                  {index > 0 && <br />}
+                  {line}
+                </React.Fragment>
+              ))}
+            </h3>
+            <p className="modelTabs__description">{activeTab.description}</p>
+          </div>
           <div className="modelTabs__ctas">
             <ButtonDefault
               styling="filled"
@@ -82,7 +85,11 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
           <ImgContainer key={activeTab.id} className="modelTabs__heroImage" image={activeTab.image} alt={activeTab.image.alt} />
         </div>
 
-        <img className="modelTabs__watermark" src="/icons/byd-watermark.svg" alt="" aria-hidden="true" />
+        <div className="modelTabs__watermark" aria-hidden="true">
+          <div className="modelTabs__iconContainer">
+            <img className="modelTabs__icon" src="/icons/byd-watermark.svg" alt="" />
+          </div>
+        </div>
       </div>
     </SectionDefault>
   );

@@ -25,7 +25,12 @@ const ModelsLineup: FC<ModelsLineupProps> = ({ debug = false }) => {
 
       <div ref={ref} className={`modelsLineup__stage ${inView ? "is-visible" : ""}`}>
         <div className="modelsLineup__imageFrame">
-          <ImgContainer className="modelsLineup__image" image={content.image} alt={content.image.alt} />
+          <ImgContainer
+            className="modelsLineup__image"
+            image_desktop={content.image}
+            image_mobile={content.imageMobile}
+            alt={content.image.alt}
+          />
         </div>
 
         <div className="modelsLineup__head">

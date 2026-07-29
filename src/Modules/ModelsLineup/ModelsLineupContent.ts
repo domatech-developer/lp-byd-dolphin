@@ -6,6 +6,7 @@ type ModelsLineupContent = {
   title: string;
   paragraph: string;
   image: { url: string; alt: string };
+  imageMobile: { url: string; alt: string };
   badges: string[];
 };
 
@@ -21,5 +22,9 @@ export const modelsLineupContent: ModelsLineupContent = {
   paragraph:
     "A linha Dolphin reúne compactos 100% elétricos pensados para quem busca economia, tecnologia, conforto e uma experiência de condução mais inteligente.",
   image: { url: "/images/models-lineup/lineup.png", alt: "Linha completa BYD Dolphin: Dolphin Mini, Dolphin, Dolphin Plus e Dolphin SE" },
+  imageMobile: {
+    url: "/images/models-lineup/lineup-mobile.png",
+    alt: "Linha completa BYD Dolphin: Dolphin Mini, Dolphin, Dolphin Plus e Dolphin SE"
+  },
   badges: ["DOLPHIN", "DOLPHIN MINI", "DOLPHIN PLUS", "DOLPHIN SE"]
 };

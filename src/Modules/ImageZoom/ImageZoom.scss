@@ -12,7 +12,7 @@
     aspect-ratio: 1366 / 768;
 
     @include res-md {
-      aspect-ratio: 393 / 480;
+      aspect-ratio: 393 / 768;
     }
   }
 
@@ -37,39 +37,79 @@
     }
   }
 
-  &__stage.is-visible &__background__img {
+  &__stage:hover &__background__img {
     transform: scale(1.0677, 1.0599);
   }
 
-  &__watermark {
+  @media (hover: none) {
+    &__stage.is-visible &__background__img {
+      transform: scale(1.0677, 1.0599);
+    }
+  }
+
+  &__topShadow {
     position: absolute;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    @include resize(top, 120);
-    @include resize(right, -300);
-    @include resize(gap, 4);
-    transition: right 0.6s ease-out;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    pointer-events: none;
+    background: linear-gradient(
+      0deg,
+      rgba(1, 1, 1, 0) 0%,
+      #010101 57.86%
+    );
+
+    @include resize(height, 162);
 
     @include res-md {
       display: none;
     }
   }
 
-  &__stage.is-visible &__watermark {
+  &__watermark {
+    position: absolute;
+    z-index: 2;
+    width: 104px;
+    height: 20px;
+
+    @include resize(top, 120);
     @include resize(right, 64);
+
+    @include res-md {
+      top: 40px;
+      right: 16px;
+    }
   }
 
   &__watermarkPart {
-    display: block;
-    opacity: 0;
-    transition: opacity 0.6s ease-out;
-    @include resize(width, 30);
-    @include resize(height, 20);
-  }
+    position: absolute;
+    top: 0;
 
-  &__stage.is-visible &__watermarkPart {
-    opacity: 1;
+    width: 30px;
+    height: 20px;
+
+    opacity: 0;
+    transform: translateX(100px);
+
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &--1 {
+      left: 0;
+      transition-delay: 0.3s;
+    }
+
+    &--2 {
+      left: 35px;
+      transition-delay: 0.15s;
+    }
+
+    &--3 {
+      left: 70px;
+      transition-delay: 0s;
+    }
   }
 
   &__watermarkIcon {
@@ -78,20 +118,60 @@
     height: 100%;
   }
 
+  &__stage:hover &__watermarkPart {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &__stage:hover &__watermarkPart--1 {
+    transition-delay: 0s;
+  }
+
+  &__stage:hover &__watermarkPart--2 {
+    transition-delay: 0.15s;
+  }
+
+  &__stage:hover &__watermarkPart--3 {
+    transition-delay: 0.3s;
+  }
+
+  @media (hover: none) {
+    &__stage.is-visible &__watermarkPart {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    &__stage.is-visible &__watermarkPart--1 {
+      transition-delay: 0s;
+    }
+
+    &__stage.is-visible &__watermarkPart--2 {
+      transition-delay: 0.15s;
+    }
+
+    &__stage.is-visible &__watermarkPart--3 {
+      transition-delay: 0.3s;
+    }
+  }
   &__title {
     position: absolute;
     z-index: 2;
-    top: 50%;
+    top: 20%;
     transform: translateY(-50%);
     margin: 0;
     color: $color-white;
     opacity: 0;
-    @include resize(left, -436, 24);
-    @include resize(width, 370, 280);
+
+    @include resize(left, -436, -400);
+    @include resize(width, 370, 361);
     @include text(40px, 48px, 400);
-    transition: opacity 0.6s ease-out, left 0.6s ease-out;
+
+    transition:
+      opacity 0.6s ease-out,
+      left 0.6s ease-out;
 
     @include res-md {
+      top: 584px;
       @include text(24px, 32px, 400);
     }
   }
@@ -102,26 +182,38 @@
     margin: 0;
     color: $color-white;
     opacity: 0;
-    @include resize(top, 608, 320);
-    @include resize(left, -436, 24);
-    @include resize(width, 357, 280);
+
+    @include resize(top, 608, 616);
+    @include resize(left, -436, -400);
+    @include resize(width, 357, 361);
     @include text(16px, 24px, 400);
-    transition: opacity 0.6s ease-out 0.1s, left 0.6s ease-out 0.1s;
+
+    transition:
+      opacity 0.6s ease-out,
+      left 0.6s ease-out;
   }
 
-  &__stage.is-visible &__title,
-  &__stage.is-visible &__paragraph {
+  &__stage:hover &__title,
+  &__stage:hover &__paragraph {
     opacity: 1;
-    @include resize(left, 64, 24);
+
+    @include resize(left, 64, 16);
+  }
+
+  @media (hover: none) {
+    &__stage.is-visible &__title,
+    &__stage.is-visible &__paragraph {
+      opacity: 1;
+
+      @include resize(left, 64, 16);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    &__watermark,
     &__watermarkPart,
     &__title,
     &__paragraph,
     &__background__img {
-      opacity: 1;
       transition: none;
     }
 
@@ -129,13 +221,28 @@
       transform: none;
     }
 
-    &__watermark {
-      @include resize(right, 64);
+    &__watermarkPart {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    &__watermarkPart--1 {
+      left: 0;
+    }
+
+    &__watermarkPart--2 {
+      left: 35px;
+    }
+
+    &__watermarkPart--3 {
+      left: 70px;
     }
 
     &__title,
     &__paragraph {
-      @include resize(left, 64, 24);
+      opacity: 1;
+
+      @include resize(left, 64, 16);
     }
   }
 }

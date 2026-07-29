@@ -14,6 +14,8 @@ type ModelPickerContent = {
   seo_headings: HiddenHeadings[];
   title: string;
   paragraph: string;
+  prevArrowAriaLabel: string;
+  nextArrowAriaLabel: string;
   cards: ModelPickerCard[];
 };
 
@@ -29,6 +31,8 @@ export const modelPickerContent: ModelPickerContent = {
   title: "Escolha o Dolphin que mais combina com você.",
   paragraph:
     "Cada versão da linha Dolphin foi pensada para um perfil de motorista. Encontre o modelo ideal para sua rotina, seu espaço, seu ritmo e sua forma de viver a mobilidade.",
+  prevArrowAriaLabel: "Modelo anterior",
+  nextArrowAriaLabel: "Próximo modelo",
   cards: [
     {
       id: "dolphin-se",

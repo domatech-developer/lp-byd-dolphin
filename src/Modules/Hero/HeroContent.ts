@@ -18,6 +18,7 @@ type HeroContent = {
   seo_headings: HiddenHeadings[];
   eyebrow: string;
   arrowAriaLabel: string;
+  prevArrowAriaLabel: string;
   nextLabel: string;
   models: HeroModel[];
 };
@@ -27,6 +28,7 @@ export const heroContent: HeroContent = {
   seo_headings: [{ tag: "h1", text: "Linha Dolphin BYD Servopa" }],
   eyebrow: "Linha Dolphin BYD Servopa",
   arrowAriaLabel: "Próximo modelo",
+  prevArrowAriaLabel: "Modelo anterior",
   nextLabel: "PRÓXIMO",
   models: [
     {

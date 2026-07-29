@@ -5,6 +5,17 @@
     @include container(right);
     @include resize(padding-top, 64);
     @include resize(padding-bottom, 160, 64);
+
+    @include res-md {
+      padding-right: 16px;
+    }
+  }
+
+  .carouselDefault {
+    @include res-md {
+      --slide-size: 340px;
+      --slide-spacing: 24px;
+    }
   }
 
   &__card {
@@ -15,8 +26,8 @@
     width: 100%;
     overflow: hidden;
     border-radius: 8px;
-    @include resize(height, 440, 360);
-    @include resize(padding, 24, 16);
+    @include resize(height, 440);
+    @include resize(padding, 24, 20);
 
     &::after {
       content: "";
@@ -56,7 +67,7 @@
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease-in-out;
   }
 
   &__cardInfo {
@@ -67,9 +78,45 @@
     @include resize(gap, 8);
   }
 
+  &__cardTitleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px;
+  }
+
   &__cardTitle {
     color: $color-white;
     @include text($h3-fs, $h3-lh, 500);
+
+    @include res-md {
+      @include text(20px, 32px, 500);
+    }
+  }
+
+  &__cardToggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    padding: 6px;
+    background: $color-white;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+
+    @include res-md {
+      display: inline-flex;
+    }
+  }
+
+  &__cardToggleIcon {
+    display: block;
+    width: 18px;
+    height: 18px;
   }
 
   &__cardDescription {
@@ -79,8 +126,8 @@
     opacity: 0;
     overflow: hidden;
     transition:
-      opacity 0.3s ease,
-      max-height 0.3s ease;
+      opacity 0.4s ease-in-out,
+      max-height 0.4s ease-in-out;
     @include text($b1-fs, $b1-lh, 400);
   }
 
@@ -96,6 +143,18 @@
         opacity: 1;
         @include resize(margin-top, 4);
       }
+    }
+  }
+
+  &__card--expanded {
+    .modelCarousel__cardHoverPanel {
+      opacity: 1;
+    }
+
+    .modelCarousel__cardDescription {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 4px;
     }
   }
 }
