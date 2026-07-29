@@ -3,7 +3,7 @@ import "./ButtonDefault.scss";
 import { Icons } from "@/@types/icons";
 import { ButtonVariants } from "@/@types/variants";
 import LinkDefault from "@/components/LinkDefault/LinkDefault";
-import { FC, ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, ReactNode, forwardRef } from "react";
 import { LinkAcf } from "@/@types/link";
 import { PositionIcon } from "@/@types/positionIcon";
 
@@ -18,20 +18,25 @@ type ButtonDefaultProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> 
   variantLink: VariantButton;
   data: LinkAcf;
   icon?: Icons;
+  children?: ReactNode;
 };
 
-const ButtonDefault: FC<ButtonDefaultProps> = ({
-  disabled,
-  circular,
-  styling = "filled",
-  theme = "dark",
-  variantLink,
-  data,
-  icon,
-  positionIcon = "",
-  className: extraClassName,
-  ...rest
-}) => {
+const ButtonDefault = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonDefaultProps>(function ButtonDefault(
+  {
+    disabled,
+    circular,
+    styling = "filled",
+    theme = "dark",
+    variantLink,
+    data,
+    icon,
+    positionIcon = "",
+    className: extraClassName,
+    children,
+    ...rest
+  },
+  ref
+) {
   const { title, url, target = "" } = data;
 
   const className = [
@@ -55,17 +60,25 @@ const ButtonDefault: FC<ButtonDefaultProps> = ({
   const showIconLeft = positionIcon === "left" || positionIcon === "leftRight";
   const showIconRight = positionIcon === "right" || positionIcon === "leftRight" || positionIcon === "";
 
-  const content = (
+  const content = children ?? (
     <>
       {showIconLeft && renderIcon()}
-      <span className="buttonDefault__text">{title}</span>
+      {title && <span className="buttonDefault__text">{title}</span>}
       {showIconRight && renderIcon()}
     </>
   );
 
   if (variantLink.type === "button") {
     return (
-      <button type="button" className={className} disabled={disabled} tabIndex={disabled ? -1 : 0} title={title} {...rest}>
+      <button
+        ref={ref as React.Ref<HTMLButtonElement>}
+        type="button"
+        className={className}
+        disabled={disabled}
+        tabIndex={disabled ? -1 : 0}
+        title={title}
+        {...rest}
+      >
         {content}
       </button>
     );
@@ -76,6 +89,6 @@ const ButtonDefault: FC<ButtonDefaultProps> = ({
       {content}
     </LinkDefault>
   );
-};
+});
 
 export default ButtonDefault;

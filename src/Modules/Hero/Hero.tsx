@@ -68,11 +68,17 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
         })}
       </div>
 
-      <button type="button" className="hero__navArrow" aria-label={content.arrowAriaLabel} onClick={goNext}>
-        <div className="hero__navArrow__iconContainer">
-          <img className="hero__navArrow__icon" src="/icons/arrow-right-white-nav.svg" alt="" />
-        </div>
-      </button>
+      <ButtonDefault
+        className="hero__navArrow"
+        styling="ghost"
+        theme="light"
+        circular
+        icon="arrow-right-white-nav"
+        variantLink={{ type: "button" }}
+        data={{ type: "", value: "", url: "", name: content.arrowAriaLabel, title: "", target: "" }}
+        aria-label={content.arrowAriaLabel}
+        onClick={goNext}
+      />
 
       {content.models.map((model, index) => {
         const isActive = index === activeIndex;
@@ -108,22 +114,28 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                 </div>
 
                 <div className="hero__paginationNav">
-                  <button
-                    type="button"
+                  <ButtonDefault
                     className="hero__paginationNav__btn hero__paginationNav__btn--prev"
+                    styling="ghost"
+                    theme="light"
+                    circular
+                    icon="arrow-left-white-nav"
+                    variantLink={{ type: "button" }}
+                    data={{ type: "", value: "", url: "", name: content.prevArrowAriaLabel, title: "", target: "" }}
                     aria-label={content.prevArrowAriaLabel}
                     onClick={goPrev}
-                  >
-                    <img className="hero__paginationNav__icon" src="/icons/arrow-left-white-nav.svg" alt="" />
-                  </button>
-                  <button
-                    type="button"
+                  />
+                  <ButtonDefault
                     className="hero__paginationNav__btn hero__paginationNav__btn--next"
+                    styling="ghost"
+                    theme="light"
+                    circular
+                    icon="arrow-right-black-nav"
+                    variantLink={{ type: "button" }}
+                    data={{ type: "", value: "", url: "", name: content.arrowAriaLabel, title: "", target: "" }}
                     aria-label={content.arrowAriaLabel}
                     onClick={goNext}
-                  >
-                    <img className="hero__paginationNav__icon" src="/icons/arrow-right-black-nav.svg" alt="" />
-                  </button>
+                  />
                 </div>
               </div>
             </div>
@@ -133,7 +145,15 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
 
       <div className="hero__rail">
         {railModels.map(({ model, index }, railIndex) => (
-          <button key={model.id} type="button" className="hero__railCard" onClick={() => setActiveIndex(index)}>
+          <ButtonDefault
+            key={model.id}
+            className="hero__railCard"
+            styling="ghost"
+            theme="light"
+            variantLink={{ type: "button" }}
+            data={{ type: "", value: "", url: "", name: model.railLabel, title: model.railLabel, target: "" }}
+            onClick={() => setActiveIndex(index)}
+          >
             <div className="hero__railImage">
               {model.railImage.bgUrl ? (
                 <img className="hero__railImage__bg" src={model.railImage.bgUrl} alt="" style={model.railCrop} />
@@ -152,7 +172,7 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
               <span className="hero__railName">{model.railLabel}</span>
               {railIndex === 0 && <span className="hero__railNext">{content.nextLabel}</span>}
             </div>
-          </button>
+          </ButtonDefault>
         ))}
       </div>
     </SectionDefault>

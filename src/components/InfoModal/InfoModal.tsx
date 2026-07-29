@@ -3,6 +3,7 @@
 import "./InfoModal.scss";
 import { FC, useEffect } from "react";
 import { useFloating, flip, offset, shift, autoUpdate } from "@floating-ui/react";
+import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 
 export type InfoModalItem = {
   label: string;
@@ -59,7 +60,16 @@ const InfoModal: FC<InfoModalProps> = ({ open, data, onClose, anchorEl, onMouseE
       aria-label={data.title}
       aria-hidden={!open}
     >
-      <button type="button" className="infoModal__backdrop" aria-label="Fechar" tabIndex={open ? 0 : -1} onClick={onClose} />
+      <ButtonDefault
+        className="infoModal__backdrop"
+        styling="ghost"
+        theme="light"
+        variantLink={{ type: "button" }}
+        data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
+        aria-label="Fechar"
+        tabIndex={open ? 0 : -1}
+        onClick={onClose}
+      />
 
       <div
         className="infoModal__card"
@@ -69,13 +79,29 @@ const InfoModal: FC<InfoModalProps> = ({ open, data, onClose, anchorEl, onMouseE
         onMouseLeave={onMouseLeave}
       >
         <div className="infoModal__header">
-          <button type="button" className="infoModal__back" aria-label="Voltar" onClick={onClose}>
-            <img src="/icons/chevron-left.svg" alt="" aria-hidden="true" />
-          </button>
+          <ButtonDefault
+            className="infoModal__back"
+            styling="ghost"
+            theme="dark"
+            circular
+            icon="chevron-left"
+            variantLink={{ type: "button" }}
+            data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
+            aria-label="Voltar"
+            onClick={onClose}
+          />
           <p className="infoModal__title">{data.title}</p>
-          <button type="button" className="infoModal__close" aria-label="Fechar" onClick={onClose}>
-            <img src="/icons/close-black.svg" alt="" aria-hidden="true" />
-          </button>
+          <ButtonDefault
+            className="infoModal__close"
+            styling="ghost"
+            theme="dark"
+            circular
+            icon="close-black"
+            variantLink={{ type: "button" }}
+            data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
+            aria-label="Fechar"
+            onClick={onClose}
+          />
         </div>
 
         <hr className="infoModal__divider" />

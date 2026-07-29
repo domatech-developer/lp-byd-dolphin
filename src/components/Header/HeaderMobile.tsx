@@ -49,16 +49,19 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
           <img className="headerMobile__logo" src={content.logoMobile.url} alt={content.logoMobile.alt} />
         </a>
 
-        <button
-          type="button"
+        <ButtonDefault
           className="headerMobile__toggle"
+          styling="ghost"
+          theme="light"
+          variantLink={{ type: "button" }}
+          data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
           aria-label="Abrir menu"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(true)}
         >
           <span className="headerMobile__toggleBar headerMobile__toggleBar--top" />
           <span className="headerMobile__toggleBar headerMobile__toggleBar--bottom" />
-        </button>
+        </ButtonDefault>
       </header>
 
       <div className="headerMobile__bottom">
@@ -75,19 +78,35 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
 
         <span className="headerMobile__divider" aria-hidden="true" />
 
-        <button type="button" className="headerMobile__iconButton" aria-label={content.location.label} onClick={openLocation}>
-          <img className="headerMobile__iconButtonIcon" src={`/icons/${content.location.icon}.svg`} alt="" />
-        </button>
+        <ButtonDefault
+          className="headerMobile__iconButton"
+          styling="ghost"
+          theme="light"
+          circular
+          icon={content.location.icon}
+          variantLink={{ type: "button" }}
+          data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
+          aria-label={content.location.label}
+          onClick={openLocation}
+        />
 
-        <button type="button" className="headerMobile__cta" onClick={openContact}>
-          {content.cta.text}
-        </button>
+        <ButtonDefault
+          className="headerMobile__cta"
+          styling="filled"
+          theme="light"
+          variantLink={{ type: "button" }}
+          data={{ type: "", value: "", url: "", name: content.cta.text, title: content.cta.text, target: "" }}
+          onClick={openContact}
+        />
       </div>
 
       <div className={`headerMenu${menuOpen ? " headerMenu--open" : ""}`} role="dialog" aria-modal="true" aria-label="Menu">
-        <button
-          type="button"
+        <ButtonDefault
           className="headerMenu__backdrop"
+          styling="ghost"
+          theme="light"
+          variantLink={{ type: "button" }}
+          data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
           aria-label="Fechar menu"
           tabIndex={menuOpen ? 0 : -1}
           onClick={() => setMenuOpen(false)}
@@ -98,9 +117,17 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
             <div className="headerMenu__headSection">
               <div className="headerMenu__head">
                 <img className="headerMenu__logo" src={content.logoMobile.url} alt={content.logoMobile.alt} />
-                <button type="button" className="headerMenu__close" aria-label="Fechar menu" onClick={() => setMenuOpen(false)}>
-                  <img src="/icons/close-white.svg" alt="" aria-hidden="true" />
-                </button>
+                <ButtonDefault
+                  className="headerMenu__close"
+                  styling="ghost"
+                  theme="light"
+                  circular
+                  icon="close-white"
+                  variantLink={{ type: "button" }}
+                  data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
+                  aria-label="Fechar menu"
+                  onClick={() => setMenuOpen(false)}
+                />
               </div>
               <span className="headerMenu__divider" aria-hidden="true" />
             </div>
@@ -131,9 +158,14 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
                 />
               </div>
 
-              <button type="button" className="headerMobile__cta headerMenu__cta" onClick={openContact}>
-                {content.cta.text}
-              </button>
+              <ButtonDefault
+                className="headerMobile__cta headerMenu__cta"
+                styling="filled"
+                theme="light"
+                variantLink={{ type: "button" }}
+                data={{ type: "", value: "", url: "", name: content.cta.text, title: content.cta.text, target: "" }}
+                onClick={openContact}
+              />
             </div>
 
             <span className="headerMenu__divider" aria-hidden="true" />

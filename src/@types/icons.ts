@@ -40,4 +40,8 @@ export type Icons =
   | "plus-white"
   | "plus"
   | "x-twitter-white"
-  | "youtube-white";
+  | "youtube-white"
+  | "close-black"
+  | "arrow-right-white-nav"
+  | "arrow-left-white-nav"
+  | "arrow-right-black-nav";

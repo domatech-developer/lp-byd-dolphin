@@ -272,16 +272,10 @@
   }
 
   &__nav__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     flex-shrink: 0;
     width: 44px;
     height: 44px;
     padding: 12px;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
     transition: opacity 0.2s ease;
 
     &:hover {
@@ -296,12 +290,10 @@
       background: $color-white;
       padding: 6px;
     }
-  }
 
-  &__nav__icon {
-    display: block;
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
+    .buttonDefault__iconContainer {
+      width: 17.6px;
+      height: 14.6px;
+    }
   }
 }

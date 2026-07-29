@@ -2,6 +2,7 @@
 import "./VideoModal.scss";
 import { FC, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 
 interface VideoModalProps {
   url: string;
@@ -42,9 +43,18 @@ const VideoModal: FC<VideoModalProps> = ({
   return createPortal(
     <div className="videoModal" role="dialog" aria-modal="true" aria-label={ariaLabel} onClick={onClose}>
       <div className="videoModal__box" onClick={(e) => e.stopPropagation()}>
-        <button ref={closeButtonRef} className="videoModal__close" type="button" onClick={onClose} aria-label={closeAriaLabel}>
-          <img src="/icons/close-white.svg" alt="" aria-hidden="true" />
-        </button>
+        <ButtonDefault
+          ref={closeButtonRef}
+          className="videoModal__close"
+          styling="ghost"
+          theme="light"
+          circular
+          icon="close-white"
+          variantLink={{ type: "button" }}
+          data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
+          onClick={onClose}
+          aria-label={closeAriaLabel}
+        />
         <video ref={videoRef} className="videoModal__video" controls playsInline autoPlay>
           <source src={url} type={mimeType} />
         </video>

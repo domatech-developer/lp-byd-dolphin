@@ -42,12 +42,6 @@
     z-index: 3;
     top: 50%;
     transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
     background: rgba(1, 1, 1, 0.4);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
@@ -55,24 +49,6 @@
     @include resize(width, 44);
     @include resize(height, 44);
     @include resize(padding, 6);
-
-    &__iconContainer {
-      position: relative;
-      display: block;
-      @include resize(width, 24);
-      @include resize(height, 24);
-    }
-
-    &__icon {
-      position: absolute;
-      display: block;
-      top: 19.59%;
-      bottom: 19.59%;
-      left: 13.28%;
-      right: 13.28%;
-      width: auto;
-      height: auto;
-    }
 
     @include res-md {
       display: none;
@@ -214,16 +190,10 @@
   }
 
   &__paginationNav__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     flex-shrink: 0;
     width: 44px;
     height: 44px;
     padding: 12px;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
     transition: opacity 0.2s ease;
 
     &:hover {
@@ -238,13 +208,11 @@
       background: $color-white;
       padding: 6px;
     }
-  }
 
-  &__paginationNav__icon {
-    display: block;
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
+    .buttonDefault__iconContainer {
+      width: 17.6px;
+      height: 14.6px;
+    }
   }
 
   &__rail {

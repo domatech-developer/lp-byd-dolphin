@@ -97,26 +97,20 @@
 
   &__cardToggle {
     display: none;
-    align-items: center;
-    justify-content: center;
     flex-shrink: 0;
     width: 44px;
     height: 44px;
     padding: 6px;
     background: $color-white;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
 
     @include res-md {
       display: inline-flex;
     }
-  }
 
-  &__cardToggleIcon {
-    display: block;
-    width: 18px;
-    height: 18px;
+    .buttonDefault__iconContainer {
+      width: 18px;
+      height: 18px;
+    }
   }
 
   &__cardDescription {

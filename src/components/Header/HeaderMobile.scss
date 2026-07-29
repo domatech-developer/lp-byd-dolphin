@@ -32,16 +32,10 @@
   }
 
   &__toggle {
-    display: inline-flex;
     align-items: end;
-    justify-content: center;
     width: 40px;
     height: 40px;
     padding: 8px;
-    background: transparent;
-    border: 0;
-    border-radius: 999px;
-    cursor: pointer;
     flex-direction: column;
     gap: 5.5px;
   }
@@ -95,39 +89,22 @@
   }
 
   &__iconButton {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     width: 44px;
     height: 44px;
     padding: 12px;
     background: $color-dark-surface;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
     flex-shrink: 0;
-  }
 
-  &__iconButtonIcon {
-    display: block;
-    width: 100%;
-    height: 100%;
+    .buttonDefault__iconContainer {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     margin-left: auto;
     padding: 12px 16px;
-    background: $color-white;
-    color: $color-primary;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
     white-space: nowrap;
-    @include text(14px, 20px, 500);
-    transition: opacity 0.2s ease;
 
     &:hover {
       opacity: 0.85;
@@ -152,7 +129,9 @@
   &__backdrop {
     position: absolute;
     inset: 0;
+    padding: 0;
     border: 0;
+    border-radius: 0;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
@@ -211,20 +190,13 @@
   }
 
   &__close {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     flex-shrink: 0;
     width: 40px;
     height: 40px;
     padding: 12px;
     background: $color-dark-surface;
-    border: 0;
-    border-radius: 999px;
-    cursor: pointer;
 
-    img {
-      display: block;
+    .buttonDefault__iconContainer {
       width: 100%;
       height: 100%;
     }

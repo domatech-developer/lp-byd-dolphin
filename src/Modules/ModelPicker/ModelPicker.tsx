@@ -5,6 +5,7 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
+import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 
 import { modelPickerContent } from "./ModelPickerContent";
 
@@ -49,12 +50,15 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
           const isActive = card.id === activeId;
 
           return (
-            <button
+            <ButtonDefault
               key={card.id}
               ref={(el) => {
-                cardRefs.current[card.id] = el;
+                cardRefs.current[card.id] = el as HTMLButtonElement | null;
               }}
-              type="button"
+              styling="ghost"
+              theme="light"
+              variantLink={{ type: "button" }}
+              data={{ type: "", value: "", url: "", name: card.name, title: card.name, target: "" }}
               role="tab"
               aria-selected={isActive}
               className={`modelPicker__card ${isActive ? "modelPicker__card--active" : ""}`}
@@ -79,28 +83,34 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
                   </div>
                 </div>
               </div>
-            </button>
+            </ButtonDefault>
           );
         })}
       </div>
 
       <div className="modelPicker__nav">
-        <button
-          type="button"
+        <ButtonDefault
           className="modelPicker__nav__btn modelPicker__nav__btn--prev"
+          styling="ghost"
+          theme="light"
+          circular
+          icon="arrow-left-white-nav"
+          variantLink={{ type: "button" }}
+          data={{ type: "", value: "", url: "", name: content.prevArrowAriaLabel, title: "", target: "" }}
           aria-label={content.prevArrowAriaLabel}
           onClick={goPrev}
-        >
-          <img className="modelPicker__nav__icon" src="/icons/arrow-left-white-nav.svg" alt="" />
-        </button>
-        <button
-          type="button"
+        />
+        <ButtonDefault
           className="modelPicker__nav__btn modelPicker__nav__btn--next"
+          styling="ghost"
+          theme="light"
+          circular
+          icon="arrow-right-black-nav"
+          variantLink={{ type: "button" }}
+          data={{ type: "", value: "", url: "", name: content.nextArrowAriaLabel, title: "", target: "" }}
           aria-label={content.nextArrowAriaLabel}
           onClick={goNext}
-        >
-          <img className="modelPicker__nav__icon" src="/icons/arrow-right-black-nav.svg" alt="" />
-        </button>
+        />
       </div>
     </SectionDefault>
   );

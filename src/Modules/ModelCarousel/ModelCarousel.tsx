@@ -4,6 +4,7 @@ import "./ModelCarousel.scss";
 import React, { FC, useState } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
+import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import CarouselDefault from "@/components/Carousel/CarouselDefault/CarouselDefault";
 import CarouselSlide from "@/components/Carousel/CarouselDefault/components/CarouselSlide";
 
@@ -42,19 +43,18 @@ const ModelCarousel: FC<ModelCarouselProps> = ({ debug = false }) => {
                   <div className="modelCarousel__cardTitleRow">
                     <span className="modelCarousel__cardTitle">{card.title}</span>
                     {card.description && (
-                      <button
-                        type="button"
+                      <ButtonDefault
                         className="modelCarousel__cardToggle"
+                        styling="ghost"
+                        theme="light"
+                        circular
+                        icon={isExpanded ? "minus" : "plus"}
+                        variantLink={{ type: "button" }}
+                        data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
                         aria-label={isExpanded ? "Ver menos" : "Ver mais"}
                         aria-expanded={isExpanded}
                         onClick={() => toggleExpanded(index)}
-                      >
-                        <img
-                          className="modelCarousel__cardToggleIcon"
-                          src={isExpanded ? "/icons/minus.svg" : "/icons/plus.svg"}
-                          alt=""
-                        />
-                      </button>
+                      />
                     )}
                   </div>
                   {card.description && <p className="modelCarousel__cardDescription">{card.description}</p>}

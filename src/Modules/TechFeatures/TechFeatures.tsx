@@ -4,6 +4,7 @@ import "./TechFeatures.scss";
 import React, { FC, useState } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
+import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 
 import { techFeaturesContent } from "./TechFeaturesContent";
@@ -58,19 +59,18 @@ const TechFeatures: FC<TechFeaturesProps> = ({ debug = false }) => {
                 <div className="techFeatures__cardTitleRow">
                   <span className="techFeatures__cardTitle">{card.title}</span>
                   {card.description && (
-                    <button
-                      type="button"
+                    <ButtonDefault
                       className="techFeatures__cardToggle"
+                      styling="ghost"
+                      theme="light"
+                      circular
+                      icon={isExpanded ? "minus" : "plus"}
+                      variantLink={{ type: "button" }}
+                      data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
                       aria-label={isExpanded ? "Ver menos" : "Ver mais"}
                       aria-expanded={isExpanded}
                       onClick={() => toggleExpanded(index)}
-                    >
-                      <img
-                        className="techFeatures__cardToggleIcon"
-                        src={isExpanded ? "/icons/minus.svg" : "/icons/plus.svg"}
-                        alt=""
-                      />
-                    </button>
+                    />
                   )}
                 </div>
                 {card.description && <p className="techFeatures__cardDescription">{card.description}</p>}

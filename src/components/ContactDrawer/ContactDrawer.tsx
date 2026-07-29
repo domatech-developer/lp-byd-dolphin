@@ -7,6 +7,7 @@ import InputText from "@/components/Inputs/InputText/InputText";
 import InputPhone from "@/components/Inputs/InputPhone/InputPhone";
 import InputSelect from "@/components/Inputs/InputSelect/InputSelect";
 import CheckBoxDefault from "@/components/Inputs/CheckBoxDefault/CheckBoxDefault";
+import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 
 import { contactDrawerContent } from "./ContactDrawerContent";
 
@@ -76,7 +77,15 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
 
   return (
     <div className={`contactDrawer${open ? " contactDrawer--open" : ""}`} aria-hidden={!open}>
-      <button type="button" className="contactDrawer__backdrop" aria-label="Fechar formulário" onClick={onClose} />
+      <ButtonDefault
+        className="contactDrawer__backdrop"
+        styling="ghost"
+        theme="light"
+        variantLink={{ type: "button" }}
+        data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
+        aria-label="Fechar formulário"
+        onClick={onClose}
+      />
 
       <aside className="contactDrawer__panel" role="dialog" aria-modal="true" aria-labelledby="contactDrawerTitle">
         <div className="contactDrawer__content">
@@ -85,9 +94,17 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
               {content.title}
             </h2>
 
-            <button type="button" className="contactDrawer__close" onClick={onClose} aria-label="Fechar formulário">
-              <img src="/icons/close-black.svg" alt="" aria-hidden="true" />
-            </button>
+            <ButtonDefault
+              className="contactDrawer__close"
+              styling="ghost"
+              theme="dark"
+              circular
+              icon="close-black"
+              variantLink={{ type: "button" }}
+              data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
+              onClick={onClose}
+              aria-label="Fechar formulário"
+            />
           </div>
 
           <form className="contactDrawer__form" onSubmit={handleSubmit} noValidate>
@@ -168,9 +185,17 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
               />
             </div>
 
-            <button type="submit" className="contactDrawer__submit" disabled={loading}>
-              {content.submit_label}
-            </button>
+            <button type="submit" className="contactDrawer__submitTrap" tabIndex={-1} aria-hidden="true" />
+
+            <ButtonDefault
+              className="contactDrawer__submit"
+              styling="filled"
+              theme="dark"
+              variantLink={{ type: "button" }}
+              data={{ type: "", value: "", url: "", name: content.submit_label, title: content.submit_label, target: "" }}
+              disabled={loading}
+              onClick={() => handleSubmit()}
+            />
           </form>
         </div>
       </aside>

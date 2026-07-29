@@ -23,8 +23,6 @@
 
   &__close {
     background: $color-primary;
-    border-radius: 50%;
-    cursor: pointer;
     position: absolute;
     right: -16px;
     top: -16px;
@@ -32,18 +30,14 @@
     @include resize(height, 40);
     @include resize(width, 40);
 
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
-    img {
-      height: 16px;
-      width: 16px;
-    }
-
     @include res-md {
       right: 0;
       top: -48px;
+    }
+
+    .buttonDefault__iconContainer {
+      @include resize(height, 16);
+      @include resize(width, 16);
     }
   }
 
