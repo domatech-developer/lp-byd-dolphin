@@ -100,6 +100,8 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
               theme="dark"
               circular
               icon="close-black"
+              iconWidth={24}
+              iconHeight={24}
               variantLink={{ type: "button" }}
               data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
               onClick={onClose}

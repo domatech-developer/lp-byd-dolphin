@@ -34,11 +34,6 @@
       right: 0;
       top: -48px;
     }
-
-    .buttonDefault__iconContainer {
-      @include resize(height, 16);
-      @include resize(width, 16);
-    }
   }
 
   &__video {

@@ -80,11 +80,6 @@
   &__close {
     padding: 4px;
 
-    .buttonDefault__iconContainer {
-      width: 24px;
-      height: 24px;
-    }
-
     @include res-md {
       width: 40px;
       height: 40px;

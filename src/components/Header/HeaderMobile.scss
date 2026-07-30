@@ -107,11 +107,6 @@
     padding: 12px;
     background: $color-dark-surface;
     flex-shrink: 0;
-
-    .buttonDefault__iconContainer {
-      width: 100%;
-      height: 100%;
-    }
   }
 
   &__cta {
@@ -223,11 +218,6 @@
     height: 40px;
     padding: 12px;
     background: $color-dark-surface;
-
-    .buttonDefault__iconContainer {
-      width: 100%;
-      height: 100%;
-    }
   }
 
   &__divider {

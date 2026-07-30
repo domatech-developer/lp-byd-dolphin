@@ -85,6 +85,8 @@ const InfoModal: FC<InfoModalProps> = ({ open, data, onClose, anchorEl, onMouseE
             theme="dark"
             circular
             icon="chevron-left"
+            iconWidth={24}
+            iconHeight={24}
             variantLink={{ type: "button" }}
             data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
             aria-label="Voltar"
@@ -97,6 +99,8 @@ const InfoModal: FC<InfoModalProps> = ({ open, data, onClose, anchorEl, onMouseE
             theme="dark"
             circular
             icon="close-black"
+            iconWidth={24}
+            iconHeight={24}
             variantLink={{ type: "button" }}
             data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
             aria-label="Fechar"

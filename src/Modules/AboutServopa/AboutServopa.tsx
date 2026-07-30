@@ -14,7 +14,7 @@ type AboutServopaProps = {
 
 const AboutServopa: FC<AboutServopaProps> = ({ debug = false }) => {
   const content = aboutServopaContent;
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.25 });
+  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.25, once: false });
   const { ref: bgRef, inView: bgInView } = useInView<HTMLDivElement>({ threshold: 0.2, once: false });
 
   if (!content || !content.section_check) return null;

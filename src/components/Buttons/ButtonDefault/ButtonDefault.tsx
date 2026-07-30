@@ -18,6 +18,8 @@ type ButtonDefaultProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> 
   variantLink: VariantButton;
   data: LinkAcf;
   icon?: Icons;
+  iconWidth?: number;
+  iconHeight?: number;
   children?: ReactNode;
 };
 
@@ -30,6 +32,8 @@ const ButtonDefault = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonDe
     variantLink,
     data,
     icon,
+    iconWidth,
+    iconHeight,
     positionIcon = "",
     className: extraClassName,
     children,
@@ -50,9 +54,17 @@ const ButtonDefault = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonDe
     .filter(Boolean)
     .join(" ");
 
+  const iconContainerStyle: React.CSSProperties | undefined =
+    iconWidth === undefined && iconHeight === undefined
+      ? undefined
+      : ({
+          ...(iconWidth !== undefined && { "--button-icon-width": iconWidth }),
+          ...(iconHeight !== undefined && { "--button-icon-height": iconHeight })
+        } as React.CSSProperties);
+
   const renderIcon = () =>
     icon && (
-      <div className="buttonDefault__iconContainer">
+      <div className="buttonDefault__iconContainer" style={iconContainerStyle}>
         <img className="buttonDefault__icon" src={`/icons/${icon}.svg`} alt="" aria-hidden="true" />
       </div>
     );

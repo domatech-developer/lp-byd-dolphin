@@ -99,8 +99,8 @@
     display: block;
     flex-shrink: 0;
     @include resize(padding, 4);
-    @include resize(width, 20);
-    @include resize(height, 20);
+    @include resize(width, var(--button-icon-width, 20));
+    @include resize(height, var(--button-icon-height, 20));
   }
 
   &__icon {

@@ -50,6 +50,8 @@ const VideoModal: FC<VideoModalProps> = ({
           theme="light"
           circular
           icon="close-white"
+          iconWidth={16}
+          iconHeight={16}
           variantLink={{ type: "button" }}
           data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
           onClick={onClose}
