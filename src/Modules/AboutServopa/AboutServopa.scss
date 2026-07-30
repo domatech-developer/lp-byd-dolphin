@@ -24,8 +24,8 @@
     pointer-events: none;
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 16%, #000 60%);
-    mask-image: linear-gradient(to bottom, transparent 16%, #000 60%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 16%, $color-black 60%);
+    mask-image: linear-gradient(to bottom, transparent 16%, $color-black 60%);
   }
 
   &__beam--left {
@@ -36,13 +36,13 @@
     @include resize(height, 749, 360);
     background: conic-gradient(
       from 90deg at 50% 50%,
-      #1e4bff 0deg,
-      rgba(30, 75, 255, 0.95) 6.61105178296566deg,
-      rgba(0, 24, 120, 0.82) 53.09147357940674deg,
-      rgba(0, 0, 0, 0.61) 141.6944718360901deg,
-      rgba(0, 0, 0, 0.24) 269.11622285842896deg,
-      rgba(0, 0, 0, 0.05) 350.8902096748352deg,
-      rgba(217, 217, 217, 0) 360deg
+      $color-accent-blue 0deg,
+      rgba($color-accent-blue, 0.95) 6.61105178296566deg,
+      rgba($color-accent-blue-dark, 0.82) 53.09147357940674deg,
+      $color-black-60 141.6944718360901deg,
+      $color-black-25 269.11622285842896deg,
+      rgba($color-black, 0.05) 350.8902096748352deg,
+      transparent 360deg
     );
   }
 
@@ -54,13 +54,13 @@
     @include resize(height, 749, 360);
     background: conic-gradient(
       from -90deg at 50% 50%,
-      rgba(217, 217, 217, 0) 0deg,
-      rgba(0, 0, 0, 0.05) 9.1097903251648deg,
-      rgba(0, 0, 0, 0.24) 90.88377714157104deg,
-      rgba(0, 0, 0, 0.61) 218.3055281639099deg,
-      rgba(0, 24, 120, 0.82) 306.90852642059326deg,
-      rgba(30, 75, 255, 0.95) 353.38894821703434deg,
-      #1e4bff 360deg
+      transparent 0deg,
+      rgba($color-black, 0.05) 9.1097903251648deg,
+      $color-black-25 90.88377714157104deg,
+      $color-black-60 218.3055281639099deg,
+      rgba($color-accent-blue-dark, 0.82) 306.90852642059326deg,
+      rgba($color-accent-blue, 0.95) 353.38894821703434deg,
+      $color-accent-blue 360deg
     );
   }
 
@@ -70,7 +70,7 @@
     border-radius: 663px;
     opacity: 0.5;
     transform: translateX(-50%);
-    background: #1e4bff;
+    background: $color-accent-blue;
     filter: blur(250px);
     @include resize(top, 80);
     @include resize(width, 500);

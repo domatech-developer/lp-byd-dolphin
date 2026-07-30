@@ -129,6 +129,8 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
                   theme="light"
                   circular
                   icon="close-white"
+                  iconWidth={40}
+                  iconHeight={40}
                   variantLink={{ type: "button" }}
                   data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
                   aria-label="Fechar menu"

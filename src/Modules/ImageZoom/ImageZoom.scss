@@ -56,8 +56,8 @@
     pointer-events: none;
     background: linear-gradient(
       0deg,
-      rgba(1, 1, 1, 0) 0%,
-      #010101 57.86%
+      transparent 0%,
+      $color-primary 57.86%
     );
 
     @include resize(height, 162);

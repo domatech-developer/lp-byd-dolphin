@@ -41,7 +41,7 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      background: linear-gradient(180deg, rgba(1, 1, 1, 0) 71.522%, $color-primary 100%);
+      background: linear-gradient(180deg, transparent 71.522%, $color-primary 100%);
     }
   }
 
@@ -174,7 +174,7 @@
 
   &__badge {
     color: $color-white;
-    background: rgba(0, 0, 0, 0.1);
+    background: $color-black-10;
     border-radius: 4px;
     white-space: nowrap;
     @include text($b2-fs, $b2-lh, 400, center);

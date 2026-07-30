@@ -55,7 +55,7 @@
     display: flex;
     overflow: hidden;
     width: 100%;
-    background: linear-gradient(180deg, #f6f6f6 0%, #ebebeb 100%);
+    background: linear-gradient(180deg, $color-gray-light 0%, $color-gray-divider 100%);
     @include resize(min-height, 500);
 
     @include res-md {
