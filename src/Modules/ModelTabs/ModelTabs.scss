@@ -157,13 +157,12 @@
   &__watermark {
     position: absolute;
     z-index: 2;
-    top: 12.8%;
     right: 4.7%;
     opacity: 0.5;
     pointer-events: none;
+    @include resize(top, 12.8%, 24);
 
     @include res-md {
-      top: 24px;
       right: auto;
       left: 16px;
       opacity: 1;

@@ -70,24 +70,18 @@
   &__watermark {
     position: absolute;
     z-index: 2;
-    width: 104px;
-    height: 20px;
-
-    @include resize(top, 120);
-    @include resize(right, 64);
-
-    @include res-md {
-      top: 40px;
-      right: 16px;
-    }
+    @include resize(width, 104);
+    @include resize(height, 20);
+    @include resize(top, 120, 40);
+    @include resize(right, 64, 16);
   }
 
   &__watermarkPart {
     position: absolute;
     top: 0;
 
-    width: 30px;
-    height: 20px;
+    @include resize(width, 30);
+    @include resize(height, 20);
 
     opacity: 0;
     transform: translateX(100px);
@@ -102,12 +96,12 @@
     }
 
     &--2 {
-      left: 35px;
+      @include resize(left, 35);
       transition-delay: 0.15s;
     }
 
     &--3 {
-      left: 70px;
+      @include resize(left, 70);
       transition-delay: 0s;
     }
   }
@@ -156,12 +150,12 @@
   &__title {
     position: absolute;
     z-index: 2;
-    top: 20%;
     transform: translateY(-50%);
     margin: 0;
     color: $color-white;
     opacity: 0;
 
+    @include resize(top, 20%, 584);
     @include resize(left, -436, -400);
     @include resize(width, 370, 361);
     @include text(40px, 48px, 400);
@@ -171,7 +165,6 @@
       left 0.6s ease-out;
 
     @include res-md {
-      top: 584px;
       @include text(24px, 32px, 400);
     }
   }
@@ -231,11 +224,11 @@
     }
 
     &__watermarkPart--2 {
-      left: 35px;
+      @include resize(left, 35);
     }
 
     &__watermarkPart--3 {
-      left: 70px;
+      @include resize(left, 70);
     }
 
     &__title,

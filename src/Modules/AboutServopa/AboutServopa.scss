@@ -171,7 +171,7 @@
   }
 
   &__paragraph {
-    max-width: 710px;
+    @include resize(max-width, 710);
     margin: 0;
     color: $color-white-60;
     @include resize(margin-top, 24, 16);
@@ -199,12 +199,11 @@
   &__card {
     display: flex;
     flex-direction: column;
-    gap: 12px;
     align-items: flex-start;
+    @include resize(gap, 12, 6);
 
     @include res-md {
       align-items: center;
-      gap: 6px;
       @include resize(min-width, 173);
     }
   }

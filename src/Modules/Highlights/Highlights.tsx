@@ -33,7 +33,9 @@ const Highlights: FC<HighlightsProps> = ({ debug = false }) => {
               <div className="highlights__info">
                 <span className="highlights__name">{item.name}</span>
                 <span className="highlights__arrow" aria-hidden="true">
-                  <img src="/icons/arrow-right-white-thin.svg" alt="" />
+                  <div className="highlights__iconContainer">
+                    <img className="highlights__icon" src="/icons/arrow-right-white-thin.svg" alt="" />
+                  </div>
                 </span>
               </div>
             </LinkDefault>

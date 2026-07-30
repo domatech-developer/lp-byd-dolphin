@@ -46,7 +46,9 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
     <>
       <header className="headerMobile__top">
         <a href="#home" className="headerMobile__logoLink">
-          <img className="headerMobile__logo" src={content.logoMobile.url} alt={content.logoMobile.alt} />
+          <div className="headerMobile__logo">
+            <ImgContainer className="headerMobile__logo" image={content.logoMobile} alt={content.logoMobile.alt} />
+          </div>
         </a>
 
         <ButtonDefault
@@ -116,7 +118,9 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
           <div className="headerMenu__content">
             <div className="headerMenu__headSection">
               <div className="headerMenu__head">
-                <img className="headerMenu__logo" src={content.logoMobile.url} alt={content.logoMobile.alt} />
+                <div className="headerMenu__logo">
+                  <ImgContainer className="headerMenu__logo" image={content.logoMobile} alt={content.logoMobile.alt} />
+                </div>
                 <ButtonDefault
                   className="headerMenu__close"
                   styling="ghost"
@@ -188,7 +192,9 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
           </div>
 
           <div className="headerMenu__footer">
-            <img className="headerMenu__footerGlow" src="/images/header/menu-glow.svg" alt="" aria-hidden="true" />
+            <div className="headerMenu__footerGlow">
+              <img className="headerMenu__footerGlow__img" src="/images/header/menu-glow.svg" alt="" aria-hidden="true" />
+            </div>
 
             <div className="headerMenu__footerContent">
               <p className="headerMenu__footerTitle">{content.menuFooter.title}</p>
@@ -199,7 +205,9 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
                 rel="noreferrer"
               >
                 <span>{content.menuFooter.linkLabel}</span>
-                <img className="headerMenu__footerLinkIcon" src="/icons/caret-right-white.svg" alt="" aria-hidden="true" />
+                <div className="headerMenu__footerLinkIcon">
+                  <img className="headerMenu__footerLinkIcon__img" src="/icons/caret-right-white.svg" alt="" aria-hidden="true" />
+                </div>
               </a>
             </div>
 
@@ -213,7 +221,9 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
                   rel="noreferrer"
                   aria-label={social.name}
                 >
-                  <img className="headerMenu__socialIcon" src={social.icon} alt="" aria-hidden="true" />
+                  <div className="headerMenu__socialIcon">
+                    <img className="headerMenu__socialIcon__img" src={social.icon} alt="" aria-hidden="true" />
+                  </div>
                 </a>
               ))}
             </div>

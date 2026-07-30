@@ -4,6 +4,7 @@ import "./HeaderDesktop.scss";
 import { FC, useEffect, useState } from "react";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import LinkDefault from "@/components/LinkDefault/LinkDefault";
+import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 import { headerContent } from "./HeaderContent";
 
@@ -40,7 +41,9 @@ const HeaderDesktop: FC<HeaderDesktopProps> = ({
     <header className={`headerDesktop ${isOverHero ? "headerDesktop--hero" : "headerDesktop--docked"}`}>
       <div className="headerDesktop__bar">
         <a href="#home" className="headerDesktop__logoLink">
-          <img className="headerDesktop__logo" src={content.logo.url} alt={content.logo.alt} />
+          <div className="headerDesktop__logo">
+            <ImgContainer className="headerDesktop__logo" image={content.logo} alt={content.logo.alt} />
+          </div>
           <span className="headerDesktop__logoDivider" aria-hidden="true" />
           <span className="headerDesktop__brand">{content.brandLabel}</span>
         </a>

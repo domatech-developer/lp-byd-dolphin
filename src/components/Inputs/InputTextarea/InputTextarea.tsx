@@ -1,6 +1,6 @@
 import "./InputTextarea.scss";
 import { FC, ComponentProps } from "react";
-import ImgDefault from "@/components/ImgDefault/ImgDefault";
+import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 type InputProp = ComponentProps<"textarea"> & {
   label?: string;
@@ -18,7 +18,7 @@ const InputTextarea: FC<InputProp> = ({ label, erroMsg, invalid, id, fullSize = 
       <textarea className="inputTextarea__element" {...{ ...props, id }} />
       {invalid && (
         <div className="inputTextarea__helpContainer">
-          <ImgDefault src="/icons/alert.svg" alt="Alerta" className="inputTextarea__helpIcon" />
+          <ImgContainer className="inputTextarea__helpIcon" image={{ url: "/icons/alert.svg", alt: "Alerta" }} />
           <span className="inputTextarea__helpText">{erroMsg}</span>
         </div>
       )}

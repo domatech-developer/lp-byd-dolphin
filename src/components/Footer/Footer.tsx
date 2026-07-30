@@ -43,7 +43,8 @@ const Footer: FC = () => {
         <hr className="footer__divider" />
 
         <div className="footer__content">
-          {description && <p className="footer__description">{description}</p>}
+          {description && <p className="footer__description">{description}</p> } 
+          <br />
           {contact && <p className="footer__description">{contact}</p>}
         </div>
       </div>
@@ -61,11 +62,13 @@ const Footer: FC = () => {
               rel="noreferrer"
               title={credits_logo?.title || "Domatech"}
             >
-              <img
-                className="footer__creditsLogo"
-                src={credits_logo?.url || "/icons/domatech-light.svg"}
-                alt={credits_logo?.alt || "Domatech"}
-              />
+              <div className="footer__creditsLogo">
+                <img
+                  className="footer__creditsLogo__img"
+                  src={credits_logo?.url || "/icons/domatech-light.svg"}
+                  alt={credits_logo?.alt || "Domatech"}
+                />
+              </div>
             </a>
           </div>
         </div>

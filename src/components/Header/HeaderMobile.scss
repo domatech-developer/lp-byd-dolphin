@@ -27,8 +27,21 @@
 
   &__logo {
     display: block;
+    width: 165px;
     height: 32px;
-    width: auto;
+
+    &__imgContainer {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   &__toggle {
@@ -64,7 +77,7 @@
     display: none;
     align-items: center;
     width: 100%;
-    gap: 10px;
+    @include resize(gap, 10);
     background: $color-primary;
     border-top: 1px solid $color-dark-border;
     box-shadow: 0px -4px 3px rgba(0, 0, 0, 0.1);
@@ -103,7 +116,8 @@
 
   &__cta {
     margin-left: auto;
-    padding: 12px 16px;
+    @include resize(padding-block, 12);
+    @include resize(padding-inline, 16);
     white-space: nowrap;
 
     &:hover {
@@ -164,15 +178,16 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 31px;
+    @include resize(gap, 31);
     width: 100%;
-    padding: 24px 20px 0;
+    padding-top: 24px;
+    @include resize(padding-inline, 20);
   }
 
   &__headSection {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    @include resize(gap, 16);
     width: 100%;
   }
 
@@ -185,8 +200,21 @@
 
   &__logo {
     display: block;
+    width: 165px;
     height: 32px;
-    width: auto;
+
+    &__imgContainer {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   &__close {
@@ -213,7 +241,7 @@
   &__main {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    @include resize(gap, 8);
     width: 100%;
   }
 
@@ -235,10 +263,12 @@
   &__models {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    @include resize(gap, 8);
     width: 100%;
     margin: 0;
-    padding: 0 20px 24px;
+    padding-top: 0;
+    @include resize(padding-inline, 20);
+    @include resize(padding-bottom, 24);
     list-style: none;
     overflow-x: auto;
     scrollbar-width: none;
@@ -252,7 +282,7 @@
   &__modelItem {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    @include resize(gap, 8);
     flex-shrink: 0;
     width: 100px;
   }
@@ -261,7 +291,8 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 24px 0;
+    @include resize(padding-block, 24);
+    padding-inline: 0;
     background: #171717;
     border-radius: 4px;
   }
@@ -288,7 +319,7 @@
   &__modelName {
     display: flex;
     align-items: center;
-    gap: 8px;
+    @include resize(gap, 8);
     color: $color-white;
     @include text(14px, 20px, 400);
   }
@@ -309,9 +340,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    @include resize(gap, 24);
     width: 100%;
-    padding: 32px 20px;
+    @include resize(padding-block, 32);
+    @include resize(padding-inline, 20);
     background: rgba(255, 255, 255, 0.05);
     border-radius: 16px 16px 0 0;
     overflow: hidden;
@@ -325,8 +357,15 @@
     z-index: 0;
     width: 200%;
     max-width: none;
+    aspect-ratio: 710.65 / 928.418;
     transform: translate(-50%, -50%);
     pointer-events: none;
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__footerContent {
@@ -335,7 +374,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    @include resize(gap, 12);
     width: 100%;
   }
 
@@ -350,8 +389,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    padding: 12px 16px;
+    @include resize(gap, 4);
+    @include resize(padding-block, 12);
+    @include resize(padding-inline, 16);
     color: $color-white;
     text-decoration: none;
     @include text(14px, 20px, 500);
@@ -361,6 +401,12 @@
     display: block;
     width: 20px;
     height: 20px;
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__social {
@@ -369,14 +415,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    @include resize(gap, 8);
   }
 
   &__socialLink {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    @include resize(padding, 8);
     border-radius: 300px;
     transition: opacity 0.2s ease;
 
@@ -389,5 +435,11 @@
     display: block;
     width: 24px;
     height: 24px;
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
   }
 }

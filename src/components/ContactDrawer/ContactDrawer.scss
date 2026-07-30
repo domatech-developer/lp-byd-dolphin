@@ -36,17 +36,13 @@
     position: relative;
     display: flex;
     height: 100dvh;
-    width: 500px;
+    @include resize(width, 500, 340);
     max-width: 100%;
     margin-left: auto;
     background: $color-white;
     pointer-events: none;
     transform: translateX(100%);
     transition: transform 0.3s ease;
-
-    @include res-md {
-      width: 340px;
-    }
   }
 
   &__content {
@@ -55,15 +51,12 @@
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 32px 24px;
+    @include resize(padding-block, 32, 24);
+    @include resize(padding-inline, 24, 20);
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
       display: none;
-    }
-
-    @include res-md {
-      padding: 24px 20px;
     }
   }
 
@@ -71,7 +64,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    @include resize(margin-bottom, 24);
   }
 
   &__title {
@@ -116,14 +109,14 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 16px;
+    @include resize(gap, 16);
   }
 
   &__contactBlock {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 8px;
+    @include resize(gap, 12);
+    @include resize(margin-top, 8);
   }
 
   &__contactTitle {
@@ -135,18 +128,19 @@
   &__checks {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    @include resize(gap, 12);
   }
 
   &__contactBlock .checkBoxDefault:last-child {
-    margin-top: 4px;
-    padding-top: 16px;
+    @include resize(margin-top, 4);
+    @include resize(padding-top, 16);
     border-top: 1px solid $color-gray-divider;
   }
 
   &__submit {
     margin-top: auto;
-    padding: 12px 24px;
+    @include resize(padding-block, 12);
+    @include resize(padding-inline, 24);
     @include text(14px, 24px, 500);
 
     &:hover {

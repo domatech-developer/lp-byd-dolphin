@@ -67,8 +67,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
-
+    @include resize(gap, 32);
     @include resize(width, 470, 275);
     @include resize(padding-top, 56, 32);
   }
