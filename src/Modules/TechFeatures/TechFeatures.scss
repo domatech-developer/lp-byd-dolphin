@@ -227,8 +227,8 @@
     }
 
     .techFeatures__cardDescription {
-      max-height: 200px;
       opacity: 1;
+      @include resize(max-height, 200);
       @include resize(margin-top, 4);
     }
   }

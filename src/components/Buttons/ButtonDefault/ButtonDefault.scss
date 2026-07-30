@@ -92,7 +92,7 @@
 
   &__text {
     white-space: nowrap;
-    @include text($b3-fs, $b4-lh, 500, center);
+    @include text($b3-fs, 20px, 500, center);
   }
 
   &__iconContainer {

@@ -181,7 +181,7 @@
     @include resize(padding, 8);
 
     @include res-md {
-      @include text($b3-fs, $b4-lh, 400, center);
+      @include text($b3-fs, 20px, 400, center);
     }
   }
 

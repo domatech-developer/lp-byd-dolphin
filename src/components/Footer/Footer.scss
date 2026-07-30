@@ -32,9 +32,9 @@
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      gap: 4px;
-      margin-top: 24px;
-      padding-right: 16px;
+      @include resize(gap, 4);
+      @include resize(margin-top, 24);
+      @include resize(padding-right, 16);
 
       &::-webkit-scrollbar {
         display: none;
@@ -52,9 +52,11 @@
     @include resize(max-width, 167, none);
 
     @include res-md {
-      flex: 0 0 100px;
-      width: 100px;
-      max-width: 100px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      @include resize(flex-basis, 100);
+      @include resize(width, 100);
+      @include resize(max-width, 100);
     }
   }
 

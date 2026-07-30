@@ -310,7 +310,7 @@
     align-items: center;
     @include resize(gap, 8);
     color: $color-white;
-    @include text($b3-fs, $b4-lh, 400);
+    @include text($b3-fs, 20px, 400);
   }
 
   &__modelBadge {
@@ -383,7 +383,7 @@
     @include resize(padding-inline, 16);
     color: $color-white;
     text-decoration: none;
-    @include text($b3-fs, $b4-lh, 500);
+    @include text($b3-fs, 20px, 500);
   }
 
   &__footerLinkIcon {

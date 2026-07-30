@@ -102,7 +102,7 @@
     border-radius: 4px;
     cursor: pointer;
     white-space: nowrap;
-    @include text($b3-fs, $b4-lh, 500);
+    @include text($b3-fs, 20px, 500);
     transition: opacity 0.2s ease;
 
     &:hover {
