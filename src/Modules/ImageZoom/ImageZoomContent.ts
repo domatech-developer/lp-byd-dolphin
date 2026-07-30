@@ -12,9 +12,9 @@ type ImageZoomContent = {
 export const imageZoomContent: ImageZoomContent = {
   section_check: true,
   seo_headings: [{ tag: "h2", text: "Linha BYD Dolphin na Servopa Curitiba" }],
-  background: { url: "/images/image-zoom/background.png", alt: "BYD Dolphin preto e BYD Dolphin azul lado a lado" },
+  background: { url: "/images/image-zoom/background.webp", alt: "BYD Dolphin preto e BYD Dolphin azul lado a lado" },
   backgroundMobile: {
-    url: "/images/image-zoom/background-mobile.png",
+    url: "/images/image-zoom/background-mobile.webp",
     alt: "BYD Dolphin preto e BYD Dolphin azul lado a lado"
   },
   title: "Linha BYD Dolphin Servopa",

@@ -21,7 +21,7 @@ export const videoServopaContent: VideoServopaContent = {
     { tag: "h3", text: "BYD Servopa em Curitiba" },
     { tag: "h3", text: "Atendimento especializado em veículos elétricos BYD" }
   ],
-  background_image: "/images/background-video-servopa.png",
+  background_image: "/images/background-video-servopa.webp",
   title_bold: "Fundado em 1955, o Grupo Servopa",
   title_thin: " é um dos maiores grupos automotivos do Brasil",
   video: {

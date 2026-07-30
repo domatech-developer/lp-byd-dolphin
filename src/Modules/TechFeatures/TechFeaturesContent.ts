@@ -30,7 +30,7 @@ export const techFeaturesContent: TechFeaturesContent = {
     { tag: "h3", text: "Condução elétrica silenciosa e eficiente" },
     { tag: "h3", text: "Tecnologia BYD para uma experiência inteligente" }
   ],
-  background: { url: "/images/tech-features/hero-bg.png", alt: "BYD Dolphin em movimento" },
+  background: { url: "/images/tech-features/hero-bg.webp", alt: "BYD Dolphin em movimento" },
   titleLines: [
     { text: "Mais silêncio.", opacity: 0.6 },
     { text: "Mais eficiência.", opacity: 0.8 },
@@ -43,27 +43,27 @@ export const techFeaturesContent: TechFeaturesContent = {
     {
       title: "e-Platform 3.0",
       description: "Plataforma desenvolvida para veículos 100% elétricos, com foco em eficiência, segurança e melhor aproveitamento de espaço.",
-      image: { url: "/images/tech-features/card-eplatform.png", alt: "e-Platform 3.0" }
+      image: { url: "/images/tech-features/card-eplatform.webp", alt: "e-Platform 3.0" }
     },
     {
       title: "Bateria Blade",
       description: "Tecnologia exclusiva da BYD, reconhecida por sua segurança, durabilidade e eficiência.",
-      image: { url: "/images/tech-features/card-bateria-blade.png", alt: "Bateria Blade" }
+      image: { url: "/images/tech-features/card-bateria-blade.webp", alt: "Bateria Blade" }
     },
     {
       title: "Linha Ocean",
       description: "Design inspirado no movimento do oceano, com formas fluidas, luzes marcantes e uma identidade visual moderna.",
-      image: { url: "/images/tech-features/card-linha-ocean.png", alt: "Linha Ocean" }
+      image: { url: "/images/tech-features/card-linha-ocean.webp", alt: "Linha Ocean" }
     },
     {
       title: "Condução elétrica",
       description: "Silenciosa, eficiente e com torque imediato para transformar a experiência ao volante.",
-      image: { url: "/images/tech-features/card-conducao-eletrica.png", alt: "Condução elétrica" }
+      image: { url: "/images/tech-features/card-conducao-eletrica.webp", alt: "Condução elétrica" }
     },
     {
       title: "Tecnologia BYD",
       description: "Soluções desenvolvidas para elevar a experiência elétrica em todos os modelos, combinando eficiência, segurança, conforto e inovação.",
-      image: { url: "/images/tech-features/card-tecnologia-byd.png", alt: "Tecnologia BYD" }
+      image: { url: "/images/tech-features/card-tecnologia-byd.webp", alt: "Tecnologia BYD" }
     }
   ]
 };

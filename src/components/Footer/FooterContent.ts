@@ -24,26 +24,26 @@ export const footerContent: FooterContent = {
   models: [
     {
       name: "Novo Dolphin",
-      image: { url: "/images/footer/byd-novo-dolphin.png", alt: "BYD Novo Dolphin", title: "BYD Novo Dolphin" },
+      image: { url: "/images/footer/byd-novo-dolphin.webp", alt: "BYD Novo Dolphin", title: "BYD Novo Dolphin" },
       url: "https://bydservopa.com.br/novos/dolphin",
       target: "_blank"
     },
     {
       name: "Dolphin Mini",
-      image: { url: "/images/footer/byd-dolphin-mini.png", alt: "BYD Dolphin Mini", title: "BYD Dolphin Mini" },
+      image: { url: "/images/footer/byd-dolphin-mini.webp", alt: "BYD Dolphin Mini", title: "BYD Dolphin Mini" },
       url: "https://bydservopa.com.br/novos/dolphin-mini",
       target: "_blank"
     },
     {
       name: "Dolphin Plus",
-      image: { url: "/images/footer/byd-dolphin-plus.png", alt: "BYD Dolphin Plus", title: "BYD Dolphin Plus" },
+      image: { url: "/images/footer/byd-dolphin-plus.webp", alt: "BYD Dolphin Plus", title: "BYD Dolphin Plus" },
       url: "https://bydservopa.com.br/novos/dolphin-plus",
       target: "_blank"
     },
     {
       name: "Dolphin SE",
       badge: "Novo",
-      image: { url: "/images/footer/byd-dolphin-se.png", alt: "BYD Dolphin SE", title: "BYD Dolphin SE" },
+      image: { url: "/images/footer/byd-dolphin-se.webp", alt: "BYD Dolphin SE", title: "BYD Dolphin SE" },
       url: "https://bydservopa.com.br/novos/dolphin-se",
       target: "_blank"
     }

@@ -37,7 +37,7 @@ export const modelPickerContent: ModelPickerContent = {
     {
       id: "dolphin-se",
       name: "Dolphin SE",
-      image: { url: "/images/model-picker/dolphin-se.png", alt: "BYD Dolphin SE" },
+      image: { url: "/images/model-picker/dolphin-se.webp", alt: "BYD Dolphin SE" },
       description:
         "Com visual renovado, mais equipamentos e performance equilibrada, o Dolphin SE é a opção para quem deseja um elétrico mais sofisticado e atual.",
       bestForLabel: "Melhor para:",
@@ -46,7 +46,7 @@ export const modelPickerContent: ModelPickerContent = {
     {
       id: "dolphin",
       name: "Dolphin",
-      image: { url: "/images/model-picker/dolphin.png", alt: "BYD Dolphin" },
+      image: { url: "/images/model-picker/dolphin.webp", alt: "BYD Dolphin" },
       description:
         "Equilíbrio entre espaço, conforto e tecnologia no dia a dia, o Dolphin é a escolha certa para quem busca praticidade sem abrir mão do estilo.",
       bestForLabel: "Melhor para:",
@@ -55,7 +55,7 @@ export const modelPickerContent: ModelPickerContent = {
     {
       id: "dolphin-mini",
       name: "Dolphin Mini",
-      image: { url: "/images/model-picker/dolphin-mini.png", alt: "BYD Dolphin Mini" },
+      image: { url: "/images/model-picker/dolphin-mini.webp", alt: "BYD Dolphin Mini" },
       description:
         "Compacto e ágil, o Dolphin Mini foi pensado para quem vive a rotina urbana e precisa de um elétrico fácil de dirigir e estacionar.",
       bestForLabel: "Melhor para:",
@@ -64,7 +64,7 @@ export const modelPickerContent: ModelPickerContent = {
     {
       id: "dolphin-plus",
       name: "Dolphin Plus",
-      image: { url: "/images/model-picker/dolphin-plus.png", alt: "BYD Dolphin Plus" },
+      image: { url: "/images/model-picker/dolphin-plus.webp", alt: "BYD Dolphin Plus" },
       description:
         "Mais autonomia e desempenho para quem roda mais e busca uma experiência de condução mais potente dentro da linha Dolphin.",
       bestForLabel: "Melhor para:",

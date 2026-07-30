@@ -13,7 +13,7 @@ type ModelBannerContent = {
 export const modelBannerContent: ModelBannerContent = {
   section_check: true,
   seo_headings: [{ tag: "h2", text: "Versões do BYD Dolphin na Servopa Curitiba" }],
-  image: { url: "/images/model-tabs/banner.png", alt: "Linha Dolphin BYD Servopa" },
+  image: { url: "/images/model-tabs/banner.webp", alt: "Linha Dolphin BYD Servopa" },
   badge: "Novo",
   title: "BYD DOLPHIN SE",
   videoCard: {

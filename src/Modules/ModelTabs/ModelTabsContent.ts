@@ -35,7 +35,7 @@ export const modelTabsContent: ModelTabsContent = {
       title: "Uma nova expressão\nda família Dolphin.",
       description:
         "Mais moderno, mais equipado e com presença renovada, o Dolphin SE amplia as possibilidades da linha com uma proposta premium, tecnológica e altamente desejável.",
-      image: { url: "/images/model-tabs/hero-dolphin-se.png", alt: "BYD Dolphin SE" },
+      image: { url: "/images/model-tabs/hero-dolphin-se.webp", alt: "BYD Dolphin SE" },
       ctaPrimary: "Tenho interesse",
       ctaSecondary: { text: "Ver mais", url: "https://bydservopa.com.br/novos/dolphin-se", target: "_blank" }
     },
@@ -46,7 +46,7 @@ export const modelTabsContent: ModelTabsContent = {
       title: "Tecnologia elétrica\ncom personalidade.",
       description:
         "Com design inspirado na Linha Ocean, o BYD Dolphin une eficiência, conforto e conectividade em um hatch 100% elétrico feito para acompanhar todos os momentos da rotina.",
-      image: { url: "/images/model-tabs/hero-dolphin.png", alt: "BYD Dolphin" },
+      image: { url: "/images/model-tabs/hero-dolphin.webp", alt: "BYD Dolphin" },
       ctaPrimary: "Tenho interesse",
       ctaSecondary: { text: "Ver mais", url: "https://bydservopa.com.br/novos/dolphin", target: "_blank" }
     },
@@ -57,7 +57,7 @@ export const modelTabsContent: ModelTabsContent = {
       title: "Compacto no tamanho,\ngigante na experiência.",
       description:
         "Ideal para a cidade, o Dolphin Mini combina agilidade, eficiência e tecnologia em um elétrico fácil de dirigir, fácil de estacionar e pensado para simplificar sua rotina.",
-      image: { url: "/images/model-tabs/hero-dolphin-mini.png", alt: "BYD Dolphin Mini" },
+      image: { url: "/images/model-tabs/hero-dolphin-mini.webp", alt: "BYD Dolphin Mini" },
       ctaPrimary: "Tenho interesse",
       ctaSecondary: { text: "Ver mais", url: "https://bydservopa.com.br/novos/dolphin-mini", target: "_blank" }
     },
@@ -67,7 +67,7 @@ export const modelTabsContent: ModelTabsContent = {
       eyebrow: "BYD Dolphin Plus",
       title: "Mais desempenho\npara ir além.",
       description: "Mais esportiva e dinâmica. Imagem em movimento, ângulo 3/4 frontal, luz baixa, sensação de performance sem perder a elegância.",
-      image: { url: "/images/model-tabs/hero-dolphin-plus.png", alt: "BYD Dolphin Plus" },
+      image: { url: "/images/model-tabs/hero-dolphin-plus.webp", alt: "BYD Dolphin Plus" },
       ctaPrimary: "Tenho interesse",
       ctaSecondary: { text: "Ver mais", url: "https://bydservopa.com.br/novos/dolphin-plus", target: "_blank" }
     }
