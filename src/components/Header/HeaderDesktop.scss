@@ -17,6 +17,10 @@
     box-shadow: none;
   }
 
+  &--hero &__bar {
+    @include resize(padding-top, 26);
+  }
+
   &--docked {
     top: auto;
     bottom: 0;
@@ -30,8 +34,7 @@
     align-items: center;
     justify-content: space-between;
     @include resize(gap, 16);
-    @include resize(padding-top, 26);
-    @include resize(padding-bottom, 8);
+    @include resize(padding-block, 8);
     @include resize(padding-inline, 64, 20);
   }
 

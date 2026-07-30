@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include resize(gap, 40, 24);
+    @include resize(gap, 24);
     @include resize(padding-block, 80, 56);
     @include resize(padding-inline, 16);
   }
@@ -22,7 +22,6 @@
   }
 
   &__title {
-    margin: 0;
     color: $color-white;
     @include text(40px, 48px, 400, center);
 
@@ -32,7 +31,6 @@
   }
 
   &__paragraph {
-    margin: 0;
     color: $color-white-72;
     @include text($b1-fs, $b1-lh, 400, center);
 
@@ -105,15 +103,7 @@
     z-index: 0;
     overflow: hidden;
     border-radius: 8px;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      border-radius: 8px;
-      background: $color-white;
-    }
+    background: #c4c4c4;
 
     &::after {
       content: "";
@@ -140,62 +130,12 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-    }
-  }
+      object-fit: none;
+      object-position: 20% center;
 
-  &__card:first-child &__cardImage::before {
-    background: #c4c4c4;
-  }
-
-  &__card:nth-child(1):not(.modelPicker__card--active) &__cardImage__img {
-    top: 11.75%;
-    left: -24.42%;
-    width: 223.96%;
-    height: 76.5%;
-  }
-
-  &__card:nth-child(2):not(.modelPicker__card--active) &__cardImage__img {
-    top: 0.03%;
-    left: -18.05%;
-    width: 221.95%;
-    height: 99.95%;
-  }
-
-  &__card:nth-child(3):not(.modelPicker__card--active) &__cardImage__img {
-    top: 0;
-    left: -48.87%;
-    width: 267.99%;
-    height: 100%;
-  }
-
-  &__card:nth-child(4):not(.modelPicker__card--active) &__cardImage__img {
-    top: 0.01%;
-    left: -15.12%;
-    width: 208.29%;
-    height: 99.99%;
-  }
-
-  @include res-md {
-    &__card:nth-child(2):not(.modelPicker__card--active) &__cardImage__img {
-      top: 0;
-      left: -7.61%;
-      width: 177.66%;
-      height: 100%;
-    }
-
-    &__card:nth-child(3):not(.modelPicker__card--active) &__cardImage__img {
-      top: 0;
-      left: -33.78%;
-      width: 214.39%;
-      height: 100%;
-    }
-
-    &__card:nth-child(4):not(.modelPicker__card--active) &__cardImage__img {
-      top: 0;
-      left: -6.01%;
-      width: 166.66%;
-      height: 100%;
+      .modelPicker__card--active & {
+        object-fit: cover;
+      }
     }
   }
 
@@ -256,7 +196,6 @@
 
   &__cardDescription,
   &__cardBestFor {
-    margin: 0;
     @include text($b1-fs, $b1-lh, 400);
   }
 
