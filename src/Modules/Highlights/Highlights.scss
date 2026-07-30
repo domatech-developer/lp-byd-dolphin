@@ -105,7 +105,7 @@
   &__name {
     color: $color-white;
     text-transform: uppercase;
-    @include text(24px, 32px, 600);
+    @include text($b1-fs, $b1-lh, 600);
   }
 
   &__arrow {

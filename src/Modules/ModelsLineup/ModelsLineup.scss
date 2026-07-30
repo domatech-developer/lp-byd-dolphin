@@ -103,20 +103,20 @@
 
   &__title {
     margin: 0;
-    @include text(40px, 48px, 400, center);
+    @include text($h1-fs, $h1-lh, 400, center);
 
     @include res-md {
-      @include text(24px, 32px, 400, center);
+      @include text($h3-fs, $h3-lh, 400, center);
     }
   }
 
   &__paragraph {
     margin: 0;
     color: $color-black-80;
-    @include text($b1-fs, $b1-lh, 400, center);
+    @include text($b2-fs, $b2-lh, 400, center);
 
     @include res-md {
-      @include text(16px, 24px, 400, center);
+      @include text($b2-fs, $b2-lh, 400, center);
       color: $color-black;
     }
   }
@@ -177,11 +177,11 @@
     background: rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     white-space: nowrap;
-    @include text($b1-fs, $b1-lh, 400, center);
+    @include text($b2-fs, $b2-lh, 400, center);
     @include resize(padding, 8);
 
     @include res-md {
-      @include text(14px, 20px, 400, center);
+      @include text($b3-fs, $b4-lh, 400, center);
     }
   }
 

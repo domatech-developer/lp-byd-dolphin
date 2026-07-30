@@ -88,10 +88,10 @@
 
   &__cardTitle {
     color: $color-white;
-    @include text($h3-fs, $h3-lh, 500);
+    @include text($b1-fs, $b1-lh, 500);
 
     @include res-md {
-      @include text(20px, 32px, 500);
+      @include text($s1-fs, $s1-lh, 500);
     }
   }
 
@@ -117,7 +117,7 @@
     transition:
       opacity 0.4s ease-in-out,
       max-height 0.4s ease-in-out;
-    @include text($b1-fs, $b1-lh, 400);
+    @include text($b2-fs, $b2-lh, 400);
   }
 
   @media (hover: hover) {

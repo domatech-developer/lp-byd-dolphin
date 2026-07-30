@@ -105,7 +105,7 @@
     color: $color-white;
     border: 1px solid $color-white;
     border-radius: 4px;
-    @include text($b2-fs, $b3-lh, 400);
+    @include text($b3-fs, 20px, 400);
     @include resize(padding-inline, 8);
     @include resize(padding-block, 2);
   }
@@ -114,10 +114,10 @@
     margin: 0;
     color: $color-white;
     @include resize(max-width, 500);
-    @include text(40px, 48px, 400);
+    @include text($b1-xl-fs, $b1-xl-lh, 400);
 
     @include res-md {
-      @include text(24px, 32px, 400);
+      @include text($b1-fs, $b1-lh, 400);
       flex: 1 1 0;
       min-width: 0;
     }
@@ -163,16 +163,16 @@
 
   &__videoTitle {
     margin: 0;
-    @include text(16px, 24px, 600);
+    @include text($b2-fs, $b2-lh, 600);
 
     @include res-md {
-      @include text(14px, 20px, 600);
+      @include text($b3-fs, 20px, 600);
     }
   }
 
   &__videoSubtitle {
     margin: 0;
-    @include text($b3-fs, $b3-lh, 400);
+    @include text($b4-fs, 20px, 400);
   }
 
   &__pill {
@@ -194,7 +194,7 @@
     @include resize(gap, 8);
     @include resize(padding-inline, 8);
     @include resize(padding-block, 2);
-    @include text($b3-fs, $b3-lh, 600);
+    @include text($b4-fs, $b4-lh, 600);
   }
 
   &__pillDot {

@@ -77,10 +77,10 @@
     color: $color-white;
     text-align: left;
     font-variant-numeric: lining-nums proportional-nums;
-    @include text(40px, normal, 400, left);
+    @include text($h1-fs, $h1-lh, 400, left);
 
     @include res-md {
-      @include text(24px, 32px, 400, left);
+      @include text($h3-fs, $h3-lh, 400, left);
     }
 
     span {

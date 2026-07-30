@@ -10,10 +10,10 @@
 
   &__title {
     color: $color-black;
-    @include text(40px, 48px, 400, center);
+    @include text($h1-fs, $h1-lh, 400, center);
 
     @include res-md {
-      @include text(24px, 32px, 400, center);
+      @include text($h3-fs, $h3-lh, 400, center);
     }
   }
 
@@ -90,17 +90,17 @@
   &__eyebrow {
     margin: 0;
     color: $color-black;
-    @include text(20px, $h3-lh, 400);
+    @include text($s1-fs, $s1-lh, 400);
 
     @include res-md {
-      @include text(16px, 24px, 400);
+      @include text($b2-fs, $b2-lh, 400);
     }
   }
 
   &__heroTitle {
     margin: 0;
     color: $color-black;
-    @include text($h2-fs, 40px, 400);
+    @include text($b1-lg-fs, $b1-lg-lh, 400);
 
     @include res-md {
       @include text($h3-fs, $h3-lh, 400);
@@ -110,7 +110,7 @@
   &__description {
     margin: 0;
     color: $color-black-80;
-    @include text($b1-fs, $b1-lh, 400);
+    @include text($b2-fs, $b2-lh, 400);
   }
 
   &__ctas {

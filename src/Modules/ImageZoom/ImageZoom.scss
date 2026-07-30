@@ -158,14 +158,14 @@
     @include resize(top, 20%, 584);
     @include resize(left, -436, -400);
     @include resize(width, 370, 361);
-    @include text(40px, 48px, 400);
+    @include text($h1-fs, $h1-lh, 400);
 
     transition:
       opacity 0.6s ease-out,
       left 0.6s ease-out;
 
     @include res-md {
-      @include text(24px, 32px, 400);
+      @include text($h3-fs, $h3-lh, 400);
     }
   }
 
@@ -179,7 +179,7 @@
     @include resize(top, 608, 616);
     @include resize(left, -436, -400);
     @include resize(width, 357, 361);
-    @include text(16px, 24px, 400);
+    @include text($b2-fs, $b2-lh, 400);
 
     transition:
       opacity 0.6s ease-out,

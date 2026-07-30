@@ -74,7 +74,7 @@
 
   &__brand {
     color: $color-white;
-    @include text(16px, 24px, 400);
+    @include text($b2-fs, $b2-lh, 400);
   }
 
   &__actions {
@@ -102,7 +102,7 @@
     border-radius: 4px;
     cursor: pointer;
     white-space: nowrap;
-    @include text(14px, 20px, 500);
+    @include text($b3-fs, $b4-lh, 500);
     transition: opacity 0.2s ease;
 
     &:hover {

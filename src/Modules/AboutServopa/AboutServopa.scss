@@ -157,10 +157,10 @@
   &__title {
     margin: 0;
     @include resize(margin-top, 40, 20);
-    @include text(32px, 40px, 500, center);
+    @include text($b1-lg-fs, $b1-lg-lh, 500, center);
 
     @include res-md {
-      @include text(24px, 32px, 500, center);
+      @include text($b1-fs, $b1-lh, 500, center);
     }
   }
 
@@ -169,10 +169,10 @@
     margin: 0;
     color: $color-white-60;
     @include resize(margin-top, 24, 16);
-    @include text(20px, 32px, 400, center);
+    @include text($s1-fs, $s1-lh, 400, center);
 
     @include res-md {
-      @include text(16px, 24px, 400, center);
+      @include text($b2-fs, $b2-lh, 400, center);
     }
   }
 
@@ -203,19 +203,19 @@
   }
 
   &__cardTitle {
-    @include text(32px, 40px, 600, center);
+    @include text($b1-lg-fs, $b1-lg-lh, 600, center);
 
     @include res-md {
-      @include text(24px, 32px, 600, center);
+      @include text($b1-fs, $b1-lh, 600, center);
     }
   }
 
   &__cardDescription {
     color: $color-white-60;
-    @include text(16px, 24px, 400, center);
+    @include text($b2-fs, $b2-lh, 400, center);
 
     @include res-md {
-      @include text(14px, 20px, 400, center);
+      @include text($b3-fs, $b4-lh, 400, center);
     }
   }
 }

@@ -60,10 +60,10 @@
 
   &__titleLine {
     display: block;
-    @include text(32px, 40px, 400);
+    @include text($b1-lg-fs, $b1-lg-lh, 400);
 
     @include res-md {
-      @include text(24px, 32px, 400);
+      @include text($b1-fs, $b1-lh, 400);
     }
   }
 
@@ -71,7 +71,7 @@
     margin: 0;
     color: $color-white;
     @include resize(width, 400, 100%);
-    @include text(16px, 24px, 400);
+    @include text($b2-fs, $b2-lh, 400);
   }
 
   &__cards {
@@ -173,10 +173,10 @@
 
   &__cardTitle {
     color: $color-white;
-    @include text(24px, 32px, 500);
+    @include text($b1-fs, $b1-lh, 500);
 
     @include res-md {
-      @include text(20px, 32px, 500);
+      @include text($s1-fs, $s1-lh, 500);
     }
   }
 
@@ -202,7 +202,7 @@
     transition:
       opacity 0.4s ease-in-out,
       max-height 0.4s ease-in-out;
-    @include text($b1-fs, $b1-lh, 400);
+    @include text($b2-fs, $b2-lh, 400);
   }
 
   @media (hover: hover) {

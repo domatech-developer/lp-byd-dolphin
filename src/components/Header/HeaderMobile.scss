@@ -238,7 +238,7 @@
   &__mainTitle {
     margin: 0;
     color: $color-white;
-    @include text(16px, 24px, 600);
+    @include text($b2-fs, $b2-lh, 600);
   }
 
   &__actions {
@@ -311,7 +311,7 @@
     align-items: center;
     @include resize(gap, 8);
     color: $color-white;
-    @include text(14px, 20px, 400);
+    @include text($b3-fs, $b4-lh, 400);
   }
 
   &__modelBadge {
@@ -321,7 +321,7 @@
     padding: 2px 6px;
     border: 1px solid $color-white;
     border-radius: 4px;
-    @include text(10px, 16px, 400);
+    @include text($b4-fs-sm, $b4-lh-sm, 400);
   }
 
   &__footer {
@@ -372,7 +372,7 @@
     margin: 0;
     color: $color-white;
     text-align: center;
-    @include text(16px, 24px, 600);
+    @include text($b2-fs, $b2-lh, 600);
   }
 
   &__footerLink {
@@ -384,7 +384,7 @@
     @include resize(padding-inline, 16);
     color: $color-white;
     text-decoration: none;
-    @include text(14px, 20px, 500);
+    @include text($b3-fs, $b4-lh, 500);
   }
 
   &__footerLinkIcon {

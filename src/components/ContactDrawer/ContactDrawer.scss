@@ -70,10 +70,10 @@
   &__title {
     margin: 0;
     color: $color-primary;
-    @include text(20px, 32px, 600);
+    @include text($s1-fs, $s1-lh, 600);
 
     @include res-md {
-      @include text(16px, 24px, 600);
+      @include text($b2-fs, $b2-lh, 600);
     }
   }
 
@@ -117,7 +117,7 @@
   &__contactTitle {
     margin: 0;
     color: $color-primary;
-    @include text(16px, 24px, 600);
+    @include text($b2-fs, $b2-lh, 600);
   }
 
   &__checks {
@@ -136,7 +136,7 @@
     margin-top: auto;
     @include resize(padding-block, 12);
     @include resize(padding-inline, 24);
-    @include text(14px, 24px, 500);
+    @include text($b3-fs, $b3-lh, 500);
 
     &:hover {
       opacity: 0.85;

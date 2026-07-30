@@ -113,10 +113,10 @@
 
   &__eyebrow {
     color: $color-white;
-    @include text(16px, 24px, 400);
+    @include text($b2-fs, $b2-lh, 400);
 
     @include res-md {
-      @include text(14px, 20px, 400, center);
+      @include text($b3-fs, 20px, 400, center);
     }
   }
 
@@ -129,20 +129,20 @@
   &__title {
     margin: 0;
     color: $color-white;
-    @include text(40px, 48px, 400);
+    @include text($h1-fs, $h1-lh, 400);
 
     @include res-md {
-      @include text(24px, 32px, 400, center);
+      @include text($h3-fs, $h3-lh, 400, center);
     }
   }
 
   &__description {
     margin: 0;
     color: $color-white;
-    @include text(20px, 32px, 400);
+    @include text($s1-fs, $s1-lh, 400);
 
     @include res-md {
-      @include text(16px, 24px, 400, center);
+      @include text($b2-fs, $b2-lh, 400, center);
     }
   }
 
@@ -160,7 +160,7 @@
   &__paginationLabel {
     flex-shrink: 0;
     color: $color-white;
-    @include text(24px, 32px, 400);
+    @include text($b1-fs, $b1-lh, 400);
   }
 
   &__paginationTrack {
@@ -288,11 +288,11 @@
 
   &__railName {
     color: $color-white;
-    @include text(16px, 24px, 400);
+    @include text($b2-fs, $b2-lh, 400);
   }
 
   &__railNext {
     color: $color-white-60;
-    @include text(10px, 20px, 400);
+    @include text($b4-fs-sm, $b4-lh, 400);
   }
 }

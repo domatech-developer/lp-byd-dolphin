@@ -23,16 +23,16 @@
 
   &__title {
     color: $color-white;
-    @include text(40px, 48px, 400, center);
+    @include text($h1-fs, $h1-lh, 400, center);
 
     @include res-md {
-      @include text(24px, 32px, 400, center);
+      @include text($h3-fs, $h3-lh, 400, center);
     }
   }
 
   &__paragraph {
     color: $color-white-72;
-    @include text($b1-fs, $b1-lh, 400, center);
+    @include text($b2-fs, $b2-lh, 400, center);
 
     @include res-md {
       color: $color-white-80;
@@ -167,10 +167,10 @@
   }
 
   &__cardName {
-    @include text(24px, 32px, 500);
+    @include text($b1-fs, $b1-lh, 500);
 
     @include res-md {
-      @include text(20px, 32px, 500);
+      @include text($s1-fs, $s1-lh, 500);
     }
   }
 
@@ -196,7 +196,7 @@
 
   &__cardDescription,
   &__cardBestFor {
-    @include text($b1-fs, $b1-lh, 400);
+    @include text($b2-fs, $b2-lh, 400);
   }
 
   &__nav {

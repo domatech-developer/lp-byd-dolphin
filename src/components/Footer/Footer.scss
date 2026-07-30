@@ -78,7 +78,7 @@
     align-items: center;
     color: $color-white;
     @include resize(gap, 8);
-    @include text(16px, 24px, 400);
+    @include text($b2-fs, $b2-lh, 400);
   }
 
   &__modelBadge {
@@ -89,7 +89,7 @@
     border-radius: 4px;
     padding: 2px 8px;
     color: $color-white;
-    @include text($b3-fs, $b3-lh, 400);
+    @include text($b4-fs, $b4-lh, 400);
   }
 
   &__divider {
@@ -111,10 +111,10 @@
   &__description {
     margin: 0;
     color: $color-white-56;
-    @include text($b3-fs, $b3-lh, 400);
+    @include text($b4-fs, $b4-lh, 400);
 
     @include res-md {
-      @include text($b3-fs-sm, $b3-lh-sm, 400);
+      @include text($b4-fs-sm, $b4-lh-sm, 400);
     }
   }
 
@@ -146,7 +146,7 @@
   &__copyright {
     margin: 0;
     color: $color-white-72;
-    @include text($b3-fs, $b3-lh, 400);
+    @include text($b4-fs, $b4-lh, 400);
   }
 
   &__credits {
@@ -157,7 +157,7 @@
 
   &__creditsLabel {
     color: $color-white-72;
-    @include text($b3-fs, $b3-lh, 400);
+    @include text($b4-fs, $b4-lh, 400);
   }
 
   &__creditsLink {
