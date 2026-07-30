@@ -196,9 +196,7 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
           </div>
 
           <div className="headerMenu__footer">
-            <div className="headerMenu__footerGlow">
-              <img className="headerMenu__footerGlow__img" src="/images/header/menu-glow.svg" alt="" aria-hidden="true" />
-            </div>
+            <div className="headerMenu__footerGlow" aria-hidden="true" />
 
             <div className="headerMenu__footerContent">
               <p className="headerMenu__footerTitle">{content.menuFooter.title}</p>
