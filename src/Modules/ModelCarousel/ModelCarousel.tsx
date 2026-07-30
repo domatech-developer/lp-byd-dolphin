@@ -49,8 +49,8 @@ const ModelCarousel: FC<ModelCarouselProps> = ({ debug = false }) => {
                         theme="light"
                         circular
                         icon={isExpanded ? "minus" : "plus"}
-                        iconWidth={18}
-                        iconHeight={18}
+                        iconWidth={32}
+                        iconHeight={32}
                         variantLink={{ type: "button" }}
                         data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
                         aria-label={isExpanded ? "Ver menos" : "Ver mais"}

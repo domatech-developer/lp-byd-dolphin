@@ -77,11 +77,16 @@
   }
 
   @media (min-width: 769px) {
+    &--anchored.infoModal--open {
+      pointer-events: none;
+    }
+
     &--anchored &__backdrop {
       pointer-events: none;
     }
 
     &--anchored &__card {
+      pointer-events: auto;
       opacity: 1;
       transform: none;
       transition: none;

@@ -91,6 +91,7 @@
       scroll-snap-type: x proximity;
       scrollbar-width: none;
       -ms-overflow-style: none;
+      @include resize(padding-bottom, 72);
 
       &::-webkit-scrollbar {
         display: none;
@@ -106,7 +107,7 @@
     overflow: hidden;
     border-radius: 8px;
     width: 100%;
-    @include resize(height, 320, 440px);
+    @include resize(height, 320, 440);
     @include resize(padding, 24, 20);
 
     @include res-md {

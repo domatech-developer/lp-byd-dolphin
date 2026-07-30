@@ -1,6 +1,6 @@
 .footer {
   background: $color-primary;
-  @include resize(padding-top, 56);
+  @include resize(padding-block, 56);
 
   &__container {
     margin-inline: auto;
@@ -27,10 +27,18 @@
     @include resize(margin-top, 30);
 
     @include res-md {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      @include resize(gap, 12);
-      @include resize(margin-top, 24);
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      gap: 4px;
+      margin-top: 24px;
+      padding-right: 16px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 
@@ -42,6 +50,12 @@
     width: 100%;
     @include resize(gap, 8);
     @include resize(max-width, 167, none);
+
+    @include res-md {
+      flex: 0 0 100px;
+      width: 100px;
+      max-width: 100px;
+    }
   }
 
   &__modelCard {
@@ -51,7 +65,7 @@
     border-radius: 4px;
     text-decoration: none;
     transition: background 0.2s ease;
-    @include resize(padding-block, 24, 18);
+    @include resize(padding-block, 24);
 
     &:hover,
     &:focus-visible {
@@ -79,6 +93,10 @@
     color: $color-white;
     @include resize(gap, 8);
     @include text($b2-fs, $b2-lh, 400);
+
+    @include res-md {
+      @include text($b3-fs, 20px, 400);
+    }
   }
 
   &__modelBadge {
@@ -137,7 +155,7 @@
 
     @include res-md {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 8px;
       min-height: 0;
     }

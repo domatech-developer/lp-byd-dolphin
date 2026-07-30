@@ -9,8 +9,8 @@ import { headerContent } from "./HeaderContent";
 import { footerContent } from "@/components/Footer/FooterContent";
 
 type HeaderMobileProps = {
-  onOpenPhones: (event: React.SyntheticEvent<HTMLElement>) => void;
-  onOpenLocation: (event: React.SyntheticEvent<HTMLElement>) => void;
+  onOpenPhones: (anchor: HTMLElement | null) => void;
+  onOpenLocation: (anchor: HTMLElement | null) => void;
   onOpenContact: () => void;
 };
 
@@ -29,12 +29,12 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
 
   const openPhones = (event: React.MouseEvent<HTMLElement>) => {
     setMenuOpen(false);
-    onOpenPhones(event);
+    onOpenPhones(event.currentTarget);
   };
 
   const openLocation = (event: React.MouseEvent<HTMLElement>) => {
     setMenuOpen(false);
-    onOpenLocation(event);
+    onOpenLocation(event.currentTarget);
   };
 
   const openContact = () => {
@@ -85,6 +85,8 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
           styling="ghost"
           theme="light"
           circular
+          iconWidth={28}
+          iconHeight={28}
           icon={content.location.icon}
           variantLink={{ type: "button" }}
           data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}

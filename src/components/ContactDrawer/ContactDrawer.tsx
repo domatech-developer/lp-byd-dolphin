@@ -37,16 +37,12 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
   useEffect(() => {
     if (!open) return;
 
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKey);
 
     return () => {
-      document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", onKey);
     };
   }, [open, onClose]);

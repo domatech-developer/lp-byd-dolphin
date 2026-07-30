@@ -27,8 +27,8 @@
     border-radius: 8px;
     text-decoration: none;
     flex: 1 1 0;
-    @include resize(height, 480, 380);
-    @include resize(padding, 32, 20);
+    @include resize(min-height, 480, 320);
+    @include resize(padding, 32, 16);
 
     &--lg {
       flex-grow: 40;
@@ -56,10 +56,6 @@
       .highlights__arrow {
         opacity: 1;
       }
-    }
-
-    @include res-md {
-      @include resize(min-height, 260);
     }
   }
 

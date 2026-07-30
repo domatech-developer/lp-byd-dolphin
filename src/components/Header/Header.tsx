@@ -19,9 +19,9 @@ const Header: FC = () => {
   const phonesCloseTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const locationCloseTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
-  const openPhones = (event: React.SyntheticEvent<HTMLElement>) => {
+  const openPhones = (anchor: HTMLElement | null) => {
     clearTimeout(phonesCloseTimer.current);
-    setPhonesAnchor(event.currentTarget);
+    setPhonesAnchor(anchor);
     setPhonesOpen(true);
   };
 
@@ -31,9 +31,9 @@ const Header: FC = () => {
 
   const cancelClosePhones = () => clearTimeout(phonesCloseTimer.current);
 
-  const openLocation = (event: React.SyntheticEvent<HTMLElement>) => {
+  const openLocation = (anchor: HTMLElement | null) => {
     clearTimeout(locationCloseTimer.current);
-    setLocationAnchor(event.currentTarget);
+    setLocationAnchor(anchor);
     setLocationOpen(true);
   };
 

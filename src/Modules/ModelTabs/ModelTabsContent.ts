@@ -66,7 +66,7 @@ export const modelTabsContent: ModelTabsContent = {
       tabLabel: "BYD Dolphin Plus",
       eyebrow: "BYD Dolphin Plus",
       title: "Mais desempenho\npara ir além.",
-      description: "Mais esportiva e dinâmica, com sensação de performance sem perder elegância.",
+      description: "Mais esportiva e dinâmica. Imagem em movimento, ângulo 3/4 frontal, luz baixa, sensação de performance sem perder a elegância.",
       image: { url: "/images/model-tabs/hero-dolphin-plus.png", alt: "BYD Dolphin Plus" },
       ctaPrimary: "Tenho interesse",
       ctaSecondary: { text: "Ver mais", url: "https://bydservopa.com.br/novos/dolphin-plus", target: "_blank" }

@@ -44,11 +44,9 @@ const InfoModal: FC<InfoModalProps> = ({ open, data, onClose, anchorEl, onMouseE
     };
 
     document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
     };
   }, [open, onClose]);
 

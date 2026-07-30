@@ -95,8 +95,8 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
           theme="light"
           circular
           icon="arrow-left-white-nav"
-          iconWidth={18}
-          iconHeight={14}
+          iconWidth={24}
+          iconHeight={24}
           variantLink={{ type: "button" }}
           data={{ type: "", value: "", url: "", name: content.prevArrowAriaLabel, title: "", target: "" }}
           aria-label={content.prevArrowAriaLabel}
@@ -108,8 +108,8 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
           theme="light"
           circular
           icon="arrow-right-black-nav"
-          iconWidth={18}
-          iconHeight={14}
+          iconWidth={24}
+          iconHeight={24}
           variantLink={{ type: "button" }}
           data={{ type: "", value: "", url: "", name: content.nextArrowAriaLabel, title: "", target: "" }}
           aria-label={content.nextArrowAriaLabel}

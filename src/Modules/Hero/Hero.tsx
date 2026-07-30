@@ -122,8 +122,8 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                     theme="light"
                     circular
                     icon="arrow-left-white-nav"
-                    iconWidth={18}
-                    iconHeight={15}
+                    iconWidth={24}
+                    iconHeight={20}
                     variantLink={{ type: "button" }}
                     data={{ type: "", value: "", url: "", name: content.prevArrowAriaLabel, title: "", target: "" }}
                     aria-label={content.prevArrowAriaLabel}
@@ -135,8 +135,8 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                     theme="light"
                     circular
                     icon="arrow-right-black-nav"
-                    iconWidth={18}
-                    iconHeight={15}
+                    iconWidth={24}
+                    iconHeight={20}
                     variantLink={{ type: "button" }}
                     data={{ type: "", value: "", url: "", name: content.arrowAriaLabel, title: "", target: "" }}
                     aria-label={content.arrowAriaLabel}
