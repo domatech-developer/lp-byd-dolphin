@@ -63,10 +63,11 @@ const HeaderDesktop: FC<HeaderDesktopProps> = ({
             positionIcon="left"
             variantLink={{ type: "button" }}
             data={{ type: "", value: "", url: "", name: content.phones.label, title: content.phones.label, target: "" }}
-            onMouseEnter={(e) => onOpenPhones(resolveAnchor(e.currentTarget))}
-            onMouseLeave={onClosePhones}
+            onMouseEnter={isOverHero ? (e) => onOpenPhones(resolveAnchor(e.currentTarget)) : undefined}
+            onMouseLeave={isOverHero ? onClosePhones : undefined}
             onFocus={(e) => onOpenPhones(resolveAnchor(e.currentTarget))}
             onBlur={onClosePhones}
+            onClick={!isOverHero ? (e) => onOpenPhones(resolveAnchor(e.currentTarget)) : undefined}
           />
 
           <ButtonDefault
@@ -77,10 +78,11 @@ const HeaderDesktop: FC<HeaderDesktopProps> = ({
             positionIcon="left"
             variantLink={{ type: "button" }}
             data={{ type: "", value: "", url: "", name: content.location.label, title: content.location.label, target: "" }}
-            onMouseEnter={(e) => onOpenLocation(resolveAnchor(e.currentTarget))}
-            onMouseLeave={onCloseLocation}
+            onMouseEnter={isOverHero ? (e) => onOpenLocation(resolveAnchor(e.currentTarget)) : undefined}
+            onMouseLeave={isOverHero ? onCloseLocation : undefined}
             onFocus={(e) => onOpenLocation(resolveAnchor(e.currentTarget))}
             onBlur={onCloseLocation}
+            onClick={!isOverHero ? (e) => onOpenLocation(resolveAnchor(e.currentTarget)) : undefined}
           />
 
           <LinkDefault

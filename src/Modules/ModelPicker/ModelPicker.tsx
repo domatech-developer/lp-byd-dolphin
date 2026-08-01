@@ -17,8 +17,13 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
   const content = modelPickerContent;
   const [activeId, setActiveId] = useState(content.cards[0]?.id);
   const cardRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
     cardRefs.current[activeId ?? ""]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
   }, [activeId]);
 
@@ -45,7 +50,7 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
         <p className="modelPicker__paragraph">{content.paragraph}</p>
       </div>
 
-      <div className="modelPicker__cards" role="tablist" onMouseLeave={() => setActiveId(content.cards[0]?.id)}>
+      <div className="modelPicker__cards" role="tablist">
         {content.cards.map((card) => {
           const isActive = card.id === activeId;
 
@@ -62,7 +67,6 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
               role="tab"
               aria-selected={isActive}
               className={`modelPicker__card ${isActive ? "modelPicker__card--active" : ""}`}
-              onMouseEnter={() => setActiveId(card.id)}
               onFocus={() => setActiveId(card.id)}
               onClick={() => setActiveId(card.id)}
             >
