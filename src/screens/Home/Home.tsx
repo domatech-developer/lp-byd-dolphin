@@ -26,8 +26,10 @@ const Home: FC<HomeProps> = async ({ data, locale }) => {
       <ModelPicker />
       <ModelTabs />
       <ModelBanner />
-      <ModelCarousel />
-      <TechFeatures />
+      <div className="techFeaturesReveal">
+        <ModelCarousel />
+        <TechFeatures />
+      </div>
       <VideoServopa />
       <AboutServopa />
       <Highlights />
