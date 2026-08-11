@@ -7,6 +7,8 @@ import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import { sendGTMEvent } from "@next/third-parties/google";
+import ProposalDrawer from "@/components/ProposalDrawer/ProposalDrawer";
+import { proposalDrawerContent } from "@/components/ProposalDrawer/ProposalDrawerContent";
 
 import { modelTabsContent } from "./ModelTabsContent";
 
@@ -16,6 +18,7 @@ type ModelTabsProps = {
 
 const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
   const content = modelTabsContent;
+  const [proposalOpen, setProposalOpen] = useState(false);
   const [active, setActive] = useState(0);
 
   if (!content || !content.section_check) return null;
@@ -66,6 +69,7 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
               data={{ type: "", value: "", url: "", name: activeTab.ctaPrimary, title: activeTab.ctaPrimary, target: "" }}
               onClick={() => {
                 sendGTMEvent({ event: "button_clicked_garantir_proposta", value: "garantir_proposta" });
+                setProposalOpen(true);
               }}
             />
             <ButtonDefault
@@ -98,6 +102,8 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
           </div>
         </div>
       </div>
+
+      <ProposalDrawer open={proposalOpen} data={proposalDrawerContent} onClose={() => setProposalOpen(false)} />
     </SectionDefault>
   );
 };

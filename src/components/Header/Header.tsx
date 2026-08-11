@@ -6,14 +6,15 @@ import HeaderMobile from "./HeaderMobile";
 import InfoModal from "@/components/InfoModal/InfoModal";
 import { phonesModalContent } from "@/components/InfoModal/phonesModalContent";
 import { locationsModalContent } from "@/components/InfoModal/locationsModalContent";
-import ContactDrawer from "@/components/ContactDrawer/ContactDrawer";
+import ProposalDrawer from "@/components/ProposalDrawer/ProposalDrawer";
+import { proposalDrawerContent } from "@/components/ProposalDrawer/ProposalDrawerContent";
 
 const CLOSE_DELAY = 150;
 
 const Header: FC = () => {
+  const [proposalOpen, setProposalOpen] = useState(false);
   const [phonesOpen, setPhonesOpen] = useState(false);
   const [locationOpen, setLocationOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
   const [phonesAnchor, setPhonesAnchor] = useState<HTMLElement | null>(null);
   const [locationAnchor, setLocationAnchor] = useState<HTMLElement | null>(null);
   const phonesCloseTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -43,9 +44,7 @@ const Header: FC = () => {
 
   const cancelCloseLocation = () => clearTimeout(locationCloseTimer.current);
 
-  const openContact = () => {
-    setContactOpen(true);
-  };
+  const openContact = () => setProposalOpen(true);
 
   return (
     <>
@@ -74,7 +73,7 @@ const Header: FC = () => {
         onMouseEnter={cancelCloseLocation}
         onMouseLeave={scheduleCloseLocation}
       />
-      <ContactDrawer open={contactOpen} onClose={() => setContactOpen(false)} />
+      <ProposalDrawer open={proposalOpen} data={proposalDrawerContent} onClose={() => setProposalOpen(false)} />
     </>
   );
 };
