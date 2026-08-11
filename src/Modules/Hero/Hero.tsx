@@ -5,6 +5,7 @@ import React, { FC, useState } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 import { heroContent } from "./HeroContent";
 
@@ -43,14 +44,7 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
           return (
             <div key={model.id} className={`hero__backgroundLayer ${isActive ? "hero__backgroundLayer--active" : ""}`}>
               {model.backgroundVideo ? (
-                <video
-                  className="hero__backgroundLayer__media"
-                  src={model.backgroundVideo}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
+                <video className="hero__backgroundLayer__media" src={model.backgroundVideo} autoPlay muted loop playsInline />
               ) : model.backgroundImage ? (
                 <picture>
                   {model.backgroundImage.mobileUrl && (
@@ -103,7 +97,17 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                   styling="filled"
                   theme="light"
                   variantLink={{ type: "link" }}
-                  data={{ type: "", value: "", url: model.ctaUrl, name: model.ctaLabel, title: model.ctaLabel, target: "_blank" }}
+                  data={{
+                    type: "",
+                    value: "",
+                    url: model.ctaUrl,
+                    name: model.ctaLabel,
+                    title: model.ctaLabel,
+                    target: "_blank"
+                  }}
+                  onClick={() => {
+                    sendGTMEvent({ event: "button_clicked_conhecer_modelo", value: "conhecer_modelo" });
+                  }}
                 />
               </div>
 

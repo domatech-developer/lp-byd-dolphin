@@ -7,6 +7,7 @@ import LinkDefault from "@/components/LinkDefault/LinkDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 import { headerContent } from "./HeaderContent";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 type HeaderDesktopProps = {
   onOpenPhones: (anchor: HTMLElement | null) => void;
@@ -91,6 +92,7 @@ const HeaderDesktop: FC<HeaderDesktopProps> = ({
             title={content.cta.text}
             onClick={(event) => {
               event.preventDefault();
+              sendGTMEvent({ event: "button_clicked_garantir_proposta", value: "garantir_proposta" });
               onOpenContact();
             }}
           >

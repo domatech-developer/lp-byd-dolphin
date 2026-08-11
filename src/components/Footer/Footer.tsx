@@ -4,6 +4,7 @@ import LinkDefault from "@/components/LinkDefault/LinkDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 import { footerContent } from "./FooterContent";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 const Footer: FC = () => {
   const content = footerContent;
@@ -43,7 +44,7 @@ const Footer: FC = () => {
         <hr className="footer__divider" />
 
         <div className="footer__content">
-          {description && <p className="footer__description">{description}</p> } 
+          {description && <p className="footer__description">{description}</p>}
           <br />
           {contact && <p className="footer__description">{contact}</p>}
         </div>
@@ -61,6 +62,9 @@ const Footer: FC = () => {
               target={credits_link?.target || "_blank"}
               rel="noreferrer"
               title={credits_logo?.title || "Domatech"}
+              onClick={() => {
+                sendGTMEvent({ event: "button_clicked_feito_por_domatech", value: "clicou_logo_domatech" });
+              }}
             >
               <div className="footer__creditsLogo">
                 <img

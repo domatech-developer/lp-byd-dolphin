@@ -6,6 +6,7 @@ import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 import { modelTabsContent } from "./ModelTabsContent";
 
@@ -63,6 +64,9 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
               theme="dark"
               variantLink={{ type: "button" }}
               data={{ type: "", value: "", url: "", name: activeTab.ctaPrimary, title: activeTab.ctaPrimary, target: "" }}
+              onClick={() => {
+                sendGTMEvent({ event: "button_clicked_garantir_proposta", value: "garantir_proposta" });
+              }}
             />
             <ButtonDefault
               styling="outline"
@@ -76,6 +80,9 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
                 name: activeTab.ctaSecondary.text,
                 title: activeTab.ctaSecondary.text,
                 target: activeTab.ctaSecondary.target || ""
+              }}
+              onClick={() => {
+                sendGTMEvent({ event: "button_clicked_conhecer_modelo", value: "conhecer_modelo" });
               }}
             />
           </div>
