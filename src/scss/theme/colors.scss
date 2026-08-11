@@ -1,29 +1,6 @@
-// Primary
-$color-primary-100: #21384c;
-$color-primary-200: #0367ad;
-$color-primary-300: #07b2d9;
-// Secondary
-$color-secondary-100: #be1118;
-$color-secondary-200: #e31119;
-// Tertiary
-$color-tertiary-100: #1e996c;
-$color-tertiary-200: #7cbf83;
-
 // Default
 $color-black: #000;
 $color-white: #fff;
-
-// Grays
-$color-gray-100: #131315;
-$color-gray-200: #535d63;
-$color-gray-300: #667078;
-$color-gray-400: #7a848c;
-$color-gray-500: #8e99a0;
-$color-gray-600: #a3adb5;
-$color-gray-700: #b9c2c9;
-$color-gray-800: #e6edf2;
-$color-gray-900: #f8fcff;
-$color-gray-1000: #ffffff;
 
 // Focus
 $color-focus: #0171e3;
@@ -31,8 +8,43 @@ $color-focus: #0171e3;
 // Error
 $color-error: #d22e34;
 
-//opacity
+// Dark
+$color-primary: #010101;
+$color-secondary: #171717;
+$color-dark-divider: #2a303d;
+$color-dark-card-hover: #2E2E2E;
+$color-dark-border: #0e0e0e;
+$color-dark-surface: #0e0d12;
+
+// Gray
+$color-gray-100: #ECECEC;
+$color-gray-200: #cacaca;
+$color-gray-300: #b0b0b0;
+$color-gray-400: #757575;
+$color-gray-divider: #ebebeb;
+$color-gray-light: #f6f6f6;
+$color-gray-placeholder: #c4c4c4;
+
+// Accent
+$color-accent-blue: #1e4bff;
+$color-accent-blue-dark: #001878;
+$color-live-green: #0e8530;
+
+// Opacity
+$color-white-05: #ffffff0d;
+$color-white-10: #ffffff1a;
 $color-white-30: #ffffff4d;
+$color-white-56: #ffffff8f;
 $color-white-60: #ffffff99;
+$color-white-72: #ffffffb8;
+$color-white-80: #ffffffcc;
+$color-black-10: #0000001a;
+$color-black-20: #00000033;
+$color-black-25: #00000040;
 $color-black-30: #0000004d;
+$color-black-40: #00000066;
+$color-black-50: #00000080;
+$color-black-55: #0000008c;
 $color-black-60: #00000099;
+$color-black-80: #000000cc;
+$color-black-90: #01010199;

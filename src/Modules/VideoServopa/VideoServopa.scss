@@ -1,0 +1,90 @@
+.videoServopa {
+  overflow: hidden;
+
+  &__container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    height: 100vh;
+    aspect-ratio: 1366 / 745;
+
+    @include res-lg {
+      height: auto;
+      aspect-ratio: 1366 / 745;
+      min-height: 480px;
+    }
+
+    @include res-md {
+      width: 100%;
+      height: 718px;
+      aspect-ratio: unset;
+    }
+  }
+
+  &__background {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+
+    @include res-lg {
+      background-position: 30% center;
+    }
+
+    @include res-md {
+      background-position: 20% center;
+    }
+  }
+
+  &__innerContainer {
+    @include container;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    opacity: 0;
+    transform: translateX(-100px);
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @include resize(gap, 32);
+    @include resize(width, 470, 275);
+    @include resize(padding-top, 56, 32);
+  }
+
+  &__title {
+    margin: 0;
+    color: $color-white;
+    text-align: left;
+    font-variant-numeric: lining-nums proportional-nums;
+    @include text($h1-fs, $h1-lh, 400, left);
+
+    @include res-md {
+      @include text($h3-fs, $h3-lh, 400, left);
+    }
+
+    span {
+      font-weight: 700;
+    }
+  }
+}

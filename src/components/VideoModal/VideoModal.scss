@@ -1,0 +1,47 @@
+.videoModal {
+  animation: fadeIn 250ms ease-in-out forwards;
+  background: rgba($color-black, 0.85);
+  inset: 0;
+  position: fixed;
+  z-index: 1000;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  &__box {
+    position: relative;
+    width: 80%;
+    @include resize(max-width, 1100);
+
+    @include res-md {
+      width: 100%;
+      max-width: 100%;
+      margin-inline: 16px;
+    }
+  }
+
+  &__close {
+    background: $color-primary;
+    position: absolute;
+    right: -16px;
+    top: -16px;
+    z-index: 1;
+    @include resize(height, 40);
+    @include resize(width, 40);
+
+    @include res-md {
+      right: 0;
+      top: -48px;
+    }
+  }
+
+  &__video {
+    aspect-ratio: 16 / 9;
+    background: $color-black;
+    border-radius: 4px;
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}

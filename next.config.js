@@ -47,13 +47,6 @@ const nextConfig = {
       }
     ];
   },
-  async redirects() {
-    return [
-      { source: "/entrar", destination: "https://admin.globalteadit.com/entrar", permanent: true },
-      { source: "/", destination: "/pt-br", permanent: true },
-
-    ];
-  }
 };
 
 module.exports = nextConfig;

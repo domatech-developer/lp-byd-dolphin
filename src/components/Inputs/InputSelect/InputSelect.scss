@@ -6,9 +6,8 @@
   @include resize(width, 100%);
 
   &__label {
-    @include Body1;
-    font-weight: 400;
-    color: $color-gray-100;
+    @include text(16px, 24px, 400);
+    color: $color-primary;
   }
 
   &__wrapper {
@@ -19,22 +18,21 @@
     justify-content: space-between;
     @include resize(width, 100%);
     @include resize(height, 40);
-    @include Body1;
-    color: $color-gray-100;
-    font-weight: 400;
-    background: #F8FCFF;
-    border: 1px solid $color-gray-700;
+    @include text(16px, 24px, 400);
+    color: $color-primary;
+    background: $color-white;
+    border: 1px solid $color-black-30;
     @include resize(padding-block, 8);
     @include resize(padding-inline, 16);
 
     &:hover {
-      border: 1px solid $color-gray-300;
+      border: 1px solid $color-black-30;
     }
 
     &:focus-visible {
-      outline: 2px solid $color-primary-200;
+      outline: 2px solid $color-focus;
       outline-offset: 2px;
-      border-color: $color-gray-700;
+      border-color: $color-black-30;
     }
 
     &:after {
@@ -57,7 +55,7 @@
     }
 
     &[aria-expanded="true"] {
-      border: 1px solid $color-primary-200;
+      border: 1px solid $color-focus;
 
       &::after {
         transform: rotate(180deg);
@@ -66,11 +64,11 @@
 
     &[aria-disabled="true"] {
       pointer-events: none;
-      background: $color-gray-900;
-      border: 1px solid $color-gray-300;
+      background: $color-gray-100;
+      border: 1px solid $color-black-30;
 
       .inputSelect__option {
-        color: $color-gray-300;
+        color: $color-black-30;
       }
 
       &::after {
@@ -84,12 +82,11 @@
     appearance: none;
     position: relative;
     width: 100%;
-    @include Body1;
-    color: $color-gray-100;
-    font-weight: 400;
+    @include text(16px, 24px, 400);
+    color: $color-primary;
 
     &--placeholder {
-      color: $color-gray-200;
+      color: $color-black-40;
     }
   }
 
@@ -99,22 +96,22 @@
     width: 100%;
     opacity: 0;
     max-height: 0;
-    background: #F8FCFF;
-    border: 1px solid $color-gray-300;
-    border-radius: $input-border-radius;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: $color-white;
+    border: 1px solid $color-black-30;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px $color-black-10;
 
     transition:
       opacity 150ms 50ms ease-in,
       max-height 150ms ease-in;
 
-    @include resize(gap, $input-gap);
-    @include resize(padding, $input-padding-block);
+    @include resize(gap, 4);
+    @include resize(padding, 12);
 
     &--active {
       opacity: 1;
       pointer-events: all;
-      
+
       @include resize(max-height, 250);
     }
   }
@@ -122,23 +119,23 @@
   &__item {
     cursor: pointer;
 
-    border-radius: $input-border-radius;
+    border-radius: 4px;
 
     font-weight: 400;
-    color: $color-gray-100;
+    color: $color-primary;
     font-family: $font-default;
     @include resize(font-size, $b1-fs);
     @include resize(line-height, $b1-lh);
-    @include resize(padding, $input-padding-block);
+    @include resize(padding, 12);
 
     &:hover {
-      background: #c9dae7;
+      background: $color-gray-100;
     }
 
     &:focus-visible {
-      outline: 2px solid $color-primary-200;
+      outline: 2px solid $color-focus;
       outline-offset: 2px;
-      border-color: $color-gray-700;
+      border-color: $color-black-30;
     }
   }
 
@@ -150,10 +147,23 @@
 
   &__helpIcon {
     display: block;
-    object-fit: cover;
-    object-position: center;
+    flex-shrink: 0;
     @include resize(width, 16);
     @include resize(height, 16);
+
+    &__imgContainer {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
   &__helpText {

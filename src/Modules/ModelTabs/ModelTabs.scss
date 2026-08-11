@@ -1,0 +1,183 @@
+.modelTabs {
+  &__container {
+    @include container(full);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include resize(gap, 24);
+    @include resize(padding-top, 96);
+  }
+
+  &__title {
+    color: $color-black;
+    @include text($h1-fs, $h1-lh, 400, center);
+
+    @include res-md {
+      @include text($h3-fs, $h3-lh, 400, center);
+    }
+  }
+
+  &__tabs {
+    position: sticky;
+    z-index: 3;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    background: $color-white;
+    @include resize(gap, 8);
+
+    @include res-md {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-inline: 16px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__tab {
+    flex-shrink: 0;
+
+    &.buttonDefault--light:not(.modelTabs__tab--active) {
+      color: $color-black-40;
+    }
+  }
+
+  &__hero {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    background: linear-gradient(180deg, $color-gray-light 0%, $color-gray-divider 100%);
+    @include resize(min-height, 500);
+
+    @include res-md {
+      flex-direction: column-reverse;
+      padding-block: 32px;
+    }
+  }
+
+  &__heroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 0 1 auto;
+    z-index: 2;
+    @include resize(gap, 32, 24);
+    @include resize(padding-left, 80, 0);
+    @include resize(padding-block, 96, 0);
+    @include resize(max-width, 500, 100%);
+
+    @include res-md {
+      @include resize(padding-inline, 16);
+    }
+  }
+
+  &__heroTextGroup {
+    display: flex;
+    flex-direction: column;
+    @include resize(gap, 32, 8);
+  }
+
+  &__eyebrow {
+    margin: 0;
+    color: $color-black;
+    @include text($s1-fs, $s1-lh, 400);
+
+    @include res-md {
+      @include text($b2-fs, $b2-lh, 400);
+    }
+  }
+
+  &__heroTitle {
+    margin: 0;
+    color: $color-black;
+    @include text($b1-lg-fs, $b1-lg-lh, 400);
+
+    @include res-md {
+      @include text($h3-fs, $h3-lh, 400);
+    }
+  }
+
+  &__description {
+    margin: 0;
+    color: $color-black-80;
+    @include text($b2-fs, $b2-lh, 400);
+  }
+
+  &__ctas {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    @include resize(gap, 8);
+
+    .buttonDefault {
+      @include resize(width, 180);
+    }
+
+    @include res-md {
+      .buttonDefault {
+        width: auto;
+        flex: 1 1 0;
+      }
+    }
+  }
+
+  &__heroImage {
+    flex: 1 1 0;
+    position: relative;
+
+    &__imgContainer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include res-md {
+      @include resize(min-height, 240);
+      flex-basis: auto;
+    }
+  }
+
+  &__watermark {
+    position: absolute;
+    z-index: 2;
+    right: 4.7%;
+    opacity: 0.5;
+    pointer-events: none;
+    @include resize(top, 12.8%, 24);
+
+    @include res-md {
+      right: auto;
+      left: 16px;
+      opacity: 1;
+    }
+  }
+
+  &__iconContainer {
+    display: block;
+    @include resize(width, 104, 73);
+    @include resize(height, 20, 14);
+  }
+
+  &__icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}

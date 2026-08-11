@@ -9,10 +9,11 @@ import ClassNames from "embla-carousel-class-names";
 
 type PropType = {
   options?: EmblaOptionsType;
-  plugins?: any[]; // <- corrige aqui para aceitar array de plugins
+  plugins?: any[];
   activeSlide?: boolean;
   autoScroll?: boolean;
   autoScrollOptions?: AutoScrollOptionsType;
+  hideButtons?: boolean;
   children: React.ReactNode;
 };
 
@@ -22,9 +23,10 @@ const CarouselDefault: React.FC<PropType> = ({
   autoScroll,
   children,
   autoScrollOptions,
-  plugins = [] // <- default vazio
+  hideButtons = false,
+  plugins = []
 }) => {
-  const emblaPlugins: any[] = [...plugins]; // <- começa com o que vier de fora
+  const emblaPlugins: any[] = [...plugins];
   activeSlide && emblaPlugins.push(ClassNames());
   autoScroll && emblaPlugins.push(AutoScroll({ ...autoScrollOptions }));
   const [emblaRef, emblaApi] = useEmblaCarousel(options, emblaPlugins);
@@ -38,20 +40,12 @@ const CarouselDefault: React.FC<PropType> = ({
       </div>
 
       <div className="carouselDefault__controls">
-        <div className="carouselDefault__buttons">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </div>
-
-        <div className="carouselDefault__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index + "embla__dot"}
-              onClick={() => onDotButtonClick(index)}
-              className={"carouselDefault__dot".concat(index === selectedIndex ? " carouselDefault__dot--selected" : "")}
-            />
-          ))}
-        </div>
+        {!hideButtons && (
+          <div className="carouselDefault__buttons">
+            <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+            <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,11 +1,3 @@
-import { getGeneral } from "@/lib/GetGeneral";
-import { resolveLocaleFromParams } from "@/lib/resolveLocale";
-
-export default async function Layout({ children, params }: any) {
-  const { locale } = await resolveLocaleFromParams(params);
-  if (locale) {
-    await getGeneral({ locale });
-  }
-
+export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

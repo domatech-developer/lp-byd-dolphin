@@ -2,7 +2,7 @@
 import "./InputPhone.scss";
 import { ComponentProps } from "react";
 import InputMask from "@mona-health/react-input-mask";
-import ImgDefault from "@/components/ImgDefault/ImgDefault";
+import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 type InputPhoneProps = Omit<ComponentProps<typeof InputMask>, "mask"> & {
   label?: string;
@@ -29,7 +29,7 @@ const InputPhone: React.FC<InputPhoneProps> = ({ id, label, value, erroMsg, inva
       />
       {invalid && (
         <div className="inputPhone__helpContainer">
-          <ImgDefault src="/icons/alert.svg" alt="Alerta" className="inputPhone__helpIcon" />
+          <ImgContainer className="inputPhone__helpIcon" image={{ url: "/icons/alert.svg", alt: "Alerta" }} />
           <span className="inputPhone__helpText">{erroMsg}</span>
         </div>
       )}

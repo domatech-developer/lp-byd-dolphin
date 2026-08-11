@@ -1,0 +1,430 @@
+.headerMobile {
+  &__top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    background: $color-black-90;
+    backdrop-filter: blur(20px);
+    @include resize(gap, 16);
+    @include resize(padding-block, 16);
+    @include resize(padding-inline, 20);
+
+    @include res-md {
+      display: flex;
+    }
+  }
+
+  &__logoLink {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__logo {
+    display: block;
+    width: 165px;
+    height: 32px;
+
+    &__imgContainer {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__toggle {
+    align-items: end;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    flex-direction: column;
+    gap: 5.5px;
+  }
+
+  &__toggleBar {
+    display: block;
+    height: 1.5px;
+    border-radius: 999px;
+    background: $color-white;
+
+    &--top {
+      width: 24px;
+    }
+
+    &--bottom {
+      width: 16px;
+    }
+  }
+
+  &__bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    width: 100%;
+    background: $color-primary;
+    border-top: 1px solid $color-dark-border;
+    box-shadow: 0px -4px 3px $color-black-10;
+    @include resize(padding-block, 8);
+    @include resize(padding-inline, 64, 20);
+
+    @include res-md {
+      display: flex;
+    }
+  }
+
+  &__ghost {
+    flex-shrink: 0;
+  }
+
+  &__divider {
+    display: block;
+    width: 1px;
+    height: 20px;
+    background: $color-white-10;
+    flex-shrink: 0;
+  }
+
+  &__iconButton {
+    width: 44px;
+    height: 44px;
+    padding: 12px;
+    background: $color-dark-surface;
+    flex-shrink: 0;
+  }
+
+  &__cta {
+    margin-left: auto;
+    @include resize(padding-block, 12);
+    @include resize(padding-inline, 16);
+    white-space: nowrap;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+.headerMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  justify-content: flex-end;
+  visibility: hidden;
+  pointer-events: none;
+
+  &--open {
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    background: $color-black-50;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    .headerMenu--open & {
+      opacity: 1;
+    }
+  }
+
+  &__panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 340px;
+    max-width: 100%;
+    height: 100%;
+    background: $color-primary;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+
+    .headerMenu--open & {
+      transform: translateX(0);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    @include resize(gap, 31);
+    width: 100%;
+    padding-top: 24px;
+    @include resize(padding-inline, 20);
+  }
+
+  &__headSection {
+    display: flex;
+    flex-direction: column;
+    @include resize(gap, 16);
+    width: 100%;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__logo {
+    display: block;
+    width: 165px;
+    height: 32px;
+
+    &__imgContainer {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__close {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 12px;
+    background: $color-dark-surface;
+  }
+
+  &__divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: $color-white-05;
+    flex-shrink: 0;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    @include resize(gap, 8);
+    width: 100%;
+  }
+
+  &__mainTitle {
+    margin: 0;
+    color: $color-white;
+    @include text($b2-fs, $b2-lh, 600);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__cta {
+    width: 100%;
+  }
+
+  &__models {
+    display: flex;
+    align-items: flex-start;
+    @include resize(gap, 8);
+    width: 100%;
+    margin: 0;
+    padding-top: 0;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__modelItem {
+    display: flex;
+    flex-direction: column;
+    @include resize(gap, 8);
+    flex-shrink: 0;
+    width: 100px;
+  }
+
+  &__modelCard {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    @include resize(padding-block, 24);
+    padding-inline: 0;
+    background: $color-secondary;
+    border-radius: 4px;
+  }
+
+  &__modelImage {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+
+    &__imgContainer {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__modelName {
+    display: flex;
+    align-items: center;
+    @include resize(gap, 8);
+    color: $color-white;
+    @include text($b3-fs, 20px, 400);
+  }
+
+  &__modelBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 6px;
+    border: 1px solid $color-white;
+    border-radius: 4px;
+    @include text($b4-fs-sm, $b4-lh-sm, 400);
+  }
+
+  &__footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include resize(gap, 24);
+    width: 100%;
+    @include resize(padding-block, 32);
+    @include resize(padding-inline, 20);
+    background: $color-white-05;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -70px;
+      transform: translateX(-50%);
+      width: 510px;
+      height: 650px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center,
+          transparent 49%,
+          $color-accent-blue 65%,
+          transparent 91%);
+      filter: blur(42px);
+      pointer-events: none;
+    }
+  }
+
+    &__footerContent {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include resize(gap, 12);
+      width: 100%;
+    }
+
+    &__footerTitle {
+      margin: 0;
+      color: $color-white;
+      text-align: center;
+      @include text($b2-fs, $b2-lh, 600);
+    }
+
+    &__footerLink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      @include resize(gap, 4);
+      @include resize(padding-block, 12);
+      @include resize(padding-inline, 16);
+      color: $color-white;
+      text-decoration: none;
+      @include text($b3-fs, 20px, 500);
+    }
+
+    &__footerLinkIcon {
+      display: block;
+      width: 20px;
+      height: 20px;
+
+      &__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__social {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include resize(gap, 8);
+    }
+
+    &__socialLink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      @include resize(padding, 8);
+      border-radius: 300px;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &__socialIcon {
+      display: block;
+      width: 24px;
+      height: 24px;
+
+      &__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }

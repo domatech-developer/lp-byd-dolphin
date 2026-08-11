@@ -1,0 +1,233 @@
+.modelPicker {
+  background: $color-primary;
+
+  &__container {
+    @include container(full);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include resize(gap, 24);
+    @include resize(padding-block, 80, 56);
+    @include resize(padding-inline, 16);
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    @include resize(max-width, 700);
+    @include resize(gap, 12);
+  }
+
+  &__title {
+    color: $color-white;
+    @include text($h1-fs, $h1-lh, 400, center);
+
+    @include res-md {
+      @include text($h3-fs, $h3-lh, 400, center);
+    }
+  }
+
+  &__paragraph {
+    color: $color-white-72;
+    @include text($b2-fs, $b2-lh, 400, center);
+
+    @include res-md {
+      color: $color-white-80;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    width: 100%;
+    @include resize(gap, 8);
+    @include resize(height, 400, 320);
+
+    @include res-md {
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      padding-inline: 16px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 100%;
+    overflow: hidden;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    flex-grow: 0;
+    flex-shrink: 0;
+    @include resize(flex-basis, 205);
+    transition: flex-grow 0.6s ease-in-out, flex-basis 0.6s ease-in-out;
+    @include resize(padding, 24, 20);
+
+    &--active {
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 0;
+    }
+
+    @include res-md {
+      @include resize(min-width, 320);
+      flex: 0 0 205px;
+      scroll-snap-align: start;
+      &--active {
+        flex: 0 0 320px;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-focus;
+      outline-offset: -2px;
+    }
+  }
+
+  &__cardImage {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: $color-gray-placeholder;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      border-radius: 8px;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 45.25%, $color-black-20 63.75%);
+    }
+
+    &__imgContainer {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    &__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: none;
+      object-position: 20% center;
+
+      .modelPicker__card--active & {
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__cardGlass {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 8px;
+    pointer-events: none;
+    background: $color-black-60;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+
+    .modelPicker__card--active & {
+      opacity: 1;
+    }
+  }
+
+  &__cardInfo {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    color: $color-white;
+    width: 100%;
+    @include resize(gap, 12);
+  }
+
+  &__cardName {
+    @include text($b1-fs, $b1-lh, 500);
+
+    @include res-md {
+      @include text($s1-fs, $s1-lh, 500);
+    }
+  }
+
+  &__cardDetails {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out, grid-template-rows 0.6s ease-in-out;
+
+    .modelPicker__card--active & {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+  }
+
+  &__cardDetailsInner {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    @include resize(gap, 12);
+  }
+
+  &__cardDescription,
+  &__cardBestFor {
+    @include text($b2-fs, $b2-lh, 400);
+  }
+
+  &__nav {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    @include res-md {
+      display: flex;
+    }
+  }
+
+  &__nav__btn {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    padding: 12px;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    &--prev {
+      background: $color-dark-surface;
+    }
+
+    &--next {
+      background: $color-white;
+      padding: 6px;
+    }
+  }
+}

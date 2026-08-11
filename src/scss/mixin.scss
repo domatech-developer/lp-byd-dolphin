@@ -5,12 +5,12 @@
 
 @use "@/scss/base/responsives.scss" as *;
 
-$font-default: "Avenir Next", sans-serif;
+$font-default: "Montserrat", sans-serif;
 $font-secondary: "Roboto", sans-serif;
 
 /* Headline/H1 */
-$h1-fs: 3rem; // 48px
-$h1-lh: 3.6rem; // 57.6px
+$h1-fs: 2.5rem; // 40px
+$h1-lh: 3rem; // 48px
 
 /* Headline/H2 */
 $h2-fs: 2rem; // 32px
@@ -19,25 +19,40 @@ $h2-ls: -0.64px; // -0.64px
 
 /* Headline/H3 */
 $h3-fs: 1.5rem; // 24px
-$h3-lh: 1.95rem; // 31.2px
+$h3-lh: 2rem; // 32px
 $h3-ls: -48px; //-0.48px
 
+$h3-fs-sm: 1.125rem; // 18px
+$h3-lh-sm: 1.5rem; // 24px
+
 /* Subtítulo/S1 */
-$s1-fs: 1.125rem; // 18px
-$s1-lh: 1.4625rem; // 23.4px
+$s1-fs: 1.25rem; // 20px
+$s1-lh: 2rem; // 32px
 $s1-ls: 0%;
 
-/* Body/Body 1 */
-$b1-fs: 1rem; // 16px
-$b1-lh: 1.5rem; // 24px
+$b1-fs: 1.5rem; // 24px
+$b1-lh: 2rem; // 32px
+
+$b1-lg-fs: 2rem; // 32px
+$b1-lg-lh: 2.5rem; // 40px
+
+$b1-xl-fs: 2.5rem; // 40px
+$b1-xl-lh: 3rem; // 48px
 
 /* Body/Body 2 */
-$b2-fs: 0.875rem; // 14px
+$b2-fs: 1rem; // 16px
 $b2-lh: 1.5rem; // 24px
 
 /* Body/Body 3 */
-$b3-fs: 0.75rem; // 12px
-$b3-lh: 1.25rem; // 20px
+$b3-fs: 0.875rem; // 14px
+$b3-lh: 1.5rem; // 24px
+
+/* Body/Body 4 */
+$b4-fs: 0.75rem; // 12px
+$b4-lh: 1.25rem; // 20px
+
+$b4-fs-sm: 0.625rem; // 10px
+$b4-lh-sm: 1rem; // 16px
 
 $maxResDesktop: 2560;
 $minReDesktop: 1366;
@@ -363,4 +378,16 @@ $valid-units: (
   outline-offset: 2px;
   border-radius: 4px;
   transition: outline-offset 0.15s ease, outline-color 0.2s ease;
+}
+
+@mixin text($size, $height, $weight: 400, $align: left, $style: normal) {
+  font-family: $font-default;
+
+  @include content {
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+    text-align: $align;
+    font-style: $style;
+  }
 }

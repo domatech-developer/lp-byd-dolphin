@@ -1,0 +1,221 @@
+.aboutServopa {
+  background: $color-black;
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  @include resize(padding-block, 80);
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    isolation: isolate;
+  }
+
+  &__blurLayer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 16%, $color-black 60%);
+    mask-image: linear-gradient(to bottom, transparent 16%, $color-black 60%);
+  }
+
+  &__beam--left {
+    position: absolute;
+    right: 50%;
+    @include resize(top, -280, -98);
+    @include resize(width, 624, 299);
+    @include resize(height, 749, 360);
+    background: conic-gradient(
+      from 90deg at 50% 50%,
+      $color-accent-blue 0deg,
+      rgba($color-accent-blue, 0.95) 6.61105178296566deg,
+      rgba($color-accent-blue-dark, 0.82) 53.09147357940674deg,
+      $color-black-60 141.6944718360901deg,
+      $color-black-25 269.11622285842896deg,
+      rgba($color-black, 0.05) 350.8902096748352deg,
+      transparent 360deg
+    );
+  }
+
+  &__beam--right {
+    position: absolute;
+    left: 50%;
+    @include resize(top, -280, -98);
+    @include resize(width, 624, 299);
+    @include resize(height, 749, 360);
+    background: conic-gradient(
+      from -90deg at 50% 50%,
+      transparent 0deg,
+      rgba($color-black, 0.05) 9.1097903251648deg,
+      $color-black-25 90.88377714157104deg,
+      $color-black-60 218.3055281639099deg,
+      rgba($color-accent-blue-dark, 0.82) 306.90852642059326deg,
+      rgba($color-accent-blue, 0.95) 353.38894821703434deg,
+      $color-accent-blue 360deg
+    );
+  }
+
+  &__glow {
+    position: absolute;
+    left: 50%;
+    border-radius: 663px;
+    opacity: 0.5;
+    transform: translateX(-50%);
+    background: $color-accent-blue;
+    filter: blur(250px);
+    @include resize(top, 80);
+    @include resize(width, 500);
+    @include resize(height, 212);
+  }
+
+  &__lightStage {
+    position: absolute;
+    inset: 0;
+    transform: scaleX(0.5);
+    transform-origin: center;
+    opacity: 0;
+    filter: blur(28px);
+    transition:
+      transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 1.4s ease,
+      filter 1.6s ease;
+    will-change: transform, opacity, filter;
+  }
+
+  &__bg.is-visible &__lightStage {
+    transform: scaleX(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__lightStage {
+      transform: scaleX(1);
+      opacity: 1;
+      filter: blur(0);
+      transition: none;
+    }
+  }
+
+  &__container {
+    @include container;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__innerContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    font-family: $font-default;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__reveal {
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    transition-delay: calc(var(--reveal-index, 0) * 0.12s);
+    will-change: opacity;
+  }
+
+  &__title.aboutServopa__reveal {
+    --reveal-index: 0;
+    opacity: 0.18;
+    transition: opacity 0.9s ease;
+  }
+
+  &__paragraph.aboutServopa__reveal {
+    --reveal-index: 1;
+  }
+
+  &__innerContainer.is-visible &__reveal {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__reveal {
+      opacity: 1;
+      transition: none;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    @include resize(margin-top, 40, 20);
+    @include text($b1-lg-fs, $b1-lg-lh, 500, center);
+
+    @include res-md {
+      @include text($b1-fs, $b1-lh, 500, center);
+    }
+  }
+
+  &__paragraph {
+    @include resize(max-width, 710);
+    margin: 0;
+    color: $color-white-60;
+    @include resize(margin-top, 24, 16);
+    @include text($s1-fs, $s1-lh, 400, center);
+
+    @include res-md {
+      @include text($b2-fs, $b2-lh, 400, center);
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    margin-inline: auto;
+    @include resize(max-width, 857);
+    @include resize(margin-top, 88, 48);
+
+    @include res-md {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @include resize(gap, 12, 6);
+
+    @include res-md {
+      align-items: center;
+      @include resize(min-width, 173);
+    }
+  }
+
+  &__cardTitle {
+    @include text($b1-lg-fs, $b1-lg-lh, 600, center);
+
+    @include res-md {
+      @include text($b1-fs, $b1-lh, 600, center);
+    }
+  }
+
+  &__cardDescription {
+    color: $color-white-60;
+    @include text($b2-fs, $b2-lh, 400, center);
+
+    @include res-md {
+      @include text($b3-fs, 20px, 400, center);
+    }
+  }
+}

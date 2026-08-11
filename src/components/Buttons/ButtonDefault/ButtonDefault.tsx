@@ -3,106 +3,104 @@ import "./ButtonDefault.scss";
 import { Icons } from "@/@types/icons";
 import { ButtonVariants } from "@/@types/variants";
 import LinkDefault from "@/components/LinkDefault/LinkDefault";
-import { FC, ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, ReactNode, forwardRef } from "react";
 import { LinkAcf } from "@/@types/link";
 import { PositionIcon } from "@/@types/positionIcon";
 
+type ButtonTheme = "dark" | "light";
+
 type ButtonDefaultProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> & {
   styling?: ButtonVariants;
+  theme?: ButtonTheme;
   circular?: boolean;
   disabled?: boolean;
   positionIcon?: PositionIcon;
   variantLink: VariantButton;
   data: LinkAcf;
   icon?: Icons;
-  img?: any;
+  iconWidth?: number;
+  iconHeight?: number;
+  children?: ReactNode;
 };
 
-const ButtonDefault: FC<ButtonDefaultProps> = ({
-  disabled,
-  circular,
-  styling = "primary",
-  variantLink,
-  data,
-  icon,
-  img,
-  positionIcon = ""
-}) => {
+const ButtonDefault = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonDefaultProps>(function ButtonDefault(
+  {
+    disabled,
+    circular,
+    styling = "filled",
+    theme = "dark",
+    variantLink,
+    data,
+    icon,
+    iconWidth,
+    iconHeight,
+    positionIcon = "",
+    className: extraClassName,
+    children,
+    ...rest
+  },
+  ref
+) {
   const { title, url, target = "" } = data;
 
-  return (
-    <>
-      {variantLink.type === "button" ? (
-        <button
-          className={`buttonDefault buttonDefault__${styling} ${circular ? "buttonDefault--circular" : ""}  ${
-            disabled ? `buttonDefault__${styling}--disabled` : ""
-          } ${positionIcon ? `buttonDefault__${styling}--${positionIcon}` : ""}`}
-          tabIndex={disabled ? -1 : 0}
-          disabled={disabled}
-          data-icon={`${positionIcon || icon ? true : false}`}
-          title={title}
-        >
-          {positionIcon === "leftRight" && icon && (
-            <div className="buttonDefault__iconContainer">
-              <img className="buttonDefault__icon" src={`/icons/${icon}.svg`} alt={icon} />
-            </div>
-          )}
-          {img && (
-            <div className="buttonDefault__imgContainer">
-              <img className="buttonDefault__img" src={`/images/woman.webp`} alt={img} />
-            </div>
-          )}
-          <span
-            className={`buttonDefault__text buttonDefault__text--${styling} ${
-              !positionIcon && !icon && "buttonDefault__text--noIcon"
-            }`}
-          >
-            {title}
-          </span>
+  const className = [
+    "buttonDefault",
+    `buttonDefault--${styling}`,
+    `buttonDefault--${theme}`,
+    circular && "buttonDefault--circular",
+    disabled && "buttonDefault--disabled",
+    extraClassName
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-          {icon && (
-            <div className="buttonDefault__iconContainer">
-              <img className="buttonDefault__icon" src={`/icons/${icon}.svg`} alt={icon} />
-            </div>
-          )}
-        </button>
-      ) : (
-        <LinkDefault
-          className={`buttonDefault buttonDefault__${styling} ${circular ? "buttonDefault--circular" : ""} ${
-            disabled ? `buttonDefault__${styling}--disabled` : ""
-          } ${positionIcon ? `buttonDefault__${styling}--${positionIcon}` : ""}`}
-          tabIndex={disabled ? -1 : 0}
-          href={url}
-          target={target}
-          title={title}
-          data-icon={`${positionIcon || icon ? true : false}`}
-        >
-          {positionIcon === "leftRight" && icon && (
-            <div className="buttonDefault__iconContainer">
-              <img className="buttonDefault__icon" src={`/icons/${icon}.svg`} alt={icon} />
-            </div>
-          )}
-          {img && (
-            <div className="buttonDefault__imgContainer">
-              <img className="buttonDefault__img" src={`/images/woman.webp`} alt={img} />
-            </div>
-          )}
-          <span
-            className={`buttonDefault__text buttonDefault__text--${styling} ${
-              !positionIcon && !icon && "buttonDefault__text--noIcon"
-            }`}
-          >
-            {title}
-          </span>
-          {icon && (
-            <div className="buttonDefault__iconContainer">
-              <img className="buttonDefault__icon" src={`/icons/${icon}.svg`} alt={icon} />
-            </div>
-          )}
-        </LinkDefault>
-      )}
+  const iconContainerStyle: React.CSSProperties | undefined =
+    iconWidth === undefined && iconHeight === undefined
+      ? undefined
+      : ({
+          ...(iconWidth !== undefined && { "--button-icon-width": iconWidth }),
+          ...(iconHeight !== undefined && { "--button-icon-height": iconHeight })
+        } as React.CSSProperties);
+
+  const renderIcon = () =>
+    icon && (
+      <div className="buttonDefault__iconContainer" style={iconContainerStyle}>
+        <img className="buttonDefault__icon" src={`/icons/${icon}.svg`} alt="" aria-hidden="true" />
+      </div>
+    );
+
+  const showIconLeft = positionIcon === "left" || positionIcon === "leftRight";
+  const showIconRight = positionIcon === "right" || positionIcon === "leftRight" || positionIcon === "";
+
+  const content = children ?? (
+    <>
+      {showIconLeft && renderIcon()}
+      {title && <span className="buttonDefault__text">{title}</span>}
+      {showIconRight && renderIcon()}
     </>
   );
-};
+
+  if (variantLink.type === "button") {
+    return (
+      <button
+        ref={ref as React.Ref<HTMLButtonElement>}
+        type="button"
+        className={className}
+        disabled={disabled}
+        tabIndex={disabled ? -1 : 0}
+        title={title}
+        {...rest}
+      >
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <LinkDefault className={className} href={url} target={target} title={title} tabIndex={disabled ? -1 : 0} {...(rest as Record<string, unknown>)}>
+      {content}
+    </LinkDefault>
+  );
+});
 
 export default ButtonDefault;

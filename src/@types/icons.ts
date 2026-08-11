@@ -18,6 +18,8 @@ export type Icons =
   | "magnifying"
   | "arrow-right-white"
   | "arrow-right-black"
+  | "arrow-right-white-thin"
+  | "arrow-right-black-thin"
   | "caret-right-white"
   | "caret-right-black"
   // novos adicionados
@@ -29,6 +31,7 @@ export type Icons =
   | "instagram-white"
   | "linkedin-white"
   | "location"
+  | "phone"
   | "magnifying-black"
   | "magnifying-blue"
   | "minus-white"
@@ -37,4 +40,8 @@ export type Icons =
   | "plus-white"
   | "plus"
   | "x-twitter-white"
-  | "youtube-white";
+  | "youtube-white"
+  | "close-black"
+  | "arrow-right-white-nav"
+  | "arrow-left-white-nav"
+  | "arrow-right-black-nav";

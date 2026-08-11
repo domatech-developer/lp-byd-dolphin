@@ -1,0 +1,233 @@
+.modelBanner {
+  &__container {
+    @include container(full);
+  }
+
+  &__stage {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 1366 / 762;
+
+    @include res-md {
+      aspect-ratio: 393 / 400;
+    }
+  }
+
+  &__imageFrame {
+    position: absolute;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    transition:
+      top 1s ease-out 0.5s,
+      right 1s ease-out 0.5s,
+      bottom 1s ease-out 0.5s,
+      left 1s ease-out 0.5s,
+      border-radius 1s ease-out 0.5s;
+    @include resize(top, 53, 16);
+    @include resize(right, 56, 16);
+    @include resize(bottom, 56, 16);
+    @include resize(left, 56, 16);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(180deg, $color-black-20 0%, transparent 40.354%);
+    }
+
+    &__imgContainer {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__stage.is-visible &__imageFrame {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 0;
+    transition:
+      top 1s ease-out,
+      right 1s ease-out,
+      bottom 1s ease-out,
+      left 1s ease-out,
+      border-radius 1s ease-out;
+  }
+
+  &__overlay {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    @include resize(padding-top, 88, 16);
+    @include resize(padding-inline, 64, 16);
+    @include resize(--reveal-offset, 264, 184);
+
+    opacity: 0;
+    transform: translateY(calc(var(--reveal-offset) * -1));
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s ease-out;
+
+    @include res-md {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 12px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @include resize(gap, 16, 12);
+
+    @include res-md {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__badge {
+    color: $color-white;
+    border: 1px solid $color-white;
+    border-radius: 4px;
+    @include text($b3-fs, 20px, 400);
+    @include resize(padding-inline, 8);
+    @include resize(padding-block, 2);
+  }
+
+  &__title {
+    margin: 0;
+    color: $color-white;
+    @include resize(max-width, 500);
+    @include text($b1-xl-fs, $b1-xl-lh, 400);
+
+    @include res-md {
+      @include text($b1-fs, $b1-lh, 400);
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
+  &__videoCardWrapper {
+    position: relative;
+  }
+
+  &__videoCard {
+    display: flex;
+    align-items: center;
+    background: $color-black-20;
+    border: 2px solid $color-white-72;
+    border-radius: 8px;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    @include resize(gap, 16);
+    @include resize(padding-inline, 16);
+    @include resize(padding-block, 20, 16);
+    @include resize(margin-top, 12);
+
+    @include res-md {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  &__divider {
+    display: block;
+    flex-shrink: 0;
+    background: rgba($color-white, 0.5);
+    border-radius: 300px;
+    width: 1px;
+    align-self: stretch;
+  }
+
+  &__videoText {
+    display: flex;
+    flex-direction: column;
+    color: $color-white;
+  }
+
+  &__videoTitle {
+    margin: 0;
+    @include text($b2-fs, $b2-lh, 600);
+
+    @include res-md {
+      @include text($b3-fs, 20px, 600);
+    }
+  }
+
+  &__videoSubtitle {
+    margin: 0;
+    @include text($b4-fs, 20px, 400);
+  }
+
+  &__pill {
+    position: absolute;
+    top: 0;
+    @include resize(right, 16);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    background: $color-white;
+    border-radius: 100px;
+    filter: drop-shadow(0px 1px 1px $color-black-25);
+    color: $color-black;
+
+    @include res-md {
+      right: auto;
+      left: 4.36%;
+    }
+    @include resize(gap, 8);
+    @include resize(padding-inline, 8);
+    @include resize(padding-block, 2);
+    @include text($b4-fs, $b4-lh, 600);
+  }
+
+  &__pillDot {
+    display: block;
+    flex-shrink: 0;
+    background: $color-live-green;
+    border-radius: 100px;
+    @include resize(width, 8);
+    @include resize(height, 8);
+  }
+
+  &__stage.is-visible &__overlay {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 1s ease-out 1s,
+      transform 1s ease-out 1s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__imageFrame {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 0;
+      transition: none;
+    }
+
+    &__overlay {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

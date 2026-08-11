@@ -1,6 +1,6 @@
 import "./InputText.scss";
 import { FC, ComponentProps } from "react";
-import ImgDefault from "@/components/ImgDefault/ImgDefault";
+import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 type InputProp = ComponentProps<"input"> & {
   label?: string;
@@ -48,12 +48,7 @@ const InputText: FC<InputProp> = ({
           className="inputText__helpContainer"
           role="alert"
         >
-          <ImgDefault
-            src="/icons/alert.svg"
-            alt=""
-            aria-hidden="true"
-            className="inputText__helpIcon"
-          />
+          <ImgContainer className="inputText__helpIcon" image={{ url: "/icons/alert.svg", alt: "" }} />
           <span className="inputText__helpText">{erroMsg}</span>
         </div>
       )}
