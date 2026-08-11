@@ -10,6 +10,7 @@ import CheckBoxDefault from "@/components/Inputs/CheckBoxDefault/CheckBoxDefault
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 
 import { contactDrawerContent } from "./ContactDrawerContent";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 type ContactDrawerProps = {
   open: boolean;
@@ -192,7 +193,10 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
               variantLink={{ type: "button" }}
               data={{ type: "", value: "", url: "", name: content.submit_label, title: content.submit_label, target: "" }}
               disabled={loading}
-              onClick={() => handleSubmit()}
+              onClick={() => {
+                handleSubmit();
+                sendGTMEvent({ event: "button_clicked_envio_proposta", value: "envio_proposta" });
+              }}
             />
           </form>
         </div>

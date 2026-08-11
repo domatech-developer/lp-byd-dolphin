@@ -7,6 +7,7 @@ import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 import { headerContent } from "./HeaderContent";
 import { footerContent } from "@/components/Footer/FooterContent";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 type HeaderMobileProps = {
   onOpenPhones: (anchor: HTMLElement | null) => void;
@@ -100,7 +101,10 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
           theme="light"
           variantLink={{ type: "button" }}
           data={{ type: "", value: "", url: "", name: content.cta.text, title: content.cta.text, target: "" }}
-          onClick={openContact}
+          onClick={() => {
+            openContact();
+            sendGTMEvent({ event: "button_clicked_garantir_proposta", value: "garantir_proposta" });
+          }}
         />
       </div>
 
@@ -161,7 +165,14 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
                   icon={content.location.icon}
                   positionIcon="left"
                   variantLink={{ type: "button" }}
-                  data={{ type: "", value: "", url: "", name: content.location.label, title: content.location.label, target: "" }}
+                  data={{
+                    type: "",
+                    value: "",
+                    url: "",
+                    name: content.location.label,
+                    title: content.location.label,
+                    target: ""
+                  }}
                   onClick={openLocation}
                 />
               </div>
@@ -200,15 +211,15 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
 
             <div className="headerMenu__footerContent">
               <p className="headerMenu__footerTitle">{content.menuFooter.title}</p>
-              <a
-                className="headerMenu__footerLink"
-                href={content.menuFooter.linkUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="headerMenu__footerLink" href={content.menuFooter.linkUrl} target="_blank" rel="noreferrer">
                 <span>{content.menuFooter.linkLabel}</span>
                 <div className="headerMenu__footerLinkIcon">
-                  <img className="headerMenu__footerLinkIcon__img" src="/icons/caret-right-white.svg" alt="" aria-hidden="true" />
+                  <img
+                    className="headerMenu__footerLinkIcon__img"
+                    src="/icons/caret-right-white.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
                 </div>
               </a>
             </div>

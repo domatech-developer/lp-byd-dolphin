@@ -1,6 +1,7 @@
 import "@/scss/main.scss";
 import QueryProvider from "@/provider/QueryProvider/QueryProvider";
 import { Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   icons: {
@@ -20,6 +21,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="pt-BR">
       <body>
         <QueryProvider>{children}</QueryProvider>
+        <GoogleTagManager gtmId="GTM-AQUI" />
       </body>
     </html>
   );
