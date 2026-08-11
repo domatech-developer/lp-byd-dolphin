@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  output: "standalone",
   experimental: {
     serverActions: {
       bodySizeLimit: "200mb"
@@ -46,7 +47,7 @@ const nextConfig = {
         ]
       }
     ];
-  },
+  }
 };
 
 module.exports = nextConfig;
