@@ -121,11 +121,8 @@
 
     border-radius: 4px;
 
-    font-weight: 400;
     color: $color-primary;
-    font-family: $font-default;
-    @include resize(font-size, $b1-fs);
-    @include resize(line-height, $b1-lh);
+    @include text(16px, 24px, 400);
     @include resize(padding, 12);
 
     &:hover {

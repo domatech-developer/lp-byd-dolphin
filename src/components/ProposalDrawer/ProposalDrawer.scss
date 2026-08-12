@@ -1,4 +1,4 @@
-.contactDrawer {
+.proposalDrawer {
   position: fixed;
   inset: 0;
   z-index: 500;
@@ -7,12 +7,12 @@
   &--open {
     pointer-events: auto;
 
-    .contactDrawer__backdrop {
+    .proposalDrawer__backdrop {
       opacity: 1;
       pointer-events: auto;
     }
 
-    .contactDrawer__panel {
+    .proposalDrawer__panel {
       pointer-events: auto;
       transform: translateX(0);
     }

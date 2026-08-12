@@ -17,6 +17,7 @@
   &--filled {
     &.buttonDefault--dark {
       background: $color-primary;
+      border: 1px solid $color-primary;
       color: $color-white;
 
       &:hover {

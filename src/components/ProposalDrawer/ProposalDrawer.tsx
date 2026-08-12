@@ -1,6 +1,6 @@
 "use client";
 
-import "./ContactDrawer.scss";
+import "./ProposalDrawer.scss";
 import { FC, useEffect } from "react";
 import { useForm } from "@/hooks/useForm";
 import InputText from "@/components/Inputs/InputText/InputText";
@@ -8,19 +8,26 @@ import InputPhone from "@/components/Inputs/InputPhone/InputPhone";
 import InputSelect from "@/components/Inputs/InputSelect/InputSelect";
 import CheckBoxDefault from "@/components/Inputs/CheckBoxDefault/CheckBoxDefault";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
-
-import { contactDrawerContent } from "./ContactDrawerContent";
 import { sendGTMEvent } from "@next/third-parties/google";
 
-type ContactDrawerProps = {
+interface ContactOption {
+  value: string;
+  label: string;
+  checked?: boolean;
+}
+
+interface ProposalDrawerProps {
   open: boolean;
+  data?: any;
   onClose: () => void;
   onSubmit?: (values: Record<string, any>) => void;
-};
+}
 
-const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
-  const content = contactDrawerContent;
-  const defaultChannels = content.contact.options.filter((option) => option.checked).map((option) => option.value);
+const ProposalDrawer: FC<ProposalDrawerProps> = ({ open, data, onClose, onSubmit }) => {
+  const cities: string[] = Array.isArray(data?.cities) ? data.cities.filter((c: unknown) => typeof c === "string") : [];
+  const models: string[] = Array.isArray(data?.models) ? data.models.filter((m: unknown) => typeof m === "string") : [];
+  const contactOptions: ContactOption[] = Array.isArray(data?.contact?.options) ? data.contact.options : [];
+  const defaultChannels = contactOptions.filter((option) => option.checked).map((option) => option.value);
 
   const { form, loading, setLoading, changeState, validation } = useForm(
     {
@@ -28,7 +35,7 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
       email: { value: "", invalid: false, errorLabel: "", required: true },
       phone: { value: "", invalid: false, errorLabel: "", required: true },
       city: { value: "", invalid: false, errorLabel: "", required: true },
-      model: { value: content.defaultModel, invalid: false, errorLabel: "", required: true },
+      model: { value: data?.defaultModel || models[0] || "", invalid: false, errorLabel: "", required: true },
       contactChannels: { value: defaultChannels, invalid: false, errorLabel: "", required: true },
       privacy: { value: false, invalid: false, errorLabel: "", required: true }
     },
@@ -65,17 +72,17 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
     if (onSubmit) {
       onSubmit(values);
     } else {
-      console.log("contact-drawer-submit", values);
+      console.log("proposal-drawer-submit", values);
     }
     setLoading(false);
   };
 
-  if (!content.section_check) return null;
+  if (!data?.section_check) return null;
 
   return (
-    <div className={`contactDrawer${open ? " contactDrawer--open" : ""}`} aria-hidden={!open}>
+    <div className={`proposalDrawer${open ? " proposalDrawer--open" : ""}`} aria-hidden={!open}>
       <ButtonDefault
-        className="contactDrawer__backdrop"
+        className="proposalDrawer__backdrop"
         styling="ghost"
         theme="light"
         variantLink={{ type: "button" }}
@@ -84,15 +91,15 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
         onClick={onClose}
       />
 
-      <aside className="contactDrawer__panel" role="dialog" aria-modal="true" aria-labelledby="contactDrawerTitle">
-        <div className="contactDrawer__content">
-          <div className="contactDrawer__header">
-            <h2 id="contactDrawerTitle" className="contactDrawer__title">
-              {content.title}
+      <aside className="proposalDrawer__panel" role="dialog" aria-modal="true" aria-labelledby="proposalDrawerTitle">
+        <div className="proposalDrawer__content">
+          <div className="proposalDrawer__header">
+            <h2 id="proposalDrawerTitle" className="proposalDrawer__title">
+              {data?.title}
             </h2>
 
             <ButtonDefault
-              className="contactDrawer__close"
+              className="proposalDrawer__close"
               styling="ghost"
               theme="dark"
               circular
@@ -106,11 +113,11 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
             />
           </div>
 
-          <form className="contactDrawer__form" onSubmit={handleSubmit} noValidate>
+          <form className="proposalDrawer__form" onSubmit={handleSubmit} noValidate>
             <InputText
-              id="contactDrawer-name"
+              id="proposalDrawer-name"
               type="text"
-              placeholder={content.fields.name_placeholder}
+              placeholder={data?.fields?.name_placeholder}
               value={form.name.value}
               invalid={form.name.invalid}
               erroMsg={form.name.errorLabel}
@@ -118,9 +125,9 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
             />
 
             <InputText
-              id="contactDrawer-email"
+              id="proposalDrawer-email"
               type="email"
-              placeholder={content.fields.email_placeholder}
+              placeholder={data?.fields?.email_placeholder}
               value={form.email.value}
               invalid={form.email.invalid}
               erroMsg={form.email.errorLabel}
@@ -128,8 +135,8 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
             />
 
             <InputPhone
-              id="contactDrawer-phone"
-              placeholder={content.fields.phone_placeholder}
+              id="proposalDrawer-phone"
+              placeholder={data?.fields?.phone_placeholder}
               value={form.phone.value}
               invalid={form.phone.invalid}
               erroMsg={form.phone.errorLabel}
@@ -137,35 +144,35 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
             />
 
             <InputSelect
-              id="contactDrawer-city"
-              label={content.cityLabel}
+              id="proposalDrawer-city"
+              label={data?.cityLabel}
               erroMsg={form.city.errorLabel}
-              placeholder={content.fields.city_placeholder}
-              options={content.cities}
+              placeholder={data?.fields?.city_placeholder}
+              options={cities}
               value={form.city.value}
               invalid={form.city.invalid}
               onChange={(e) => changeState("city", "value", e.target.value)}
             />
 
             <InputSelect
-              id="contactDrawer-model"
-              label={content.modelLabel}
+              id="proposalDrawer-model"
+              label={data?.modelLabel}
               erroMsg={form.model.errorLabel}
-              placeholder={content.fields.model_placeholder}
-              options={content.models}
+              placeholder={data?.fields?.model_placeholder}
+              options={models}
               value={form.model.value}
               invalid={form.model.invalid}
               onChange={(e) => changeState("model", "value", e.target.value)}
             />
 
-            <div className="contactDrawer__contactBlock">
-              <p className="contactDrawer__contactTitle">{content.contact.title}</p>
+            <div className="proposalDrawer__contactBlock">
+              <p className="proposalDrawer__contactTitle">{data?.contact?.title}</p>
 
-              <div className="contactDrawer__checks">
-                {content.contact.options.map((option) => (
+              <div className="proposalDrawer__checks">
+                {contactOptions.map((option) => (
                   <CheckBoxDefault
                     key={option.value}
-                    id={`contactDrawer-channel-${option.value}`}
+                    id={`proposalDrawer-channel-${option.value}`}
                     label={option.label}
                     erroMsg=""
                     checked={Array.isArray(form.contactChannels.value) && form.contactChannels.value.includes(option.value)}
@@ -175,8 +182,8 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
               </div>
 
               <CheckBoxDefault
-                id="contactDrawer-privacy"
-                label={content.privacy.label}
+                id="proposalDrawer-privacy"
+                label={data?.privacy?.label}
                 erroMsg="Você precisa aceitar a política de privacidade."
                 invalid={form.privacy.invalid}
                 checked={Boolean(form.privacy.value)}
@@ -184,14 +191,14 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
               />
             </div>
 
-            <button type="submit" className="contactDrawer__submitTrap" tabIndex={-1} aria-hidden="true" />
+            <button type="submit" className="proposalDrawer__submitTrap" tabIndex={-1} aria-hidden="true" />
 
             <ButtonDefault
-              className="contactDrawer__submit"
+              className="proposalDrawer__submit"
               styling="filled"
               theme="dark"
               variantLink={{ type: "button" }}
-              data={{ type: "", value: "", url: "", name: content.submit_label, title: content.submit_label, target: "" }}
+              data={{ type: "", value: "", url: "", name: data?.submit_label, title: data?.submit_label, target: "" }}
               disabled={loading}
               onClick={() => {
                 handleSubmit();
@@ -205,4 +212,4 @@ const ContactDrawer: FC<ContactDrawerProps> = ({ open, onClose, onSubmit }) => {
   );
 };
 
-export default ContactDrawer;
+export default ProposalDrawer;

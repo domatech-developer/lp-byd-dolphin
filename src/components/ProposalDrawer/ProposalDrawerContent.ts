@@ -4,7 +4,7 @@ type ContactOption = {
   checked?: boolean;
 };
 
-type ContactDrawerContent = {
+type ProposalDrawerContent = {
   section_check: boolean;
   title: string;
   cityLabel: string;
@@ -31,7 +31,7 @@ type ContactDrawerContent = {
   submit_label: string;
 };
 
-export const contactDrawerContent: ContactDrawerContent = {
+export const proposalDrawerContent: ProposalDrawerContent = {
   section_check: true,
   title: "Fale com a BYD Servopa",
   cityLabel: "Cidade",
