@@ -48,7 +48,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, $color-primary-100 33%, $color-secondary-100 66%, $color-primary-100 100%);
+      background: linear-gradient(90deg, $color-gray-100 33%, $color-gray-200 66%, $color-gray-100 100%);
       background-size: 200% 100%;
       animation: loadingSkeleton 1.5s infinite;
     }

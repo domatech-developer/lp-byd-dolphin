@@ -9,41 +9,47 @@
     pointer-events: none;
     .inputText {
       &__element {
-        @include text(16px, 24px, 400);
-        color: $color-black-30;
-        background: $color-gray-100;
-        border: 1px solid $color-gray-100;
+        font-weight: 400;
+        color: $color-gray-300;
+        background: $color-gray-800;
+        border: 1px solid $color-gray-800;
+
         &::placeholder {
-          @include text(16px, 24px, 400);
-          color: $color-black-30;
+          font-weight: 400;
+          color: $color-gray-300;
         }
       }
     }
   }
 
   &__label {
-    @include text(16px, 24px, 400);
-    color: $color-primary;
+    font-weight: 400;
+    color: $color-gray-100;
   }
 
   &__element {
     @include resize(width, 100%);
     @include resize(height, 40);
-    @include text(16px, 24px, 400);
-    color: $color-primary;
-    background: $color-white;
-    border: 1px solid $color-black-30;
+    color: $color-gray-100;
+    font-weight: 400;
+    background: #f8fcff;
+    border: 1px solid $color-gray-500;
     @include resize(padding-block, 8);
     @include resize(padding-inline, 16);
 
     &:hover {
-      border-color: $color-black-30;
+      border-color: $color-gray-300;
     }
 
+    /* Foco via teclado */
     &:focus-visible {
-      outline: 2px solid $color-focus;
+      outline: 2px solid $color-primary;
       outline-offset: 2px;
-      border-color: $color-black-30;
+      border-color: $color-gray-500;
+    } /* Remove foco visual ao clicar com mouse */
+    &:focus:not(:focus-visible) {
+      outline: none;
+      box-shadow: none;
     }
   }
 
@@ -55,42 +61,20 @@
 
   &__helpIcon {
     display: block;
-    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
     @include resize(width, 16);
     @include resize(height, 16);
-
-    &__imgContainer {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    &__img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
   }
 
   &__helpText {
-    @include text(16px, 24px, 400);
-    color: $color-error;
+    font-weight: 400;
+    color: $color-secondary;
     @include resize(font-size, $b2-fs);
     @include resize(line-height, $b2-lh);
   }
 
   &--invalid {
-    .inputText {
-      &__element {
-        @include text(16px, 24px, 400);
-        border-color: $color-error;
-
-        &::placeholder {
-          color: $color-error;
-        }
-      }
-    }
+    border: 1px solid $color-error;
   }
 }
