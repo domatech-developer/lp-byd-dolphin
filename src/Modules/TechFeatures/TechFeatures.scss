@@ -77,13 +77,17 @@
   &__cards {
     position: relative;
     z-index: 2;
+    width: 100%;
+    @include resize(max-width, 678, 100%);
+    @include resize(padding-inline, 64, 16);
+    @include resize(padding-block, 96, 16);
+  }
+
+  &__cardsTrack {
     display: flex;
     flex-direction: column;
     width: 100%;
-    @include resize(max-width, 678, 100%);
     @include resize(gap, 32, 8);
-    @include resize(padding-inline, 64, 16);
-    @include resize(padding-block, 96, 16);
 
     @include res-md {
       flex-direction: row;
