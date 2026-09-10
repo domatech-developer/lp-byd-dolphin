@@ -15,6 +15,7 @@ export type Icons =
   | "x-twitter"
   | "youtube"
   | "whatsapp"
+  | "whatsapp-white"
   | "magnifying"
   | "arrow-right-white"
   | "arrow-right-black"

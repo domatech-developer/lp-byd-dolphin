@@ -3,10 +3,10 @@
 import "./HeaderDesktop.scss";
 import { FC, useEffect, useRef, useState } from "react";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
-import LinkDefault from "@/components/LinkDefault/LinkDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 import { headerContent } from "./HeaderContent";
+import { whatsappUrl } from "@/utils/constants/whatsapp";
 import { sendGTMEvent } from "@next/third-parties/google";
 
 type HeaderDesktopProps = {
@@ -14,23 +14,13 @@ type HeaderDesktopProps = {
   onClosePhones: () => void;
   onOpenLocation: (anchor: HTMLElement | null) => void;
   onCloseLocation: () => void;
-  onOpenContact: () => void;
 };
 
-const HeaderDesktop: FC<HeaderDesktopProps> = ({
-  onOpenPhones,
-  onClosePhones,
-  onOpenLocation,
-  onCloseLocation,
-  onOpenContact
-}) => {
+const HeaderDesktop: FC<HeaderDesktopProps> = ({ onOpenPhones, onClosePhones, onOpenLocation, onCloseLocation }) => {
   const content = headerContent;
   const [isOverHero, setIsOverHero] = useState(true);
   const actionsRef = useRef<HTMLDivElement>(null);
 
-  // In --hero both popups must open from the same spot (the header's right
-  // edge) instead of trailing whichever button was hovered; --docked keeps
-  // each popup anchored to its own trigger button.
   const resolveAnchor = (button: HTMLElement) => (isOverHero ? actionsRef.current : button);
 
   useEffect(() => {
@@ -61,6 +51,8 @@ const HeaderDesktop: FC<HeaderDesktopProps> = ({
             styling="ghost"
             theme="light"
             icon={content.phones.icon}
+            iconWidth={15}
+            iconHeight={15}
             positionIcon="left"
             variantLink={{ type: "button" }}
             data={{ type: "", value: "", url: "", name: content.phones.label, title: content.phones.label, target: "" }}
@@ -76,6 +68,8 @@ const HeaderDesktop: FC<HeaderDesktopProps> = ({
             styling="ghost"
             theme="light"
             icon={content.location.icon}
+            iconWidth={15}
+            iconHeight={15}
             positionIcon="left"
             variantLink={{ type: "button" }}
             data={{ type: "", value: "", url: "", name: content.location.label, title: content.location.label, target: "" }}
@@ -86,18 +80,20 @@ const HeaderDesktop: FC<HeaderDesktopProps> = ({
             onClick={!isOverHero ? (e) => onOpenLocation(resolveAnchor(e.currentTarget)) : undefined}
           />
 
-          <LinkDefault
-            href="#"
+          <ButtonDefault
             className="headerDesktop__cta"
-            title={content.cta.text}
-            onClick={(event) => {
-              event.preventDefault();
+            styling="filled"
+            theme="light"
+            icon={content.cta.icon}
+            iconWidth={20}
+            iconHeight={20}
+            positionIcon="left"
+            variantLink={{ type: "link" }}
+            data={{ type: "", value: "", url: whatsappUrl, name: content.cta.text, title: content.cta.text, target: "_blank" }}
+            onClick={() => {
               sendGTMEvent({ event: "button_clicked_garantir_proposta", value: "garantir_proposta" });
-              onOpenContact();
             }}
-          >
-            {content.cta.text}
-          </LinkDefault>
+          />
         </div>
       </div>
     </header>

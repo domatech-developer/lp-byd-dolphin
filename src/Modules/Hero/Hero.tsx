@@ -6,6 +6,7 @@ import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import { sendGTMEvent } from "@next/third-parties/google";
+import { whatsappUrl } from "@/utils/constants/whatsapp";
 
 import { heroContent } from "./HeroContent";
 
@@ -67,8 +68,8 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
         styling="ghost"
         theme="light"
         circular
-        iconWidth={24}
-        iconHeight={22}
+        iconWidth={17}
+        iconHeight={14}
         icon="arrow-right-white-nav"
         variantLink={{ type: "button" }}
         data={{ type: "", value: "", url: "", name: content.arrowAriaLabel, title: "", target: "" }}
@@ -96,11 +97,16 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                   className="hero__cta"
                   styling="filled"
                   theme="light"
+                  icon="whatsapp"
+                  iconPadding={0}
+                  iconWidth={20}
+                  iconHeight={20}
+                  positionIcon="left"
                   variantLink={{ type: "link" }}
                   data={{
                     type: "",
                     value: "",
-                    url: model.ctaUrl,
+                    url: whatsappUrl,
                     name: model.ctaLabel,
                     title: model.ctaLabel,
                     target: "_blank"

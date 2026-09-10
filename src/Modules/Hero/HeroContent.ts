@@ -5,7 +5,6 @@ type HeroModel = {
   name: string;
   description: string;
   ctaLabel: string;
-  ctaUrl: string;
   railLabel: string;
   railCrop?: { top: string; left: string; width: string; height: string };
   railImage: { transparentUrl: string; alt: string; bgUrl?: string };
@@ -35,8 +34,7 @@ export const heroContent: HeroContent = {
       id: "dolphin",
       name: "Dolphin",
       description: "Tecnologia, conforto e autonomia para viver o elétrico todos os dias",
-      ctaLabel: "Conhecer modelo",
-      ctaUrl: "https://bydservopa.com.br/novos/dolphin",
+      ctaLabel: "Solicitar cotação",
       railLabel: "DOLPHIN",
       railImage: {
         transparentUrl: "/images/hero/rail/dolphin-transparent.webp",
@@ -49,8 +47,7 @@ export const heroContent: HeroContent = {
       id: "dolphin-mini",
       name: "Dolphin Mini",
       description: "Compacto, eficiente e perfeito para transformar sua rotina urbana",
-      ctaLabel: "Conhecer modelo",
-      ctaUrl: "https://bydservopa.com.br/novos/dolphin-mini",
+      ctaLabel: "Solicitar cotação",
       railLabel: "DOLPHIN MINI",
       railCrop: { top: "-18.33%", left: "-12.57%", width: "125.14%", height: "136.67%" },
       railImage: {
@@ -64,8 +61,7 @@ export const heroContent: HeroContent = {
       id: "dolphin-plus",
       name: "Dolphin Plus",
       description: "Mais potência, mais alcance e uma experiência elétrica superior",
-      ctaLabel: "Conhecer modelo",
-      ctaUrl: "https://bydservopa.com.br/novos/dolphin-plus",
+      ctaLabel: "Solicitar cotação",
       railLabel: "DOLPHIN PLUS",
       railImage: {
         transparentUrl: "/images/hero/rail/dolphin-plus-transparent.webp",
@@ -78,8 +74,7 @@ export const heroContent: HeroContent = {
       id: "dolphin-se",
       name: "Dolphin SE",
       description: "Design renovado, tecnologia avançada e performance para ir além",
-      ctaLabel: "Conhecer modelo",
-      ctaUrl: "https://bydservopa.com.br/novos/dolphin-se",
+      ctaLabel: "Solicitar cotação",
       railLabel: "DOLPHIN SE",
       railImage: {
         transparentUrl: "/images/hero/rail/dolphin-se-transparent.webp",

@@ -6,13 +6,10 @@ import HeaderMobile from "./HeaderMobile";
 import InfoModal from "@/components/InfoModal/InfoModal";
 import { phonesModalContent } from "@/components/InfoModal/phonesModalContent";
 import { locationsModalContent } from "@/components/InfoModal/locationsModalContent";
-import ProposalDrawer from "@/components/ProposalDrawer/ProposalDrawer";
-import { proposalDrawerContent } from "@/components/ProposalDrawer/ProposalDrawerContent";
 
 const CLOSE_DELAY = 150;
 
 const Header: FC = () => {
-  const [proposalOpen, setProposalOpen] = useState(false);
   const [phonesOpen, setPhonesOpen] = useState(false);
   const [locationOpen, setLocationOpen] = useState(false);
   const [phonesAnchor, setPhonesAnchor] = useState<HTMLElement | null>(null);
@@ -44,8 +41,6 @@ const Header: FC = () => {
 
   const cancelCloseLocation = () => clearTimeout(locationCloseTimer.current);
 
-  const openContact = () => setProposalOpen(true);
-
   return (
     <>
       <HeaderDesktop
@@ -53,9 +48,8 @@ const Header: FC = () => {
         onClosePhones={scheduleClosePhones}
         onOpenLocation={openLocation}
         onCloseLocation={scheduleCloseLocation}
-        onOpenContact={openContact}
       />
-      <HeaderMobile onOpenPhones={openPhones} onOpenLocation={openLocation} onOpenContact={openContact} />
+      <HeaderMobile onOpenPhones={openPhones} onOpenLocation={openLocation} />
 
       <InfoModal
         open={phonesOpen}
@@ -73,7 +67,6 @@ const Header: FC = () => {
         onMouseEnter={cancelCloseLocation}
         onMouseLeave={scheduleCloseLocation}
       />
-      <ProposalDrawer open={proposalOpen} data={proposalDrawerContent} onClose={() => setProposalOpen(false)} />
     </>
   );
 };

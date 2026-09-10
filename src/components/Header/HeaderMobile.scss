@@ -110,8 +110,6 @@
 
   &__cta {
     margin-left: auto;
-    @include resize(padding-block, 12);
-    @include resize(padding-inline, 16);
     white-space: nowrap;
 
     &:hover {

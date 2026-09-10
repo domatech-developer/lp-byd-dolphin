@@ -7,8 +7,7 @@ import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import { sendGTMEvent } from "@next/third-parties/google";
-import ProposalDrawer from "@/components/ProposalDrawer/ProposalDrawer";
-import { proposalDrawerContent } from "@/components/ProposalDrawer/ProposalDrawerContent";
+import { whatsappUrl } from "@/utils/constants/whatsapp";
 
 import { modelTabsContent } from "./ModelTabsContent";
 
@@ -18,7 +17,6 @@ type ModelTabsProps = {
 
 const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
   const content = modelTabsContent;
-  const [proposalOpen, setProposalOpen] = useState(false);
   const [active, setActive] = useState(0);
 
   if (!content || !content.section_check) return null;
@@ -65,17 +63,20 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
             <ButtonDefault
               styling="filled"
               theme="dark"
-              variantLink={{ type: "button" }}
-              data={{ type: "", value: "", url: "", name: activeTab.ctaPrimary, title: activeTab.ctaPrimary, target: "" }}
+              icon="whatsapp-white"
+              positionIcon="left"
+              variantLink={{ type: "link" }}
+              data={{ type: "", value: "", url: whatsappUrl, name: activeTab.ctaPrimary, title: activeTab.ctaPrimary, target: "_blank" }}
               onClick={() => {
                 sendGTMEvent({ event: "button_clicked_garantir_proposta", value: "garantir_proposta" });
-                setProposalOpen(true);
               }}
             />
             <ButtonDefault
               styling="outline"
               theme="dark"
               icon="arrow-right-black-thin"
+              iconWidth={11}
+              iconHeight={11}
               variantLink={{ type: "link" }}
               data={{
                 type: "",
@@ -102,8 +103,6 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
           </div>
         </div>
       </div>
-
-      <ProposalDrawer open={proposalOpen} data={proposalDrawerContent} onClose={() => setProposalOpen(false)} />
     </SectionDefault>
   );
 };
