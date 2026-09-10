@@ -80,9 +80,6 @@
     position: absolute;
     top: 0;
 
-    @include resize(width, 30);
-    @include resize(height, 20);
-
     opacity: 0;
     transform: translateX(100px);
 
