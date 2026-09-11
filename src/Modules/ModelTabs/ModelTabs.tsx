@@ -1,13 +1,14 @@
 "use client";
 
 import "./ModelTabs.scss";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { whatsappUrl } from "@/utils/constants/whatsapp";
+import { useModelSelection } from "@/provider/ModelSelectionProvider/ModelSelectionProvider";
 
 import { modelTabsContent } from "./ModelTabsContent";
 
@@ -17,11 +18,11 @@ type ModelTabsProps = {
 
 const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
   const content = modelTabsContent;
-  const [active, setActive] = useState(0);
+  const { activeId, setActiveId } = useModelSelection();
 
   if (!content || !content.section_check) return null;
 
-  const activeTab = content.tabs[active];
+  const activeTab = content.tabs.find((tab) => tab.id === activeId) ?? content.tabs[0];
 
   return (
     <SectionDefault className="modelTabs" debug={debug}>
@@ -30,17 +31,17 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
       <h2 className="modelTabs__title">{content.title}</h2>
 
       <div className="modelTabs__tabs" role="tablist">
-        {content.tabs.map((tab, index) => (
+        {content.tabs.map((tab) => (
           <ButtonDefault
             key={tab.id}
             styling="filled"
             theme="light"
             role="tab"
-            aria-selected={index === active}
-            className={`modelTabs__tab ${index === active ? "modelTabs__tab--active" : ""}`}
+            aria-selected={tab.id === activeId}
+            className={`modelTabs__tab ${tab.id === activeId ? "modelTabs__tab--active" : ""}`}
             variantLink={{ type: "button" }}
             data={{ type: "", value: "", url: "", name: tab.tabLabel, title: tab.tabLabel, target: "" }}
-            onClick={() => setActive(index)}
+            onClick={() => setActiveId(tab.id)}
           />
         ))}
       </div>
