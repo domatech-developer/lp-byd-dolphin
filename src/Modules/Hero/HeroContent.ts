@@ -1,5 +1,3 @@
-import { HiddenHeadings } from "@/components/SEO/HiddenHeadings/HiddenHeadings.type";
-
 type HeroModel = {
   id: string;
   name: string;
@@ -14,7 +12,6 @@ type HeroModel = {
 
 type HeroContent = {
   section_check: boolean;
-  seo_headings: HiddenHeadings[];
   eyebrow: string;
   arrowAriaLabel: string;
   prevArrowAriaLabel: string;
@@ -24,7 +21,6 @@ type HeroContent = {
 
 export const heroContent: HeroContent = {
   section_check: true,
-  seo_headings: [{ tag: "h1", text: "Linha Dolphin BYD Servopa" }],
   eyebrow: "Linha Dolphin BYD Servopa",
   arrowAriaLabel: "Próximo modelo",
   prevArrowAriaLabel: "Modelo anterior",

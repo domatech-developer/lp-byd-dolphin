@@ -3,7 +3,6 @@
 import "./Hero.scss";
 import React, { FC, useState } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
-import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { whatsappUrl } from "@/utils/constants/whatsapp";
@@ -36,8 +35,6 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
 
   return (
     <SectionDefault className="hero" debug={debug}>
-      <HiddenHeadings headings={content.seo_headings} />
-
       <div className="hero__background">
         {content.models.map((model, index) => {
           const isActive = index === activeIndex;
