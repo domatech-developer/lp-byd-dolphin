@@ -67,8 +67,8 @@ const TechFeatures: FC<TechFeaturesProps> = ({ debug = false }) => {
                         theme="light"
                         circular
                         icon={isExpanded ? "minus" : "plus"}
-                        iconWidth={32}
-                        iconHeight={32}
+                        iconWidth={24}
+                        iconHeight={24}
                         variantLink={{ type: "button" }}
                         data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
                         aria-label={isExpanded ? "Ver menos" : "Ver mais"}

@@ -108,9 +108,10 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
                 <div className="modelPicker__cardDetails">
                   <div className="modelPicker__cardDetailsInner">
                     <TextDefault className="modelPicker__cardDescription" text={card.description} />
-                    <p className="modelPicker__cardBestFor">
-                      <strong>{card.bestForLabel}</strong> {card.bestFor}
-                    </p>
+                    <div className="modelPicker__cardBestFor">
+                      <strong className="modelPicker__cardBestForLabel">{card.bestForLabel}</strong>
+                      <span className="modelPicker__cardBestForText">{card.bestFor}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -126,8 +127,8 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
           theme="light"
           circular
           icon="arrow-left-white-nav"
-          iconWidth={24}
-          iconHeight={24}
+          iconWidth={17}
+          iconHeight={14}
           variantLink={{ type: "button" }}
           data={{ type: "", value: "", url: "", name: content.prevArrowAriaLabel, title: "", target: "" }}
           aria-label={content.prevArrowAriaLabel}
@@ -139,8 +140,8 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
           theme="light"
           circular
           icon="arrow-right-black-nav"
-          iconWidth={24}
-          iconHeight={24}
+          iconWidth={17}  
+          iconHeight={14}
           variantLink={{ type: "button" }}
           data={{ type: "", value: "", url: "", name: content.nextArrowAriaLabel, title: "", target: "" }}
           aria-label={content.nextArrowAriaLabel}

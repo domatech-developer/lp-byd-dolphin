@@ -163,6 +163,10 @@
     flex-shrink: 0;
     color: $color-white;
     @include text($b1-fs, $b1-lh, 400);
+
+    @include res-md {
+      @include text($b2-fs, $b2-lh, 400);
+    }
   }
 
   &__paginationTrack {

@@ -27,9 +27,8 @@
 
     @include res-md {
       position: relative;
-      height: auto;
-      justify-content: flex-end;
-      gap: 24px;
+      @include resize(height, 587);
+      justify-content: space-between;
     }
   }
 
@@ -49,6 +48,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+
+      @include res-md {
+        object-position: 36% center;
+      }
     }
   }
 

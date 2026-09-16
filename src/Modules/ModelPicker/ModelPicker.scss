@@ -43,7 +43,7 @@
     display: flex;
     width: 100%;
     @include resize(gap, 8);
-    @include resize(height, 400, 320);
+    @include resize(height, 400, 480);
 
     @include res-md {
       overflow-x: auto;
@@ -133,6 +133,10 @@
 
       .modelPicker__card--dolphin-mini & {
         object-position: 24% center;
+
+        @include res-md {
+          object-position: center 20%;
+        }
       }
 
       :where(.modelPicker__card--active.modelPicker__card--dolphin-se) & {
@@ -153,6 +157,8 @@
 
       @include res-md {
         transform: none;
+        object-fit: contain;
+        object-position: center 20%;
       }
     }
   }
@@ -184,6 +190,10 @@
     color: $color-white;
     width: 100%;
     @include resize(gap, 12);
+
+    @include res-md {
+      gap: 8px;
+    }
   }
 
   &__cardName {
@@ -221,9 +231,29 @@
     @include resize(gap, 12);
   }
 
-  &__cardDescription,
-  &__cardBestFor {
+  &__cardDescription {
     @include text($b2-fs, $b2-lh, 400);
+
+    @include res-md {
+      @include text(14px, 20px, 400);
+    }
+  }
+
+  &__cardBestFor {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__cardBestForLabel {
+    @include text($b2-fs, $b2-lh, 500);
+  }
+
+  &__cardBestForText {
+    @include text($b2-fs, $b2-lh, 400);
+
+    @include res-md {
+      @include text(14px, 20px, 400);
+    }
   }
 
   &__nav {
