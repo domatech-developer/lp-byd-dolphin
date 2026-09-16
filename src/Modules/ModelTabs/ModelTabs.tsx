@@ -6,6 +6,7 @@ import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
+import TextDefault from "@/components/TextDefault/TextDefault";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { whatsappUrl } from "@/utils/constants/whatsapp";
 import { useModelSelection } from "@/provider/ModelSelectionProvider/ModelSelectionProvider";
@@ -28,7 +29,7 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
     <SectionDefault className="modelTabs" debug={debug}>
       <HiddenHeadings headings={content.seo_headings} />
 
-      <h2 className="modelTabs__title">{content.title}</h2>
+      <TextDefault className="modelTabs__title" text={content.title} />
 
       <div className="modelTabs__tabs" role="tablist">
         {content.tabs.map((tab) => (
@@ -48,17 +49,10 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
 
       <div className="modelTabs__hero">
         <div className="modelTabs__heroContent">
-          <p className="modelTabs__eyebrow">{activeTab.eyebrow}</p>
+          <TextDefault className="modelTabs__eyebrow" text={activeTab.eyebrow} />
           <div className="modelTabs__heroTextGroup">
-            <h3 className="modelTabs__heroTitle">
-              {activeTab.title.split("\n").map((line, index) => (
-                <React.Fragment key={line}>
-                  {index > 0 && <br />}
-                  {line}
-                </React.Fragment>
-              ))}
-            </h3>
-            <p className="modelTabs__description">{activeTab.description}</p>
+            <TextDefault className="modelTabs__heroTitle" text={activeTab.title.replace(/\n/g, "<br/>")} />
+            <TextDefault className="modelTabs__description" text={activeTab.description} />
           </div>
           <div className="modelTabs__ctas">
             <ButtonDefault

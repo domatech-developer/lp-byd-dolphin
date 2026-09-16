@@ -4,6 +4,7 @@ import "./AboutServopa.scss";
 import React, { FC } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
+import TextDefault from "@/components/TextDefault/TextDefault";
 import useInView from "@/hooks/useInView";
 
 import { aboutServopaContent } from "./AboutServopaContent";
@@ -35,7 +36,7 @@ const AboutServopa: FC<AboutServopaProps> = ({ debug = false }) => {
 
       <div ref={ref} className={`aboutServopa__innerContainer ${inView ? "is-visible" : ""}`}>
         <div className="aboutServopa__title aboutServopa__reveal">{content.title}</div>
-        <p className="aboutServopa__paragraph aboutServopa__reveal">{content.paragraph}</p>
+        <TextDefault className="aboutServopa__paragraph aboutServopa__reveal" text={content.paragraph} />
         <div className="aboutServopa__cards">
           {content.cards.map((card, index) => (
             <div
@@ -44,7 +45,7 @@ const AboutServopa: FC<AboutServopaProps> = ({ debug = false }) => {
               style={{ "--reveal-index": index + 2 } as React.CSSProperties}
             >
               <span className="aboutServopa__cardTitle">{card.title}</span>
-              <p className="aboutServopa__cardDescription">{card.description}</p>
+              <TextDefault className="aboutServopa__cardDescription" text={card.description} />
             </div>
           ))}
         </div>

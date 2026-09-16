@@ -7,6 +7,7 @@ import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import PlayButton from "@/components/PlayButton/PlayButton";
 import VideoModal from "@/components/VideoModal/VideoModal";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
+import TextDefault from "@/components/TextDefault/TextDefault";
 import useInView from "@/hooks/useInView";
 import { useModelSelection } from "@/provider/ModelSelectionProvider/ModelSelectionProvider";
 
@@ -42,7 +43,7 @@ const ModelBanner: FC<ModelBannerProps> = ({ debug = false }) => {
         <div className="modelBanner__overlay">
           <div className="modelBanner__info">
             {model.badge && <span className="modelBanner__badge">{model.badge}</span>}
-            <p className="modelBanner__title">{model.title}</p>
+            <TextDefault className="modelBanner__title" text={model.title} />
           </div>
 
           {model.videoCard && (
@@ -51,8 +52,8 @@ const ModelBanner: FC<ModelBannerProps> = ({ debug = false }) => {
                 <PlayButton ariaLabel={model.videoCard.ariaLabel} ariaExpanded={isVideoOpen} onClick={() => setIsVideoOpen(true)} />
                 <span className="modelBanner__divider" aria-hidden="true" />
                 <div className="modelBanner__videoText">
-                  <p className="modelBanner__videoTitle">{model.videoCard.title}</p>
-                  <p className="modelBanner__videoSubtitle">{model.videoCard.subtitle}</p>
+                  <TextDefault className="modelBanner__videoTitle" text={model.videoCard.title} />
+                  <TextDefault className="modelBanner__videoSubtitle" text={model.videoCard.subtitle} />
                 </div>
               </div>
 

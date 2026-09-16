@@ -6,6 +6,7 @@ import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
+import TextDefault from "@/components/TextDefault/TextDefault";
 
 import { modelPickerContent } from "./ModelPickerContent";
 
@@ -46,8 +47,8 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
       <HiddenHeadings headings={content.seo_headings} />
 
       <div className="modelPicker__head">
-        <h2 className="modelPicker__title">{content.title}</h2>
-        <p className="modelPicker__paragraph">{content.paragraph}</p>
+        <TextDefault className="modelPicker__title" text={content.title} />
+        <TextDefault className="modelPicker__paragraph" text={content.paragraph} />
       </div>
 
       <div className="modelPicker__cards" role="tablist">
@@ -80,7 +81,7 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
 
                 <div className="modelPicker__cardDetails">
                   <div className="modelPicker__cardDetailsInner">
-                    <p className="modelPicker__cardDescription">{card.description}</p>
+                    <TextDefault className="modelPicker__cardDescription" text={card.description} />
                     <p className="modelPicker__cardBestFor">
                       <strong>{card.bestForLabel}</strong> {card.bestFor}
                     </p>

@@ -7,6 +7,7 @@ import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import CarouselDefault from "@/components/Carousel/CarouselDefault/CarouselDefault";
 import CarouselSlide from "@/components/Carousel/CarouselDefault/components/CarouselSlide";
+import TextDefault from "@/components/TextDefault/TextDefault";
 import { useModelSelection } from "@/provider/ModelSelectionProvider/ModelSelectionProvider";
 
 import { modelCarouselContent } from "./ModelCarouselContent";
@@ -67,7 +68,7 @@ const ModelCarousel: FC<ModelCarouselProps> = ({ debug = false }) => {
                       />
                     )}
                   </div>
-                  {card.description && <p className="modelCarousel__cardDescription">{card.description}</p>}
+                  {card.description && <TextDefault className="modelCarousel__cardDescription" text={card.description} />}
                 </div>
               </div>
             </CarouselSlide>

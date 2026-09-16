@@ -4,6 +4,7 @@ import "./Hero.scss";
 import React, { FC, useState } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
+import TextDefault from "@/components/TextDefault/TextDefault";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { whatsappUrl } from "@/utils/constants/whatsapp";
 
@@ -85,8 +86,8 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                   <span className="hero__eyebrow">{content.eyebrow}</span>
 
                   <div className="hero__heading">
-                    <h1 className="hero__title">{model.name}</h1>
-                    <p className="hero__description">{model.description}</p>
+                    <TextDefault className="hero__title" text={model.name} />
+                    <TextDefault className="hero__description" text={model.description} />
                   </div>
                 </div>
 

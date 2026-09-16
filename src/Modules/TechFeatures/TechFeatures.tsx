@@ -6,6 +6,7 @@ import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
+import TextDefault from "@/components/TextDefault/TextDefault";
 
 import { techFeaturesContent } from "./TechFeaturesContent";
 
@@ -44,7 +45,7 @@ const TechFeatures: FC<TechFeaturesProps> = ({ debug = false }) => {
           ))}
         </h2>
 
-        <p className="techFeatures__paragraph">{content.paragraph}</p>
+        <TextDefault className="techFeatures__paragraph" text={content.paragraph} />
       </div>
 
       <div className="techFeatures__cards">
@@ -76,7 +77,7 @@ const TechFeatures: FC<TechFeaturesProps> = ({ debug = false }) => {
                       />
                     )}
                   </div>
-                  {card.description && <p className="techFeatures__cardDescription">{card.description}</p>}
+                  {card.description && <TextDefault className="techFeatures__cardDescription" text={card.description} />}
                 </div>
               </div>
             );
