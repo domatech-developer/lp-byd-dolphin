@@ -96,7 +96,6 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                   styling="filled"
                   theme="light"
                   icon="whatsapp"
-                  iconPadding={0}
                   iconWidth={20}
                   iconHeight={20}
                   positionIcon="left"

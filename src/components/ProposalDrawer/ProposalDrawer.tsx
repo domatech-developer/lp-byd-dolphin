@@ -120,7 +120,7 @@ const ProposalDrawer: FC<ProposalDrawerProps> = ({ open, data, onClose, onSubmit
               placeholder={data?.fields?.name_placeholder}
               value={form.name.value}
               invalid={form.name.invalid}
-              erroMsg={form.name.errorLabel}
+              errorMsg={form.name.errorLabel}
               onChange={(e) => changeState("name", "value", e.target.value)}
             />
 
@@ -130,7 +130,7 @@ const ProposalDrawer: FC<ProposalDrawerProps> = ({ open, data, onClose, onSubmit
               placeholder={data?.fields?.email_placeholder}
               value={form.email.value}
               invalid={form.email.invalid}
-              erroMsg={form.email.errorLabel}
+              errorMsg={form.email.errorLabel}
               onChange={(e) => changeState("email", "value", e.target.value)}
             />
 
