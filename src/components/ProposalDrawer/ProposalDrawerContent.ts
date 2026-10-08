@@ -61,12 +61,12 @@ export const proposalDrawerContent: ProposalDrawerContent = {
     options: [
       { value: "phone", label: "Telefone", checked: true },
       { value: "email", label: "E-mail", checked: true },
-      { value: "whatsapp", label: "Whatsapp", checked: true }
+      { value: "whatsapp", label: "WhatsApp", checked: true }
     ]
   },
   privacy: {
     label: "Aceito a política de privacidade",
-    url: "/politica-de-privacidade",
+    url: "/files/pdf/POLITICA PRIVACIDADE - GRUPO SERVOPA.pdf",
     target: "_blank"
   },
   submit_label: "Enviar"

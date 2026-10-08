@@ -34,7 +34,7 @@ export const modelBannerContent: ModelBannerContent = {
       title: "BYD DOLPHIN SE",
       videoCard: {
         title: "Linha Dolphin BYD Servopa",
-        subtitle: "Veja o review de nossa concessionária",
+        subtitle: "Veja a avaliação da nossa concessionária",
         videoUrl: "/videos/video-servopa-web.mp4",
         mimeType: "video/mp4",
         ariaLabel: "Assistir ao review da concessionária Servopa",
@@ -46,7 +46,7 @@ export const modelBannerContent: ModelBannerContent = {
       title: "BYD DOLPHIN",
       videoCard: {
         title: "Linha Dolphin BYD Servopa",
-        subtitle: "Veja o review de nossa concessionária",
+        subtitle: "Veja a avaliação da nossa concessionária",
         videoUrl: "/videos/video-servopa-web.mp4",
         mimeType: "video/mp4",
         ariaLabel: "Assistir ao review da concessionária Servopa",
@@ -58,7 +58,7 @@ export const modelBannerContent: ModelBannerContent = {
       title: "BYD DOLPHIN MINI",
       videoCard: {
         title: "Linha Dolphin BYD Servopa",
-        subtitle: "Veja o review de nossa concessionária",
+        subtitle: "Veja a avaliação da nossa concessionária",
         videoUrl: "/videos/video-servopa-web.mp4",
         mimeType: "video/mp4",
         ariaLabel: "Assistir ao review da concessionária Servopa",
@@ -70,7 +70,7 @@ export const modelBannerContent: ModelBannerContent = {
       title: "BYD DOLPHIN PLUS",
       videoCard: {
         title: "Linha Dolphin BYD Servopa",
-        subtitle: "Veja o review de nossa concessionária",
+        subtitle: "Veja a avaliação da nossa concessionária",
         videoUrl: "/videos/video-servopa-web.mp4",
         mimeType: "video/mp4",
         ariaLabel: "Assistir ao review da concessionária Servopa",

@@ -49,8 +49,8 @@ export const footerContent: FooterContent = {
     }
   ],
   description:
-    "O Grupo Servopa foi fundado em 1955, atuando nos segmentos de concessionárias de automóveis, caminhões, motocicletas e consórcio, além de outros serviços ligados diretamente ao setor automotivo. Sendo um dos maiores e melhores grupos do país, trabalhamos para garantir solidez, credibilidade, segurança e confiança, pilares essenciais que fazem parte da nossa identidade. Hoje, o Grupo Servopa atua em toda a região Sul do país e atende seus mais de 300 mil clientes com total dedicação, que ao longo dos anos ajudaram a escrever uma história de sucesso.",
-  contact: "Entre em contato com a gente pelo formulário, whatsapp ou telefone ou e-mail sac@gruposervopa.com.br.",
+    "O Grupo Servopa foi fundado em 1955, atuando nos segmentos de concessionárias de automóveis, caminhões, motocicletas e consórcio, além de outros serviços ligados diretamente ao setor automotivo. Sendo um dos maiores e melhores grupos do país, trabalhamos para garantir solidez, credibilidade, segurança e confiança, pilares essenciais que fazem parte da nossa identidade. Hoje, o Grupo Servopa atua em toda a região Sul do país e atende, com total dedicação, mais de 300 mil clientes, que ajudaram a escrever sua história de sucesso.",
+  contact: "Entre em contato pelo formulário, pelo WhatsApp, por telefone ou pelo e-mail sac@gruposervopa.com.br.",
   copyright: "© Copyright  2026 - Servopa.  Todos os direitos reservados.",
   credits_label: "Feito por:",
   credits_link: {

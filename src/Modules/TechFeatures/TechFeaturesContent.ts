@@ -32,8 +32,8 @@ export const techFeaturesContent: TechFeaturesContent = {
   ],
   background: { url: "/images/tech-features/hero-bg.webp", alt: "BYD Dolphin em movimento" },
   titleLines: [
-    { text: "Mais silêncio.", opacity: 0.6 },
-    { text: "Mais eficiência.", opacity: 0.8 },
+    { text: "Mais silêncio. ", opacity: 0.6 },
+    { text: "Mais eficiência. ", opacity: 0.8 },
     { text: "Mais tecnologia" },
     { text: "em movimento." }
   ],

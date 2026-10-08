@@ -32,8 +32,8 @@ export const locationsModalContent: InfoModalData = {
     },
     {
       label: "São José dos Pinhais",
-      value: "Avenida das Torres, 2080 - 83040 - 300",
-      href: maps("Avenida das Torres, 2080 - 83040 - 300"),
+      value: "Avenida das Torres, 2080 - 83040-300",
+      href: maps("Avenida das Torres, 2080 - 83040-300"),
       target: "_blank"
     },
     {
