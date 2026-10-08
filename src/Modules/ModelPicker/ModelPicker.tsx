@@ -6,6 +6,7 @@ import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
+import TextDefault from "@/components/TextDefault/TextDefault";
 
 import { modelPickerContent } from "./ModelPickerContent";
 
@@ -13,11 +14,15 @@ type ModelPickerProps = {
   debug?: boolean;
 };
 
+const CARD_TRANSITION_MS = 600;
+
 const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
   const content = modelPickerContent;
   const [activeId, setActiveId] = useState(content.cards[0]?.id);
   const cardRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const isMounted = useRef(false);
+  const lockedRef = useRef(false);
+  const pendingIdRef = useRef<string | null>(null);
 
   useEffect(() => {
     if (!isMounted.current) {
@@ -26,6 +31,27 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
     }
     cardRefs.current[activeId ?? ""]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
   }, [activeId]);
+
+  const activateCard = (id: string) => {
+    setActiveId(id);
+    lockedRef.current = true;
+    setTimeout(() => {
+      lockedRef.current = false;
+      if (pendingIdRef.current) {
+        const next = pendingIdRef.current;
+        pendingIdRef.current = null;
+        activateCard(next);
+      }
+    }, CARD_TRANSITION_MS);
+  };
+
+  const handleCardMouseEnter = (id: string) => {
+    if (lockedRef.current) {
+      pendingIdRef.current = id;
+      return;
+    }
+    activateCard(id);
+  };
 
   if (!content || !content.section_check) return null;
 
@@ -46,8 +72,8 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
       <HiddenHeadings headings={content.seo_headings} />
 
       <div className="modelPicker__head">
-        <h2 className="modelPicker__title">{content.title}</h2>
-        <p className="modelPicker__paragraph">{content.paragraph}</p>
+        <TextDefault className="modelPicker__title" text={content.title} />
+        <TextDefault className="modelPicker__paragraph" text={content.paragraph} />
       </div>
 
       <div className="modelPicker__cards" role="tablist">
@@ -66,24 +92,26 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
               data={{ type: "", value: "", url: "", name: card.name, title: card.name, target: "" }}
               role="tab"
               aria-selected={isActive}
-              className={`modelPicker__card ${isActive ? "modelPicker__card--active" : ""}`}
-              onFocus={() => setActiveId(card.id)}
-              onClick={() => setActiveId(card.id)}
+              className={`modelPicker__card modelPicker__card--${card.id} ${isActive ? "modelPicker__card--active" : ""}`}
+              onFocus={() => activateCard(card.id)}
+              onMouseEnter={() => handleCardMouseEnter(card.id)}
+              onClick={() => activateCard(card.id)}
             >
               <div className="modelPicker__cardImage">
                 <ImgContainer className="modelPicker__cardImage" image={card.image} alt={card.image.alt} />
               </div>
-              <div className="modelPicker__cardGlass" aria-hidden="true" />
+              <div className="modelPicker__cardScrim" aria-hidden="true" />
 
               <div className="modelPicker__cardInfo">
                 <span className="modelPicker__cardName">{card.name}</span>
 
                 <div className="modelPicker__cardDetails">
                   <div className="modelPicker__cardDetailsInner">
-                    <p className="modelPicker__cardDescription">{card.description}</p>
-                    <p className="modelPicker__cardBestFor">
-                      <strong>{card.bestForLabel}</strong> {card.bestFor}
-                    </p>
+                    <TextDefault className="modelPicker__cardDescription" text={card.description} />
+                    <div className="modelPicker__cardBestFor">
+                      <strong className="modelPicker__cardBestForLabel">{card.bestForLabel}</strong>
+                      <span className="modelPicker__cardBestForText">{card.bestFor}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -99,8 +127,8 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
           theme="light"
           circular
           icon="arrow-left-white-nav"
-          iconWidth={24}
-          iconHeight={24}
+          iconWidth={17}
+          iconHeight={14}
           variantLink={{ type: "button" }}
           data={{ type: "", value: "", url: "", name: content.prevArrowAriaLabel, title: "", target: "" }}
           aria-label={content.prevArrowAriaLabel}
@@ -112,8 +140,8 @@ const ModelPicker: FC<ModelPickerProps> = ({ debug = false }) => {
           theme="light"
           circular
           icon="arrow-right-black-nav"
-          iconWidth={24}
-          iconHeight={24}
+          iconWidth={17}  
+          iconHeight={14}
           variantLink={{ type: "button" }}
           data={{ type: "", value: "", url: "", name: content.nextArrowAriaLabel, title: "", target: "" }}
           aria-label={content.nextArrowAriaLabel}

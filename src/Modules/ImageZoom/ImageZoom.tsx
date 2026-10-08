@@ -5,6 +5,7 @@ import React, { FC } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
+import TextDefault from "@/components/TextDefault/TextDefault";
 import useInView from "@/hooks/useInView";
 
 import { imageZoomContent } from "./ImageZoomContent";
@@ -47,8 +48,8 @@ const ImageZoom: FC<ImageZoomProps> = ({ debug = false }) => {
           </div>
         </div>
 
-        <h2 className="imageZoom__title">{content.title}</h2>
-        <p className="imageZoom__paragraph">{content.paragraph}</p>
+        <TextDefault className="imageZoom__title" text={content.title} />
+        <TextDefault className="imageZoom__paragraph" text={content.paragraph} />
       </div>
     </SectionDefault>
   );

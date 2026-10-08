@@ -3,9 +3,10 @@
 import "./Hero.scss";
 import React, { FC, useState } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
-import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
+import TextDefault from "@/components/TextDefault/TextDefault";
 import { sendGTMEvent } from "@next/third-parties/google";
+import { whatsappUrl } from "@/utils/constants/whatsapp";
 
 import { heroContent } from "./HeroContent";
 
@@ -35,8 +36,6 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
 
   return (
     <SectionDefault className="hero" debug={debug}>
-      <HiddenHeadings headings={content.seo_headings} />
-
       <div className="hero__background">
         {content.models.map((model, index) => {
           const isActive = index === activeIndex;
@@ -67,8 +66,8 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
         styling="ghost"
         theme="light"
         circular
-        iconWidth={24}
-        iconHeight={22}
+        iconWidth={17}
+        iconHeight={14}
         icon="arrow-right-white-nav"
         variantLink={{ type: "button" }}
         data={{ type: "", value: "", url: "", name: content.arrowAriaLabel, title: "", target: "" }}
@@ -87,8 +86,8 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                   <span className="hero__eyebrow">{content.eyebrow}</span>
 
                   <div className="hero__heading">
-                    <h1 className="hero__title">{model.name}</h1>
-                    <p className="hero__description">{model.description}</p>
+                    <TextDefault className="hero__title" text={model.name} />
+                    <TextDefault className="hero__description" text={model.description} />
                   </div>
                 </div>
 
@@ -96,11 +95,16 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                   className="hero__cta"
                   styling="filled"
                   theme="light"
+                  icon="whatsapp"
+                  iconPadding={0}
+                  iconWidth={20}
+                  iconHeight={20}
+                  positionIcon="left"
                   variantLink={{ type: "link" }}
                   data={{
                     type: "",
                     value: "",
-                    url: model.ctaUrl,
+                    url: whatsappUrl,
                     name: model.ctaLabel,
                     title: model.ctaLabel,
                     target: "_blank"
@@ -126,8 +130,8 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                     theme="light"
                     circular
                     icon="arrow-left-white-nav"
-                    iconWidth={24}
-                    iconHeight={20}
+                    iconWidth={18}
+                    iconHeight={16}
                     variantLink={{ type: "button" }}
                     data={{ type: "", value: "", url: "", name: content.prevArrowAriaLabel, title: "", target: "" }}
                     aria-label={content.prevArrowAriaLabel}
@@ -139,8 +143,8 @@ const Hero: FC<HeroProps> = ({ debug = false }) => {
                     theme="light"
                     circular
                     icon="arrow-right-black-nav"
-                    iconWidth={24}
-                    iconHeight={20}
+                    iconWidth={18}
+                    iconHeight={16}
                     variantLink={{ type: "button" }}
                     data={{ type: "", value: "", url: "", name: content.arrowAriaLabel, title: "", target: "" }}
                     aria-label={content.arrowAriaLabel}

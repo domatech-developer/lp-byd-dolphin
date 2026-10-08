@@ -6,6 +6,7 @@ import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
+import TextDefault from "@/components/TextDefault/TextDefault";
 
 import { techFeaturesContent } from "./TechFeaturesContent";
 
@@ -44,42 +45,44 @@ const TechFeatures: FC<TechFeaturesProps> = ({ debug = false }) => {
           ))}
         </h2>
 
-        <p className="techFeatures__paragraph">{content.paragraph}</p>
+        <TextDefault className="techFeatures__paragraph" text={content.paragraph} />
       </div>
 
       <div className="techFeatures__cards">
-        {content.cards.map((card, index) => {
-          const isExpanded = expanded.has(index);
+        <div className="techFeatures__cardsTrack">
+          {content.cards.map((card, index) => {
+            const isExpanded = expanded.has(index);
 
-          return (
-            <div className={`techFeatures__card ${isExpanded ? "techFeatures__card--expanded" : ""}`} key={card.title}>
-              <ImgContainer className="techFeatures__cardImage" image={card.image} alt={card.image.alt} />
-              <div className="techFeatures__cardHoverPanel" aria-hidden="true" />
-              <div className="techFeatures__cardInfo">
-                <div className="techFeatures__cardTitleRow">
-                  <span className="techFeatures__cardTitle">{card.title}</span>
-                  {card.description && (
-                    <ButtonDefault
-                      className="techFeatures__cardToggle"
-                      styling="ghost"
-                      theme="light"
-                      circular
-                      icon={isExpanded ? "minus" : "plus"}
-                      iconWidth={32}
-                      iconHeight={32}
-                      variantLink={{ type: "button" }}
-                      data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
-                      aria-label={isExpanded ? "Ver menos" : "Ver mais"}
-                      aria-expanded={isExpanded}
-                      onClick={() => toggleExpanded(index)}
-                    />
-                  )}
+            return (
+              <div className={`techFeatures__card ${isExpanded ? "techFeatures__card--expanded" : ""}`} key={card.title}>
+                <ImgContainer className="techFeatures__cardImage" image={card.image} alt={card.image.alt} />
+                <div className="techFeatures__cardHoverPanel" aria-hidden="true" />
+                <div className="techFeatures__cardInfo">
+                  <div className="techFeatures__cardTitleRow">
+                    <span className="techFeatures__cardTitle">{card.title}</span>
+                    {card.description && (
+                      <ButtonDefault
+                        className="techFeatures__cardToggle"
+                        styling="ghost"
+                        theme="light"
+                        circular
+                        icon={isExpanded ? "minus" : "plus"}
+                        iconWidth={24}
+                        iconHeight={24}
+                        variantLink={{ type: "button" }}
+                        data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
+                        aria-label={isExpanded ? "Ver menos" : "Ver mais"}
+                        aria-expanded={isExpanded}
+                        onClick={() => toggleExpanded(index)}
+                      />
+                    )}
+                  </div>
+                  {card.description && <TextDefault className="techFeatures__cardDescription" text={card.description} />}
                 </div>
-                {card.description && <p className="techFeatures__cardDescription">{card.description}</p>}
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </SectionDefault>
   );

@@ -89,7 +89,6 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    @include resize(gap, 114);
     @include resize(max-width, 272, none);
 
     @include res-md {
@@ -101,7 +100,9 @@
 
   &__info {
     display: flex;
+    flex: 1;
     flex-direction: column;
+    justify-content: center;
     @include resize(gap, 24, 16);
   }
 
@@ -153,6 +154,7 @@
   &__pagination {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
     width: 100%;
     @include resize(gap, 20);
   }
@@ -161,6 +163,10 @@
     flex-shrink: 0;
     color: $color-white;
     @include text($b1-fs, $b1-lh, 400);
+
+    @include res-md {
+      @include text($b2-fs, $b2-lh, 400);
+    }
   }
 
   &__paginationTrack {

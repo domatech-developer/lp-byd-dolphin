@@ -2,6 +2,7 @@ import "./Footer.scss";
 import { FC } from "react";
 import LinkDefault from "@/components/LinkDefault/LinkDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
+import TextDefault from "@/components/TextDefault/TextDefault";
 
 import { footerContent } from "./FooterContent";
 import { sendGTMEvent } from "@next/third-parties/google";
@@ -16,7 +17,7 @@ const Footer: FC = () => {
   return (
     <footer className="footer">
       <div className="footer__container">
-        {title && <h3 className="footer__title">{title}</h3>}
+        {title && <TextDefault className="footer__title" text={title} />}
 
         {models.length > 0 && (
           <ul className="footer__models">
@@ -44,15 +45,15 @@ const Footer: FC = () => {
         <hr className="footer__divider" />
 
         <div className="footer__content">
-          {description && <p className="footer__description">{description}</p>}
+          {description && <TextDefault className="footer__description" text={description} />}
           <br />
-          {contact && <p className="footer__description">{contact}</p>}
+          {contact && <TextDefault className="footer__description" text={contact} />}
         </div>
       </div>
 
       <div className="footer__bottomBar">
         <div className="footer__container footer__container--bottom">
-          <p className="footer__copyright">{copyright}</p>
+          <TextDefault className="footer__copyright" text={copyright} />
 
           <div className="footer__credits">
             <span className="footer__creditsLabel">{credits_label || "Feito por:"}</span>

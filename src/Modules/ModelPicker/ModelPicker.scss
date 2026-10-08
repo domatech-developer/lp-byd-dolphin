@@ -43,7 +43,7 @@
     display: flex;
     width: 100%;
     @include resize(gap, 8);
-    @include resize(height, 400, 320);
+    @include resize(height, 400, 480);
 
     @include res-md {
       overflow-x: auto;
@@ -84,11 +84,8 @@
 
     @include res-md {
       @include resize(min-width, 320);
-      flex: 0 0 205px;
+      flex: 0 0 320px;
       scroll-snap-align: start;
-      &--active {
-        flex: 0 0 320px;
-      }
     }
 
     &:focus-visible {
@@ -130,28 +127,57 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: none;
-      object-position: 20% center;
+      object-fit: cover;
+      object-position: 12% center;
+      transition: transform 0.6s ease-in-out;
 
-      .modelPicker__card--active & {
-        object-fit: cover;
+      .modelPicker__card--dolphin-mini & {
+        object-position: 24% center;
+
+        @include res-md {
+          object-position: center 20%;
+        }
+      }
+
+      :where(.modelPicker__card--active.modelPicker__card--dolphin-se) & {
+        transform: translateY(-3%);
+      }
+
+      :where(.modelPicker__card--active.modelPicker__card--dolphin) & {
+        transform: translateY(1%);
+      }
+
+      :where(.modelPicker__card--active.modelPicker__card--dolphin-mini) & {
+        transform: translateY(-3%);
+      }
+
+      :where(.modelPicker__card--active.modelPicker__card--dolphin-plus) & {
+        transform: translateY(3%);
+      }
+
+      @include res-md {
+        transform: none;
+        object-fit: contain;
+        object-position: center 20%;
       }
     }
   }
 
-  &__cardGlass {
+  &__cardScrim {
     position: absolute;
     inset: 0;
     z-index: 1;
     border-radius: 8px;
     pointer-events: none;
-    background: $color-black-60;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    background: linear-gradient(180deg, transparent 50%, $color-black 77.875%);
     opacity: 0;
     transition: opacity 0.6s ease-in-out;
 
     .modelPicker__card--active & {
+      opacity: 1;
+    }
+
+    @include res-md {
       opacity: 1;
     }
   }
@@ -164,6 +190,10 @@
     color: $color-white;
     width: 100%;
     @include resize(gap, 12);
+
+    @include res-md {
+      gap: 8px;
+    }
   }
 
   &__cardName {
@@ -178,11 +208,18 @@
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
-    transition: opacity 0.6s ease-in-out, grid-template-rows 0.6s ease-in-out;
+    transition: opacity 0.25s ease-in-out, grid-template-rows 0.25s ease-in-out;
 
     .modelPicker__card--active & {
       grid-template-rows: 1fr;
       opacity: 1;
+      transition: opacity 0.3s ease-in-out 0.3s, grid-template-rows 0.3s ease-in-out 0.3s;
+    }
+
+    @include res-md {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      transition: none;
     }
   }
 
@@ -194,9 +231,29 @@
     @include resize(gap, 12);
   }
 
-  &__cardDescription,
-  &__cardBestFor {
+  &__cardDescription {
     @include text($b2-fs, $b2-lh, 400);
+
+    @include res-md {
+      @include text(14px, 20px, 400);
+    }
+  }
+
+  &__cardBestFor {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__cardBestForLabel {
+    @include text($b2-fs, $b2-lh, 500);
+  }
+
+  &__cardBestForText {
+    @include text($b2-fs, $b2-lh, 400);
+
+    @include res-md {
+      @include text(14px, 20px, 400);
+    }
   }
 
   &__nav {

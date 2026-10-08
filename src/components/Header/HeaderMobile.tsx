@@ -7,15 +7,15 @@ import ImgContainer from "@/components/ImageContainer/ImageContainer";
 
 import { headerContent } from "./HeaderContent";
 import { footerContent } from "@/components/Footer/FooterContent";
+import { whatsappUrl } from "@/utils/constants/whatsapp";
 import { sendGTMEvent } from "@next/third-parties/google";
 
 type HeaderMobileProps = {
   onOpenPhones: (anchor: HTMLElement | null) => void;
   onOpenLocation: (anchor: HTMLElement | null) => void;
-  onOpenContact: () => void;
 };
 
-const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onOpenContact }) => {
+const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation }) => {
   const content = headerContent;
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -36,11 +36,6 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
   const openLocation = (event: React.MouseEvent<HTMLElement>) => {
     setMenuOpen(false);
     onOpenLocation(event.currentTarget);
-  };
-
-  const openContact = () => {
-    setMenuOpen(false);
-    onOpenContact();
   };
 
   return (
@@ -99,10 +94,14 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
           className="headerMobile__cta"
           styling="filled"
           theme="light"
-          variantLink={{ type: "button" }}
-          data={{ type: "", value: "", url: "", name: content.cta.text, title: content.cta.text, target: "" }}
+          icon={content.cta.icon}
+          iconWidth={20}
+          iconHeight={20}
+          positionIcon="left"
+          variantLink={{ type: "link" }}
+          data={{ type: "", value: "", url: whatsappUrl, name: content.cta.text, title: content.cta.text, target: "_blank" }}
           onClick={() => {
-            openContact();
+            setMenuOpen(false);
             sendGTMEvent({ event: "button_clicked_garantir_proposta", value: "garantir_proposta" });
           }}
         />
@@ -181,9 +180,16 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ onOpenPhones, onOpenLocation, onO
                 className="headerMobile__cta headerMenu__cta"
                 styling="filled"
                 theme="light"
-                variantLink={{ type: "button" }}
-                data={{ type: "", value: "", url: "", name: content.cta.text, title: content.cta.text, target: "" }}
-                onClick={openContact}
+                icon={content.cta.icon}
+                iconWidth={20}
+                iconHeight={20}
+                positionIcon="left"
+                variantLink={{ type: "link" }}
+                data={{ type: "", value: "", url: whatsappUrl, name: content.cta.text, title: content.cta.text, target: "_blank" }}
+                onClick={() => {
+                  setMenuOpen(false);
+                  sendGTMEvent({ event: "button_clicked_garantir_proposta", value: "garantir_proposta" });
+                }}
               />
             </div>
 

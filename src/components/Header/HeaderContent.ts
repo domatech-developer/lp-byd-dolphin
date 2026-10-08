@@ -18,7 +18,7 @@ type HeaderContent = {
   brandLabel: string;
   phones: LinkItem;
   location: LinkItem;
-  cta: { text: string };
+  cta: { text: string; icon: Icons };
   menuTitle: string;
   menuFooter: {
     title: string;
@@ -41,7 +41,7 @@ export const headerContent: HeaderContent = {
     label: "Localização",
     icon: "location"
   },
-  cta: { text: "Consultar condições" },
+  cta: { text: "Solicitar cotação", icon: "whatsapp" },
   menuTitle: "Linha Dolphin BYD Servopa",
   menuFooter: {
     title: "Grupo Servopa",

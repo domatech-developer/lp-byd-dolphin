@@ -6,7 +6,7 @@
  * - acf.metaDados        -> JSON-LD (string). Deixe "" para não renderizar.
  */
 export const pageData = {
-  title: { rendered: "Linha BYD Dolphin em Curitiba | Grupo Servopa" },
+  title: { rendered: "Linha Dolphin BYD Servopa" },
   acf: {
     seo: {
       title: "Linha BYD Dolphin em Curitiba | Grupo Servopa",

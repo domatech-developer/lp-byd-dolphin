@@ -1,14 +1,15 @@
 "use client";
 
 import "./ModelTabs.scss";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
+import TextDefault from "@/components/TextDefault/TextDefault";
 import { sendGTMEvent } from "@next/third-parties/google";
-import ProposalDrawer from "@/components/ProposalDrawer/ProposalDrawer";
-import { proposalDrawerContent } from "@/components/ProposalDrawer/ProposalDrawerContent";
+import { whatsappUrl } from "@/utils/constants/whatsapp";
+import { useModelSelection } from "@/provider/ModelSelectionProvider/ModelSelectionProvider";
 
 import { modelTabsContent } from "./ModelTabsContent";
 
@@ -18,64 +19,59 @@ type ModelTabsProps = {
 
 const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
   const content = modelTabsContent;
-  const [proposalOpen, setProposalOpen] = useState(false);
-  const [active, setActive] = useState(0);
+  const { activeId, setActiveId } = useModelSelection();
 
   if (!content || !content.section_check) return null;
 
-  const activeTab = content.tabs[active];
+  const activeTab = content.tabs.find((tab) => tab.id === activeId) ?? content.tabs[0];
 
   return (
     <SectionDefault className="modelTabs" debug={debug}>
       <HiddenHeadings headings={content.seo_headings} />
 
-      <h2 className="modelTabs__title">{content.title}</h2>
+      <TextDefault className="modelTabs__title" text={content.title} />
 
       <div className="modelTabs__tabs" role="tablist">
-        {content.tabs.map((tab, index) => (
+        {content.tabs.map((tab) => (
           <ButtonDefault
             key={tab.id}
             styling="filled"
             theme="light"
             role="tab"
-            aria-selected={index === active}
-            className={`modelTabs__tab ${index === active ? "modelTabs__tab--active" : ""}`}
+            aria-selected={tab.id === activeId}
+            className={`modelTabs__tab ${tab.id === activeId ? "modelTabs__tab--active" : ""}`}
             variantLink={{ type: "button" }}
             data={{ type: "", value: "", url: "", name: tab.tabLabel, title: tab.tabLabel, target: "" }}
-            onClick={() => setActive(index)}
+            onClick={() => setActiveId(tab.id)}
           />
         ))}
       </div>
 
       <div className="modelTabs__hero">
         <div className="modelTabs__heroContent">
-          <p className="modelTabs__eyebrow">{activeTab.eyebrow}</p>
+          <TextDefault className="modelTabs__eyebrow" text={activeTab.eyebrow} />
           <div className="modelTabs__heroTextGroup">
-            <h3 className="modelTabs__heroTitle">
-              {activeTab.title.split("\n").map((line, index) => (
-                <React.Fragment key={line}>
-                  {index > 0 && <br />}
-                  {line}
-                </React.Fragment>
-              ))}
-            </h3>
-            <p className="modelTabs__description">{activeTab.description}</p>
+            <TextDefault className="modelTabs__heroTitle" text={activeTab.title.replace(/\n/g, "<br/>")} />
+            <TextDefault className="modelTabs__description" text={activeTab.description} />
           </div>
           <div className="modelTabs__ctas">
             <ButtonDefault
               styling="filled"
               theme="dark"
-              variantLink={{ type: "button" }}
-              data={{ type: "", value: "", url: "", name: activeTab.ctaPrimary, title: activeTab.ctaPrimary, target: "" }}
+              icon="whatsapp-white"
+              positionIcon="left"
+              variantLink={{ type: "link" }}
+              data={{ type: "", value: "", url: whatsappUrl, name: activeTab.ctaPrimary, title: activeTab.ctaPrimary, target: "_blank" }}
               onClick={() => {
                 sendGTMEvent({ event: "button_clicked_garantir_proposta", value: "garantir_proposta" });
-                setProposalOpen(true);
               }}
             />
             <ButtonDefault
               styling="outline"
               theme="dark"
               icon="arrow-right-black-thin"
+              iconWidth={11}
+              iconHeight={11}
               variantLink={{ type: "link" }}
               data={{
                 type: "",
@@ -102,8 +98,6 @@ const ModelTabs: FC<ModelTabsProps> = ({ debug = false }) => {
           </div>
         </div>
       </div>
-
-      <ProposalDrawer open={proposalOpen} data={proposalDrawerContent} onClose={() => setProposalOpen(false)} />
     </SectionDefault>
   );
 };

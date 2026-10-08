@@ -90,23 +90,4 @@
     flex-shrink: 0;
   }
 
-  &__cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    @include resize(padding-block, 12);
-    @include resize(padding-inline, 16);
-    background: $color-white;
-    color: $color-primary;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    white-space: nowrap;
-    @include text($b3-fs, 20px, 500);
-    transition: opacity 0.2s ease;
-
-    &:hover {
-      opacity: 0.85;
-    }
-  }
 }

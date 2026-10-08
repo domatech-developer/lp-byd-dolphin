@@ -1,12 +1,14 @@
 "use client";
 
 import "./ModelCarousel.scss";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
 import ButtonDefault from "@/components/Buttons/ButtonDefault/ButtonDefault";
 import CarouselDefault from "@/components/Carousel/CarouselDefault/CarouselDefault";
 import CarouselSlide from "@/components/Carousel/CarouselDefault/components/CarouselSlide";
+import TextDefault from "@/components/TextDefault/TextDefault";
+import { useModelSelection } from "@/provider/ModelSelectionProvider/ModelSelectionProvider";
 
 import { modelCarouselContent } from "./ModelCarouselContent";
 
@@ -16,9 +18,16 @@ type ModelCarouselProps = {
 
 const ModelCarousel: FC<ModelCarouselProps> = ({ debug = false }) => {
   const content = modelCarouselContent;
+  const { activeId } = useModelSelection();
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
 
+  useEffect(() => {
+    setExpanded(new Set());
+  }, [activeId]);
+
   if (!content || !content.section_check) return null;
+
+  const cards = content.models[activeId] ?? Object.values(content.models)[0] ?? [];
 
   const toggleExpanded = (index: number) => {
     setExpanded((prev) => {
@@ -30,8 +39,8 @@ const ModelCarousel: FC<ModelCarouselProps> = ({ debug = false }) => {
 
   return (
     <SectionDefault className="modelCarousel" debug={debug}>
-      <CarouselDefault options={{ align: "start", containScroll: "trimSnaps" }} hideButtons>
-        {content.cards.map((card, index) => {
+      <CarouselDefault key={activeId} options={{ align: "start", containScroll: "trimSnaps" }} hideButtons>
+        {cards.map((card, index) => {
           const isExpanded = expanded.has(index);
 
           return (
@@ -49,8 +58,8 @@ const ModelCarousel: FC<ModelCarouselProps> = ({ debug = false }) => {
                         theme="light"
                         circular
                         icon={isExpanded ? "minus" : "plus"}
-                        iconWidth={32}
-                        iconHeight={32}
+                        iconWidth={24}
+                        iconHeight={24}
                         variantLink={{ type: "button" }}
                         data={{ type: "", value: "", url: "", name: "", title: "", target: "" }}
                         aria-label={isExpanded ? "Ver menos" : "Ver mais"}
@@ -59,7 +68,7 @@ const ModelCarousel: FC<ModelCarouselProps> = ({ debug = false }) => {
                       />
                     )}
                   </div>
-                  {card.description && <p className="modelCarousel__cardDescription">{card.description}</p>}
+                  {card.description && <TextDefault className="modelCarousel__cardDescription" text={card.description} />}
                 </div>
               </div>
             </CarouselSlide>

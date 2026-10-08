@@ -5,6 +5,7 @@ import React, { FC } from "react";
 import SectionDefault from "@/components/SectionDefault/SectionDefault";
 import HiddenHeadings from "@/components/SEO/HiddenHeadings/HiddenHeadings";
 import ImgContainer from "@/components/ImageContainer/ImageContainer";
+import TextDefault from "@/components/TextDefault/TextDefault";
 import useInView from "@/hooks/useInView";
 
 import { modelsLineupContent } from "./ModelsLineupContent";
@@ -34,8 +35,8 @@ const ModelsLineup: FC<ModelsLineupProps> = ({ debug = false }) => {
         </div>
 
         <div className="modelsLineup__head">
-          <h2 className="modelsLineup__title">{content.title}</h2>
-          <p className="modelsLineup__paragraph">{content.paragraph}</p>
+          <TextDefault className="modelsLineup__title" text={content.title} />
+          <TextDefault className="modelsLineup__paragraph" text={content.paragraph} />
         </div>
 
         <div className="modelsLineup__footer">

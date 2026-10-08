@@ -9,6 +9,7 @@ import ModelPicker from "@/Modules/ModelPicker/ModelPicker";
 import ModelTabs from "@/Modules/ModelTabs/ModelTabs";
 import ModelBanner from "@/Modules/ModelBanner/ModelBanner";
 import ModelCarousel from "@/Modules/ModelCarousel/ModelCarousel";
+import { ModelSelectionProvider } from "@/provider/ModelSelectionProvider/ModelSelectionProvider";
 import TechFeatures from "@/Modules/TechFeatures/TechFeatures";
 import VideoServopa from "@/Modules/VideoServopa/VideoServopa";
 import AboutServopa from "@/Modules/AboutServopa/AboutServopa";
@@ -24,12 +25,14 @@ const Home: FC<HomeProps> = async ({ data, locale }) => {
       <ImageZoom />
       <ModelsLineup />
       <ModelPicker />
-      <ModelTabs />
-      <ModelBanner />
-      <div className="techFeaturesReveal">
-        <ModelCarousel />
-        <TechFeatures />
-      </div>
+      <ModelSelectionProvider>
+        <ModelTabs />
+        <ModelBanner />
+        <div className="techFeaturesReveal">
+          <ModelCarousel />
+          <TechFeatures />
+        </div>
+      </ModelSelectionProvider>
       <VideoServopa />
       <AboutServopa />
       <Highlights />
