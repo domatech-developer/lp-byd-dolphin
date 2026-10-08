@@ -54,12 +54,12 @@ export const footerContent: FooterContent = {
   copyright: "© Copyright  2026 - Servopa.  Todos os direitos reservados.",
   credits_label: "Feito por:",
   credits_link: {
-    url: "https://www.domatech.com.br",
+    url: "https://www.boardestrategico.com.br",
     target: "_blank"
   },
   credits_logo: {
-    url: "/icons/domatech-light.svg",
-    alt: "Domatech",
-    title: "Domatech"
+    url: "/images/board-white.png",
+    alt: "Board Estratégico",
+    title: "Board Estratégico"
   }
 };
