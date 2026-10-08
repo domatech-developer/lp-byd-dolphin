@@ -21,7 +21,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="pt-BR">
       <body>
         <QueryProvider>{children}</QueryProvider>
-        <GoogleTagManager gtmId="GTM-AQUI" />
+        <GoogleTagManager gtmId="GTM-K5RP4KPT" />
       </body>
     </html>
   );
